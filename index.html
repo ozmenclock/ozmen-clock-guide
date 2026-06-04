@@ -39,11 +39,21 @@
     }
 
     .brand {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 18px;
+      align-items: center;
+    }
+
+    .brand-copy {
       display: flex;
-      justify-content: space-between;
       gap: 16px;
       align-items: flex-start;
       flex-wrap: wrap;
+    }
+
+    .brand-copy > div {
+      flex: 1 1 310px;
     }
 
     h1,
@@ -91,6 +101,34 @@
       font-weight: 700;
       padding: 8px 12px;
       white-space: nowrap;
+    }
+
+    .site-card {
+      display: grid;
+      grid-template-columns: 96px 1fr;
+      gap: 12px;
+      align-items: center;
+      min-width: 300px;
+      max-width: 380px;
+      padding: 12px;
+      border: 1px solid rgba(105, 183, 255, .35);
+      border-radius: 10px;
+      background: rgba(105, 183, 255, .08);
+    }
+
+    .site-card img {
+      width: 96px;
+      height: 96px;
+      border-radius: 6px;
+      background: #fff;
+      padding: 6px;
+    }
+
+    .site-card p {
+      margin: 4px 0 0;
+      font-size: 13px;
+      line-height: 1.35;
+      word-break: break-word;
     }
 
     .hero {
@@ -221,6 +259,15 @@
         grid-template-columns: 1fr;
       }
 
+      .brand {
+        grid-template-columns: 1fr;
+      }
+
+      .site-card {
+        width: 100%;
+        max-width: none;
+      }
+
       .panel,
       .card {
         padding: 15px;
@@ -231,11 +278,23 @@
 <body>
   <header>
     <div class="wrap brand">
-      <div>
-        <h1>Dijital Duvar Saati Kullanım Merkezi</h1>
-        <p>Kurulum, WiFi bağlantısı, renk ayarları, zaman ayarı ve günlük kullanım kılavuzları.</p>
+      <div class="brand-copy">
+        <div>
+          <h1>Dijital Duvar Saati Kullanım Merkezi</h1>
+          <p>Kurulum, WiFi bağlantısı, renk ayarları, zaman ayarı ve günlük kullanım kılavuzları.</p>
+        </div>
+        <div>
+          <h1>Digital Wall Clock Help Center</h1>
+          <p>Setup, WiFi connection, color settings, time adjustment and everyday user guides.</p>
+        </div>
       </div>
-      <div class="badge">Ozmen Clock</div>
+      <div class="site-card">
+        <img src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&amp;data=https%3A%2F%2Fozmenclock.github.io%2Fozmen-clock-guide%2F" alt="Ozmen Clock guide QR code">
+        <div>
+          <div class="badge">Ozmen Clock</div>
+          <p>Site / Website:<br><code>ozmenclock.github.io/ozmen-clock-guide</code></p>
+        </div>
+      </div>
     </div>
   </header>
 

@@ -36,9 +36,39 @@ body {
 }
 
 .cover {
+  display: grid;
+  grid-template-columns: 1fr 32mm;
+  gap: 8px;
+  align-items: center;
   border: 2px solid var(--ink);
   padding: 10px;
   margin-bottom: 8px;
+}
+
+.guide-qr {
+  text-align: center;
+  font-size: 8px;
+  line-height: 1.15;
+}
+
+.guide-qr img {
+  display: block;
+  width: 24mm;
+  height: 24mm;
+  margin: 0 auto 3px;
+  border: 1px solid var(--line);
+  padding: 2px;
+}
+
+.guide-qr strong {
+  display: block;
+  font-size: 9px;
+}
+
+.guide-qr span {
+  display: block;
+  color: var(--muted);
+  word-break: break-word;
 }
 
 h1 {
@@ -307,9 +337,16 @@ li {
 <body>
 <main class="page">
   <section class="cover">
-    <h1>Digital Clock User Guide</h1>
-    <p><strong>WiFi configurable LED clock</strong> - automatic time keeping, color profiles, temperature display, countdown, scoreboard and stopwatch modes.</p>
-    <p class="muted">This guide explains first setup, daily use, advanced settings and troubleshooting.</p>
+    <div>
+      <h1>Digital Clock User Guide</h1>
+      <p><strong>WiFi configurable LED clock</strong> - automatic time keeping, color profiles, temperature display, countdown, scoreboard and stopwatch modes.</p>
+      <p class="muted">This guide explains first setup, daily use, advanced settings and troubleshooting.</p>
+    </div>
+    <div class="guide-qr">
+      <img src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&amp;data=https%3A%2F%2Fozmenclock.github.io%2Fozmen-clock-guide%2F" alt="Guide website QR code">
+      <strong>Video and guides</strong>
+      <span>ozmenclock.github.io/ozmen-clock-guide</span>
+    </div>
   </section>
 
   <section class="columns">

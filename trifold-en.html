@@ -172,6 +172,37 @@ li {
   color: #24384d;
 }
 
+.site-qr {
+  display: grid;
+  grid-template-columns: 24mm 1fr;
+  gap: 3mm;
+  align-items: center;
+  margin-top: 4mm;
+  padding: 2.5mm;
+  border: 0.25mm solid var(--line);
+  border-radius: 2mm;
+  background: #f7f9fb;
+}
+
+.site-qr img {
+  width: 24mm;
+  height: 24mm;
+  padding: 1.5mm;
+  background: #fff;
+  border: 0.25mm solid var(--line);
+}
+
+.site-qr strong,
+.site-qr span {
+  display: block;
+}
+
+.site-qr span {
+  color: var(--muted);
+  font-size: 7.2pt;
+  word-break: break-word;
+}
+
 .step {
   display: grid;
   grid-template-columns: 6mm 1fr;
@@ -519,6 +550,13 @@ li {
       <div class="cred"><strong>Open</strong><span>WiFi settings on phone or PC</span></div>
       <div class="cred"><strong>Connect</strong><span>DIGITAL-CLOCK-XXXXXX</span></div>
       <div class="cred"><strong>Browse</strong><span>http://192.168.4.1</span></div>
+    </div>
+    <div class="site-qr">
+      <img src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&amp;data=https%3A%2F%2Fozmenclock.github.io%2Fozmen-clock-guide%2F" alt="Guide website QR code">
+      <div>
+        <strong>Video and full guide</strong>
+        <span>ozmenclock.github.io/ozmen-clock-guide</span>
+      </div>
     </div>
     <p class="tiny muted">Setup page: http://192.168.4.1</p>
   </div>
