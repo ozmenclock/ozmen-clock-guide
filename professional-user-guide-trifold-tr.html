@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dijital Saat Profesyonel Kullanım Kılavuzu - 3 Katlanır</title>
+<style>
+@page {
+  size: A4 landscape;
+  margin: 0;
+}
+
+:root {
+  --ink: #111;
+  --muted: #4d4d4d;
+  --line: #cfcfcf;
+  --soft: #f2f2f2;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: #e7e7e7;
+  color: var(--ink);
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.22;
+}
+
+body {
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+.sheet {
+  width: 297mm;
+  height: 210mm;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  background: #fff;
+  page-break-after: always;
+  break-after: page;
+  overflow: hidden;
+}
+
+.panel {
+  position: relative;
+  padding: 5.5mm;
+  border-right: 0.25mm dashed #b7b7b7;
+  overflow: hidden;
+}
+
+.panel:last-child {
+  border-right: 0;
+}
+
+.fold {
+  position: absolute;
+  top: 3mm;
+  right: 4mm;
+  color: #777;
+  font-size: 7pt;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+}
+
+.cover {
+  border: 0.55mm solid var(--ink);
+  padding: 4mm;
+  margin-bottom: 3mm;
+}
+
+h1 {
+  margin: 0 0 2mm;
+  font-size: 22.5pt;
+  line-height: 1.05;
+}
+
+h2 {
+  margin: 0 0 1.7mm;
+  padding-bottom: 0.8mm;
+  border-bottom: 0.25mm solid var(--line);
+  font-size: 13.8pt;
+  line-height: 1.12;
+}
+
+h3 {
+  margin: 1.35mm 0 0.55mm;
+  font-size: 9.2pt;
+}
+
+p,
+li {
+  font-size: 7.55pt;
+  line-height: 1.14;
+}
+
+p {
+  margin: 0 0 0.95mm;
+}
+
+ul,
+ol {
+  margin: 0 0 1.45mm 4.1mm;
+  padding: 0;
+}
+
+li {
+  margin-bottom: 0.45mm;
+}
+
+.muted {
+  color: var(--muted);
+}
+
+.box {
+  border: 0.25mm solid var(--line);
+  padding: 1.55mm;
+  margin-bottom: 1.4mm;
+  background: #fff;
+  break-inside: avoid;
+}
+
+.note {
+  border-left: 1.1mm solid var(--ink);
+  background: var(--soft);
+  padding: 1.25mm 1.55mm;
+  margin: 1.05mm 0;
+  font-size: 7.2pt;
+  line-height: 1.13;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1mm;
+  font-size: 6.9pt;
+}
+
+.table th,
+.table td {
+  border: 0.25mm solid var(--line);
+  padding: 0.78mm;
+  vertical-align: top;
+  text-align: left;
+}
+
+.table th {
+  background: var(--soft);
+}
+
+.steps {
+  counter-reset: step;
+  list-style: none;
+  margin-left: 0;
+}
+
+.steps li {
+  position: relative;
+  padding-left: 6.6mm;
+  margin: 0.75mm 0;
+}
+
+.steps li::before {
+  counter-increment: step;
+  content: counter(step);
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 4.4mm;
+  height: 4.4mm;
+  border: 0.25mm solid var(--ink);
+  border-radius: 50%;
+  text-align: center;
+  line-height: 4mm;
+  font-size: 6.8pt;
+  font-weight: 700;
+}
+
+.specs {
+  display: grid;
+  grid-template-columns: 25mm 1fr;
+  gap: 0.9mm 2mm;
+  font-size: 7.2pt;
+}
+
+.qr-row {
+  display: grid;
+  grid-template-columns: 23mm 1fr;
+  gap: 2.2mm;
+  align-items: center;
+  margin-top: 2mm;
+}
+
+.qr-row img {
+  width: 23mm;
+  height: 23mm;
+  padding: 1.1mm;
+  border: 0.25mm solid var(--line);
+  background: #fff;
+}
+
+.footer {
+  margin-top: 1.8mm;
+  padding-top: 1.3mm;
+  border-top: 0.25mm solid var(--line);
+  font-size: 6.85pt;
+  color: var(--muted);
+}
+
+@media print {
+  body {
+    background: #fff;
+  }
+
+}
+
+@media screen {
+  .sheet {
+    margin: 14px auto;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.16);
+  }
+}
+</style>
+</head>
+<body>
+<!-- DIS YUZ: sol = on kapak, orta = ilk kurulum, sag = ana sekmeler -->
+<section class="sheet">
+  <div class="panel">
+    <div class="fold">Ön kapak</div>
+    <section class="cover">
+      <h1>Dijital Saat Kullanım Kılavuzu</h1>
+      <p><strong>WiFi ayarlı LED saat</strong> - otomatik saat bilgisi, renk profilleri, sıcaklık gösterimi, geri sayım, skor ve kronometre modları.</p>
+      <p class="muted">Bu üç katlanır kılavuz ilk kurulum, günlük kullanım, gelişmiş ayarlar ve sorun giderme adımlarını özetler.</p>
+    </section>
+
+    <div class="box">
+      <h2>Hızlı Erişim</h2>
+      <div class="specs">
+        <b>Saat WiFi adı</b><span>DIGITAL-CLOCK-XXXXXX</span>
+        <b>Varsayılan şifre</b><span>12345678</span>
+        <b>Ayar adresi</b><span>192.168.4.1</span>
+        <b>Kullanım sitesi</b><span>ozmenclock.github.io/ozmen-clock-guide</span>
+      </div>
+      <div class="qr-row">
+        <img src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&amp;data=https%3A%2F%2Fozmenclock.github.io%2Fozmen-clock-guide%2F" alt="Kullanım sitesi QR kodu">
+        <p class="muted">Video anlatım, detaylı HTML kılavuz ve PDF dosyaları için QR kodu okutun.</p>
+      </div>
+    </div>
+
+    <div class="note">Telefon “internet yok” uyarısı gösterebilir. Bu normaldir; saatin WiFi ağı sadece ayar paneline bağlanmak içindir.</div>
+  </div>
+
+  <div class="panel">
+    <div class="fold">İlk açılan bölüm</div>
+    <div class="box">
+      <h2>1. İlk Kurulum</h2>
+      <ol class="steps">
+        <li>Saati güç kaynağına bağlayın ve LED ekranın açılmasını bekleyin.</li>
+        <li>Telefon veya bilgisayardan WiFi listesine girin.</li>
+        <li><strong>DIGITAL-CLOCK-XXXXXX</strong> adlı ağa bağlanın.</li>
+        <li>Varsayılan şifreyi girin: <strong>12345678</strong>.</li>
+        <li>Tarayıcıdan <strong>192.168.4.1</strong> adresini açın.</li>
+      </ol>
+      <h3>İlk kurulum ekranı</h3>
+      <p>Saat daha önce kurulmadıysa ilk kurulum ekranı açılır. Bu ekranda dil, ülke/şehir saat bölgesi, cihaz WiFi şifresi ve ev WiFi ağı ayarlanır.</p>
+      <div class="note">Ev WiFi ağına bağlanırken bağlantı kısa süreli kopabilir. Birkaç saniye bekleyip gerekirse 192.168.4.1 adresini tekrar açın.</div>
+    </div>
+
+    <div class="box">
+      <h2>2. Hızlı Başlangıç</h2>
+      <ol class="steps">
+        <li><strong>WiFi</strong> sekmesini açın ve ev WiFi ağınızı seçin.</li>
+        <li>WiFi şifresini girip <strong>Bağlan ve Kaydet</strong> butonuna basın.</li>
+        <li>Bulunduğunuz ülkeye göre doğru saat bölgesini seçin.</li>
+        <li>WiFi bağlıysa <strong>NTP</strong> ile saat güncellenir.</li>
+        <li>Renk ve parlaklık için <strong>Görünüm</strong> sekmesini açın.</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="panel">
+    <div class="fold">Dış sağ</div>
+    <div class="box">
+      <h2>3. Ana Sayfa ve Sekmeler</h2>
+      <table class="table">
+        <tr><th>Sekme</th><th>Görev</th></tr>
+        <tr><td>Görünüm</td><td>Renk, parlaklık ve renk profilleri.</td></tr>
+        <tr><td>Zaman</td><td>12/24 saat, baştaki sıfır ve nokta LED ayarları.</td></tr>
+        <tr><td>Sıcaklık</td><td>Birim, ofset ve otomatik sıcaklık gösterimi.</td></tr>
+        <tr><td>Geri Sayım</td><td>Süre girme, başlatma ve durdurma.</td></tr>
+        <tr><td>Skor</td><td>3 oyuncu veya takım için skor.</td></tr>
+        <tr><td>Kronometre</td><td>Normal ve tur kronometresi.</td></tr>
+        <tr><td>Gece Işığı</td><td>Uyku saatlerinde düşük parlaklık.</td></tr>
+        <tr><td>WiFi</td><td>Bağlantı, saat güncelleme ve ağ durumu.</td></tr>
+        <tr><td>Araçlar</td><td>Şifre, ilk kurulum, sıfırlama, güncelleme ve LED testi.</td></tr>
+      </table>
+    </div>
+
+    <div class="box">
+      <h2>4. Görünüm Ayarları</h2>
+      <h3>Özel renk</h3>
+      <p>Renk çarkından normal saat rengi seçilir ve <strong>Rengi Kaydet</strong> ile saklanır.</p>
+      <h3>Hazır renkler</h3>
+      <p>12 hazır renkten biri hızlı seçim için kullanılabilir.</p>
+      <h3>Parlaklık</h3>
+      <p>LED parlaklığı ayarlanır. Yüksek parlaklık daha fazla güç kullanır.</p>
+      <h3>Hane ve nokta renkleri</h3>
+      <p>Her hane ve nokta LED rengi ayrı ayrı seçilebilir.</p>
+      <h3>Renk profili</h3>
+      <p>Solid, Rainbow, Aurora, Lava, Prism ve Fade gibi efektler seçilir. Efekt hızı ayarlanabilir.</p>
+    </div>
+  </div>
+</section>
+
+<!-- IC YUZ: sol = zaman/sicaklik, orta = modlar, sag = wifi/araclar/sorun giderme -->
+<section class="sheet">
+  <div class="panel">
+    <div class="fold">İç sol</div>
+    <div class="box">
+      <h2>5. Zaman ve Noktalar</h2>
+      <h3>12/24 saat formatı</h3>
+      <p>Saat 24 saat veya 12 saat formatında gösterilebilir.</p>
+      <h3>Nokta LED davranışı</h3>
+      <p>Noktalar yanıp sönebilir veya sabit yanabilir.</p>
+      <h3>NTP saat güncellemesi</h3>
+      <p>Ev WiFi ağına bağlıyken internet saati alınır ve saatin zaman bilgisi güncellenir.</p>
+      <h3>Saati Güncelle</h3>
+      <p>Telefon veya bilgisayar saatini saate göndermek için kullanılır.</p>
+      <div class="note">İnternet bağlantısı yoksa saat, kayıtlı RTC saat bilgisiyle çalışmaya devam eder.</div>
+    </div>
+
+    <div class="box">
+      <h2>6. Sıcaklık Gösterimi</h2>
+      <ul>
+        <li>Sensör varsa ortam sıcaklığı gösterilebilir.</li>
+        <li><strong>Sıcaklığı Göster</strong> ölçülen sıcaklığı LED ekranda kısa süre gösterir.</li>
+        <li>Celsius veya Fahrenheit seçilebilir.</li>
+        <li>Otomatik gösterim, sıcaklığın dakikada kaç kez ve kaç saniye görüneceğini belirler.</li>
+        <li>Ofset değeri, ölçüm yüksek veya düşükse düzeltme sağlar.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="panel">
+    <div class="fold">İç orta</div>
+    <div class="box">
+      <h2>7. Gece Işığı</h2>
+      <p>Uyku saatlerinde parlaklığı otomatik düşürür.</p>
+      <ul>
+        <li><strong>Başlangıç:</strong> Gece modunun başlayacağı saat.</li>
+        <li><strong>Bitiş:</strong> Normal parlaklığa dönülecek saat.</li>
+        <li><strong>Gece parlaklığı:</strong> Uyku saatlerinde kullanılacak düşük parlaklık.</li>
+      </ul>
+      <div class="note">Yatak odası veya karanlık ortamlar için düşük parlaklık önerilir.</div>
+    </div>
+
+    <div class="box">
+      <h2>8. Geri Sayım</h2>
+      <ol class="steps">
+        <li>Saat, dakika ve saniye girin.</li>
+        <li><strong>Girilen Süreyi Göster</strong> ile süreyi başlatmadan kontrol edin.</li>
+        <li><strong>Başlat</strong> butonuna basın.</li>
+        <li><strong>Duraklat</strong> ve <strong>Devam Et</strong> ile kontrol edin.</li>
+        <li><strong>Sıfırla</strong> ile kayıtlı süreye dönün.</li>
+      </ol>
+      <p>Geri sayım LED rengi ayrıca seçilebilir.</p>
+    </div>
+
+    <div class="box">
+      <h2>9. Skor ve Kronometre</h2>
+      <p>Skor modu 3 oyuncu veya takım için kullanılır. Sol, orta ve sağ skorlar ayrı renkte olabilir.</p>
+      <p>Kronometre normal veya tur modunda çalışabilir. Tur modunda belirlenen süre doldukça tur sayısı artar.</p>
+    </div>
+  </div>
+
+  <div class="panel">
+    <div class="fold">Arka kapak</div>
+    <div class="box">
+      <h2>10. WiFi ve NTP</h2>
+      <ul>
+        <li>WiFi sekmesi bağlı ağ, MAC adresi, IP, sinyal ve kaliteyi gösterir.</li>
+        <li><strong>WiFi Ağlarını Tara</strong> çevredeki ağları listeler.</li>
+        <li><strong>Bağlan ve Kaydet</strong> ev WiFi bilgilerini kaydeder.</li>
+        <li>UTC bilgisi ilk kurulumda seçilen bölgeye göre belirlenir.</li>
+        <li><strong>NTP</strong> ile saat internetten güncellenebilir.</li>
+      </ul>
+      <div class="note">WiFi ağına bağlanırken kısa süreli kopma yaşanabilir. Bu normaldir.</div>
+    </div>
+
+    <div class="box">
+      <h2>11. Araçlar ve Güvenli Onaylar</h2>
+      <ul>
+        <li>Cihaz WiFi şifresi mevcut şifre onayıyla değiştirilebilir.</li>
+        <li>İlk kurulum ekranı tekrar açılabilir.</li>
+        <li>Firmware güncelleme sayfası Araçlar sekmesinden açılır.</li>
+        <li>LED testi tüm LED'leri kontrol etmek için kullanılır.</li>
+        <li>Kırmızı işlemler için ekranın ortasında onay penceresi gösterilir.</li>
+      </ul>
+    </div>
+
+    <div class="box">
+      <h2>12. Sorun Giderme</h2>
+      <table class="table">
+        <tr><th>Sorun</th><th>Kontrol</th></tr>
+        <tr><td>192.168.4.1 açılmıyor</td><td>Saatin WiFi ağına bağlı olduğunuzu kontrol edin.</td></tr>
+        <tr><td>WiFi bağlanmıyor</td><td>Şifreyi, 2.4 GHz ağı ve modem kapsamasını kontrol edin.</td></tr>
+        <tr><td>Saat yanlış</td><td>WiFi bağlıyken NTP güncellemesi yapın veya Saati Güncelle butonunu kullanın.</td></tr>
+        <tr><td>Şifre unutuldu</td><td>Fabrika ayarına döndürün. Varsayılan şifre 12345678 olur.</td></tr>
+      </table>
+      <div class="footer">Kullanım ve güvenlik: Cihazı kuru ortamda kullanın. Güncelleme sırasında enerjiyi kesmeyin.</div>
+    </div>
+  </div>
+</section>
+</body>
+</html>

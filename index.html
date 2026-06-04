@@ -39,20 +39,13 @@
     }
 
     .brand {
-      display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 18px;
-      align-items: center;
-    }
-
-    .brand-copy {
       display: flex;
       gap: 16px;
       align-items: flex-start;
       flex-wrap: wrap;
     }
 
-    .brand-copy > div {
+    .brand > div {
       flex: 1 1 310px;
     }
 
@@ -101,34 +94,6 @@
       font-weight: 700;
       padding: 8px 12px;
       white-space: nowrap;
-    }
-
-    .site-card {
-      display: grid;
-      grid-template-columns: 96px 1fr;
-      gap: 12px;
-      align-items: center;
-      min-width: 300px;
-      max-width: 380px;
-      padding: 12px;
-      border: 1px solid rgba(105, 183, 255, .35);
-      border-radius: 10px;
-      background: rgba(105, 183, 255, .08);
-    }
-
-    .site-card img {
-      width: 96px;
-      height: 96px;
-      border-radius: 6px;
-      background: #fff;
-      padding: 6px;
-    }
-
-    .site-card p {
-      margin: 4px 0 0;
-      font-size: 13px;
-      line-height: 1.35;
-      word-break: break-word;
     }
 
     .hero {
@@ -259,15 +224,6 @@
         grid-template-columns: 1fr;
       }
 
-      .brand {
-        grid-template-columns: 1fr;
-      }
-
-      .site-card {
-        width: 100%;
-        max-width: none;
-      }
-
       .panel,
       .card {
         padding: 15px;
@@ -278,22 +234,13 @@
 <body>
   <header>
     <div class="wrap brand">
-      <div class="brand-copy">
-        <div>
-          <h1>Dijital Duvar Saati Kullanım Merkezi</h1>
-          <p>Kurulum, WiFi bağlantısı, renk ayarları, zaman ayarı ve günlük kullanım kılavuzları.</p>
-        </div>
-        <div>
-          <h1>Digital Wall Clock Help Center</h1>
-          <p>Setup, WiFi connection, color settings, time adjustment and everyday user guides.</p>
-        </div>
+      <div>
+        <h1>Dijital Duvar Saati Kullanım Merkezi</h1>
+        <p>Kurulum, WiFi bağlantısı, renk ayarları, zaman ayarı ve günlük kullanım kılavuzları.</p>
       </div>
-      <div class="site-card">
-        <img src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&amp;data=https%3A%2F%2Fozmenclock.github.io%2Fozmen-clock-guide%2F" alt="Ozmen Clock guide QR code">
-        <div>
-          <div class="badge">Ozmen Clock</div>
-          <p>Site / Website:<br><code>ozmenclock.github.io/ozmen-clock-guide</code></p>
-        </div>
+      <div>
+        <h1>Digital Wall Clock Help Center</h1>
+        <p>Setup, WiFi connection, color settings, time adjustment and everyday user guides.</p>
       </div>
     </div>
   </header>
@@ -331,7 +278,7 @@
           <a class="button primary" href="video-tr.html">Video Kılavuzu <span>Aç</span></a>
           <a class="button" href="guide-tr.html">Detaylı Kullanım Kılavuzu <span>HTML</span></a>
           <a class="button" href="guide-tr.pdf">PDF Kılavuzu İndir <span>PDF</span></a>
-          <a class="button" href="trifold-tr.html">Katlanır Kılavuz <span>A4</span></a>
+          <a class="button" href="professional-user-guide-trifold-tr.html">Katlanır Kılavuz <span>A4</span></a>
         </div>
         <div class="note">Not: WiFi bağlantısı sırasında telefon kısa süreliğine internet yok uyarısı gösterebilir. Bu normaldir.</div>
       </div>
@@ -343,7 +290,7 @@
           <a class="button primary" href="video-en.html">Video Guide <span>Open</span></a>
           <a class="button" href="guide-en.html">Full User Guide <span>HTML</span></a>
           <a class="button" href="guide-en.pdf">Download PDF Guide <span>PDF</span></a>
-          <a class="button" href="trifold-en.html">Foldable Guide <span>A4</span></a>
+          <a class="button" href="professional-user-guide-trifold-en.html">Foldable Guide <span>A4</span></a>
         </div>
         <div class="note">Note: While connecting to the clock WiFi, the phone may show a no internet warning. This is normal.</div>
       </div>
