@@ -76,7 +76,7 @@ body {
 
 h1 {
   margin: 0 0 2mm;
-  font-size: 22.5pt;
+  font-size: 24pt;
   line-height: 1.05;
 }
 
@@ -84,19 +84,19 @@ h2 {
   margin: 0 0 1.7mm;
   padding-bottom: 0.8mm;
   border-bottom: 0.25mm solid var(--line);
-  font-size: 13.8pt;
+  font-size: 14.8pt;
   line-height: 1.12;
 }
 
 h3 {
   margin: 1.35mm 0 0.55mm;
-  font-size: 9.2pt;
+  font-size: 10pt;
 }
 
 p,
 li {
-  font-size: 7.55pt;
-  line-height: 1.14;
+  font-size: 8.1pt;
+  line-height: 1.16;
 }
 
 p {
@@ -130,15 +130,15 @@ li {
   background: var(--soft);
   padding: 1.25mm 1.55mm;
   margin: 1.05mm 0;
-  font-size: 7.2pt;
-  line-height: 1.13;
+  font-size: 7.8pt;
+  line-height: 1.15;
 }
 
 .table {
   width: 100%;
   border-collapse: collapse;
   margin-top: 1mm;
-  font-size: 6.9pt;
+  font-size: 7.35pt;
 }
 
 .table th,
@@ -161,8 +161,9 @@ li {
 
 .steps li {
   position: relative;
-  padding-left: 6.6mm;
-  margin: 0.75mm 0;
+  padding-left: 7.2mm;
+  margin: 1.15mm 0;
+  min-height: 4.8mm;
 }
 
 .steps li::before {
@@ -170,14 +171,14 @@ li {
   content: counter(step);
   position: absolute;
   left: 0;
-  top: 0;
-  width: 4.4mm;
-  height: 4.4mm;
+  top: 0.15mm;
+  width: 4mm;
+  height: 4mm;
   border: 0.25mm solid var(--ink);
   border-radius: 50%;
   text-align: center;
-  line-height: 4mm;
-  font-size: 6.8pt;
+  line-height: 3.65mm;
+  font-size: 6.2pt;
   font-weight: 700;
 }
 
@@ -185,7 +186,7 @@ li {
   display: grid;
   grid-template-columns: 25mm 1fr;
   gap: 0.9mm 2mm;
-  font-size: 7.2pt;
+  font-size: 7.8pt;
 }
 
 .qr-row {
@@ -208,7 +209,7 @@ li {
   margin-top: 1.8mm;
   padding-top: 1.3mm;
   border-top: 0.25mm solid var(--line);
-  font-size: 6.85pt;
+  font-size: 7.3pt;
   color: var(--muted);
 }
 
@@ -235,7 +236,7 @@ li {
     <section class="cover">
       <h1>Dijital Saat Kullanım Kılavuzu</h1>
       <p><strong>WiFi ayarlı LED saat</strong> - otomatik saat bilgisi, renk profilleri, sıcaklık gösterimi, geri sayım, skor ve kronometre modları.</p>
-      <p class="muted">Bu üç katlanır kılavuz ilk kurulum, günlük kullanım, gelişmiş ayarlar ve sorun giderme adımlarını özetler.</p>
+      <p class="muted">Bu üç katlanır kılavuz ilk kurulum, günlük kullanım, gelişmiş ayarlar ve sorun giderme adımlarını özetler. Daha detaylı anlatım ve video için QR kodu okutabilirsiniz.</p>
     </section>
 
     <div class="box">
@@ -253,6 +254,7 @@ li {
     </div>
 
     <div class="note">Telefon “internet yok” uyarısı gösterebilir. Bu normaldir; saatin WiFi ağı sadece ayar paneline bağlanmak içindir.</div>
+    <div class="note">Saatin ayar sayfası internet sitesi değildir. Telefon veya bilgisayar önce saatin WiFi ağına bağlanır, sonra 192.168.4.1 adresi açılır.</div>
   </div>
 
   <div class="panel">
@@ -269,6 +271,7 @@ li {
       <h3>İlk kurulum ekranı</h3>
       <p>Saat daha önce kurulmadıysa ilk kurulum ekranı açılır. Bu ekranda dil, ülke/şehir saat bölgesi, cihaz WiFi şifresi ve ev WiFi ağı ayarlanır.</p>
       <div class="note">Ev WiFi ağına bağlanırken bağlantı kısa süreli kopabilir. Birkaç saniye bekleyip gerekirse 192.168.4.1 adresini tekrar açın.</div>
+      <p>Kurulum tamamlandıktan sonra normal ayar menüsü açılır. Daha sonra dil veya saat bölgesi değiştirmek isterseniz Araçlar sekmesinden ilk kurulumu tekrar açabilirsiniz.</p>
     </div>
 
     <div class="box">
@@ -280,6 +283,7 @@ li {
         <li>WiFi bağlıysa <strong>NTP</strong> ile saat güncellenir.</li>
         <li>Renk ve parlaklık için <strong>Görünüm</strong> sekmesini açın.</li>
       </ol>
+      <p>İlk kullanımda önce bağlantı ve saat bölgesi ayarını tamamlamak, sonra görünüm ayarlarını yapmak daha sağlıklıdır.</p>
     </div>
   </div>
 
@@ -299,20 +303,21 @@ li {
         <tr><td>WiFi</td><td>Bağlantı, saat güncelleme ve ağ durumu.</td></tr>
         <tr><td>Araçlar</td><td>Şifre, ilk kurulum, sıfırlama, güncelleme ve LED testi.</td></tr>
       </table>
+      <div class="note">Sekmelerde yapılan çoğu değişiklik ilgili “Kaydet” butonuna basınca kalıcı olur. Sadece skor gibi anlık modlarda değerler hemen değişebilir.</div>
     </div>
 
     <div class="box">
       <h2>4. Görünüm Ayarları</h2>
       <h3>Özel renk</h3>
-      <p>Renk çarkından normal saat rengi seçilir ve <strong>Rengi Kaydet</strong> ile saklanır.</p>
+      <p>Renk çarkından normal saat rengi seçilir ve <strong>Rengi Kaydet</strong> ile saklanır. Renk seçimi ekranda hemen önizlenir.</p>
       <h3>Hazır renkler</h3>
-      <p>12 hazır renkten biri hızlı seçim için kullanılabilir.</p>
+      <p>12 hazır renkten biri hızlı seçim için kullanılabilir. Sık kullanılan kırmızı, yeşil, mavi, beyaz ve benzeri renkler bu bölümden hızlı seçilir.</p>
       <h3>Parlaklık</h3>
-      <p>LED parlaklığı ayarlanır. Yüksek parlaklık daha fazla güç kullanır.</p>
+      <p>LED parlaklığı ayarlanır. Yüksek parlaklık gündüz daha görünürdür; düşük parlaklık gece ve yatak odası için daha uygundur.</p>
       <h3>Hane ve nokta renkleri</h3>
       <p>Her hane ve nokta LED rengi ayrı ayrı seçilebilir.</p>
       <h3>Renk profili</h3>
-      <p>Solid, Rainbow, Aurora, Lava, Prism ve Fade gibi efektler seçilir. Efekt hızı ayarlanabilir.</p>
+      <p>Solid, Rainbow, Aurora, Lava, Prism ve Fade gibi efektler seçilir. Efekt hızı düşükse geçişler yavaş, yüksekse animasyon daha hareketli olur.</p>
     </div>
   </div>
 </section>
@@ -328,10 +333,11 @@ li {
       <h3>Nokta LED davranışı</h3>
       <p>Noktalar yanıp sönebilir veya sabit yanabilir.</p>
       <h3>NTP saat güncellemesi</h3>
-      <p>Ev WiFi ağına bağlıyken internet saati alınır ve saatin zaman bilgisi güncellenir.</p>
+      <p>Ev WiFi ağına bağlıyken internet saati alınır ve saatin zaman bilgisi güncellenir. Doğru ülke veya şehir seçildiyse yaz/kış saati bölgeye göre uygulanır.</p>
       <h3>Saati Güncelle</h3>
-      <p>Telefon veya bilgisayar saatini saate göndermek için kullanılır.</p>
+      <p>Telefon veya bilgisayar saatini saate göndermek için kullanılır. İnternet yoksa veya NTP alınamıyorsa pratik bir yedek yöntemdir.</p>
       <div class="note">İnternet bağlantısı yoksa saat, kayıtlı RTC saat bilgisiyle çalışmaya devam eder.</div>
+      <p>RTC modülü saatin elektrik kesilse bile zamanı korumasına yardımcı olur. Uzun süre internetsiz kullanımda küçük sapmalar normaldir; WiFi geldiğinde NTP ile tekrar düzeltilir.</p>
     </div>
 
     <div class="box">
@@ -341,8 +347,10 @@ li {
         <li><strong>Sıcaklığı Göster</strong> ölçülen sıcaklığı LED ekranda kısa süre gösterir.</li>
         <li>Celsius veya Fahrenheit seçilebilir.</li>
         <li>Otomatik gösterim, sıcaklığın dakikada kaç kez ve kaç saniye görüneceğini belirler.</li>
-        <li>Ofset değeri, ölçüm yüksek veya düşükse düzeltme sağlar.</li>
+      <li>Ofset değeri, ölçüm yüksek veya düşükse düzeltme sağlar.</li>
       </ul>
+      <p>Sıcaklık sensörü olmayan modellerde sıcaklık değeri gösterilmeyebilir. Bu durumda saat fonksiyonları normal çalışmaya devam eder.</p>
+      <div class="note">Sıcaklık gösterimi aktifse saat normal zaman ekranındayken belirlenen aralıklarla sıcaklığı kısa süre gösterir, sonra otomatik olarak saat ekranına döner.</div>
     </div>
   </div>
 
@@ -357,6 +365,7 @@ li {
         <li><strong>Gece parlaklığı:</strong> Uyku saatlerinde kullanılacak düşük parlaklık.</li>
       </ul>
       <div class="note">Yatak odası veya karanlık ortamlar için düşük parlaklık önerilir.</div>
+      <p>Gece modu yalnızca seçilen saat aralığında parlaklığı düşürür; renk, saat formatı ve diğer ayarlar değişmez. Bitiş saatinden sonra normal parlaklık geri gelir.</p>
     </div>
 
     <div class="box">
@@ -368,13 +377,15 @@ li {
         <li><strong>Duraklat</strong> ve <strong>Devam Et</strong> ile kontrol edin.</li>
         <li><strong>Sıfırla</strong> ile kayıtlı süreye dönün.</li>
       </ol>
-      <p>Geri sayım LED rengi ayrıca seçilebilir.</p>
+      <p>Geri sayım LED rengi ayrıca seçilebilir. Yarış, etkinlik, antrenman veya vitrin kullanımında süreyi büyük LED ekranda göstermek için uygundur.</p>
+      <p>Geri sayım çalışırken normal saat ekranından çıkılır. İşlem bittiğinde veya <strong>Saati Göster</strong> kullanıldığında cihaz tekrar normal saat moduna döner.</p>
     </div>
 
     <div class="box">
       <h2>9. Skor ve Kronometre</h2>
-      <p>Skor modu 3 oyuncu veya takım için kullanılır. Sol, orta ve sağ skorlar ayrı renkte olabilir.</p>
-      <p>Kronometre normal veya tur modunda çalışabilir. Tur modunda belirlenen süre doldukça tur sayısı artar.</p>
+      <p>Skor modu 3 oyuncu veya takım için kullanılır. Sol, orta ve sağ skorlar ayrı renkte olabilir; skorlar + ve - düğmeleriyle anında değişir.</p>
+      <p>Kronometre normal veya tur modunda çalışabilir. Tur modunda belirlenen süre doldukça tur sayısı artar ve ekranda takip edilir.</p>
+      <p>Skor renkleri kaydedilebilir; skor değerleri ise kullanım sırasında anlık tutulur. Kronometre rengi de ayrı seçilerek ekranda diğer modlardan kolay ayrılır.</p>
     </div>
   </div>
 
@@ -385,11 +396,13 @@ li {
       <ul>
         <li>WiFi sekmesi bağlı ağ, MAC adresi, IP, sinyal ve kaliteyi gösterir.</li>
         <li><strong>WiFi Ağlarını Tara</strong> çevredeki ağları listeler.</li>
-        <li><strong>Bağlan ve Kaydet</strong> ev WiFi bilgilerini kaydeder.</li>
-        <li>UTC bilgisi ilk kurulumda seçilen bölgeye göre belirlenir.</li>
-        <li><strong>NTP</strong> ile saat internetten güncellenebilir.</li>
+      <li><strong>Bağlan ve Kaydet</strong> ev WiFi bilgilerini kaydeder.</li>
+      <li>UTC bilgisi ilk kurulumda seçilen bölgeye göre belirlenir.</li>
+      <li><strong>NTP</strong> ile saat internetten güncellenebilir.</li>
       </ul>
       <div class="note">WiFi ağına bağlanırken kısa süreli kopma yaşanabilir. Bu normaldir.</div>
+      <p>Saat ev WiFi ağına bağlandığında aldığı yerel IP adresi WiFi sekmesinde görünür. Aynı ağdaki cihazlardan bu IP ile de ayar sayfasına ulaşılabilir.</p>
+      <p>Ev WiFi ağı ortamda yoksa saat kendi <strong>DIGITAL-CLOCK</strong> ağını açık tutar. Bu sayede müşteri tekrar saate bağlanıp yeni WiFi bilgisi girebilir.</p>
     </div>
 
     <div class="box">
@@ -399,8 +412,10 @@ li {
         <li>İlk kurulum ekranı tekrar açılabilir.</li>
         <li>Firmware güncelleme sayfası Araçlar sekmesinden açılır.</li>
         <li>LED testi tüm LED'leri kontrol etmek için kullanılır.</li>
-        <li>Kırmızı işlemler için ekranın ortasında onay penceresi gösterilir.</li>
+      <li>Kırmızı işlemler için ekranın ortasında onay penceresi gösterilir.</li>
       </ul>
+      <p>Fabrika ayarı yalnızca kurulumda hata yapıldıysa veya cihaz WiFi şifresi unutulduysa kullanılmalıdır. İşlemden sonra WiFi bilgileri yeniden girilir.</p>
+      <div class="note">Güncelleme işlemi sırasında yalnızca derlenmiş <strong>.bin</strong> dosyası yüklenmelidir. Güncelleme tamamlanana kadar saatin enerjisi kesilmemelidir.</div>
     </div>
 
     <div class="box">
@@ -412,7 +427,8 @@ li {
         <tr><td>Saat yanlış</td><td>WiFi bağlıyken NTP güncellemesi yapın veya Saati Güncelle butonunu kullanın.</td></tr>
         <tr><td>Şifre unutuldu</td><td>Fabrika ayarına döndürün. Varsayılan şifre 12345678 olur.</td></tr>
       </table>
-      <div class="footer">Kullanım ve güvenlik: Cihazı kuru ortamda kullanın. Güncelleme sırasında enerjiyi kesmeyin.</div>
+      <p>Bağlantı sorunlarında önce saatin WiFi ağına bağlı olduğunuzu, sonra adres çubuğuna doğru IP yazdığınızı kontrol edin. Ev WiFi şifresi değiştiyse WiFi sekmesinden tekrar kaydedilmelidir.</p>
+      <div class="footer">Kullanım ve güvenlik: Cihazı kuru ortamda kullanın. Güncelleme sırasında enerjiyi kesmeyin. Güç adaptörü ve kablo gevşekse LED parlaklığı veya WiFi kararsız olabilir.</div>
     </div>
   </div>
 </section>

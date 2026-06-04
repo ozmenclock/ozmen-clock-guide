@@ -76,7 +76,7 @@ body {
 
 h1 {
   margin: 0 0 2mm;
-  font-size: 22.5pt;
+  font-size: 24pt;
   line-height: 1.05;
 }
 
@@ -84,19 +84,19 @@ h2 {
   margin: 0 0 1.7mm;
   padding-bottom: 0.8mm;
   border-bottom: 0.25mm solid var(--line);
-  font-size: 13.8pt;
+  font-size: 14.8pt;
   line-height: 1.12;
 }
 
 h3 {
   margin: 1.35mm 0 0.55mm;
-  font-size: 9.2pt;
+  font-size: 10pt;
 }
 
 p,
 li {
-  font-size: 7.55pt;
-  line-height: 1.14;
+  font-size: 8.1pt;
+  line-height: 1.16;
 }
 
 p {
@@ -130,15 +130,15 @@ li {
   background: var(--soft);
   padding: 1.25mm 1.55mm;
   margin: 1.05mm 0;
-  font-size: 7.2pt;
-  line-height: 1.13;
+  font-size: 7.8pt;
+  line-height: 1.15;
 }
 
 .table {
   width: 100%;
   border-collapse: collapse;
   margin-top: 1mm;
-  font-size: 6.9pt;
+  font-size: 7.35pt;
 }
 
 .table th,
@@ -161,8 +161,9 @@ li {
 
 .steps li {
   position: relative;
-  padding-left: 6.6mm;
-  margin: 0.75mm 0;
+  padding-left: 7.2mm;
+  margin: 1.15mm 0;
+  min-height: 4.8mm;
 }
 
 .steps li::before {
@@ -170,14 +171,14 @@ li {
   content: counter(step);
   position: absolute;
   left: 0;
-  top: 0;
-  width: 4.4mm;
-  height: 4.4mm;
+  top: 0.15mm;
+  width: 4mm;
+  height: 4mm;
   border: 0.25mm solid var(--ink);
   border-radius: 50%;
   text-align: center;
-  line-height: 4mm;
-  font-size: 6.8pt;
+  line-height: 3.65mm;
+  font-size: 6.2pt;
   font-weight: 700;
 }
 
@@ -185,7 +186,7 @@ li {
   display: grid;
   grid-template-columns: 25mm 1fr;
   gap: 0.9mm 2mm;
-  font-size: 7.2pt;
+  font-size: 7.8pt;
 }
 
 .qr-row {
@@ -208,7 +209,7 @@ li {
   margin-top: 1.8mm;
   padding-top: 1.3mm;
   border-top: 0.25mm solid var(--line);
-  font-size: 6.85pt;
+  font-size: 7.3pt;
   color: var(--muted);
 }
 
@@ -235,7 +236,7 @@ li {
     <section class="cover">
       <h1>Digital Clock User Guide</h1>
       <p><strong>WiFi configurable LED clock</strong> - automatic time keeping, color profiles, temperature display, countdown, scoreboard and stopwatch modes.</p>
-      <p class="muted">This tri-fold guide summarizes first setup, daily use, advanced settings and troubleshooting.</p>
+      <p class="muted">This tri-fold guide summarizes first setup, daily use, advanced settings and troubleshooting. Scan the QR code for video help and the full guide.</p>
     </section>
 
     <div class="box">
@@ -253,6 +254,7 @@ li {
     </div>
 
     <div class="note">Your phone may show a “no internet” warning. This is normal; the clock WiFi is only used to open the setup panel.</div>
+    <div class="note">The setup page is not an internet website. First connect to the clock WiFi, then open 192.168.4.1 in your browser.</div>
   </div>
 
   <div class="panel">
@@ -269,6 +271,7 @@ li {
       <h3>First setup screen</h3>
       <p>If the clock has not been set up before, the first setup screen appears. Choose language, country/city time zone, optional device WiFi password and home WiFi network.</p>
       <div class="note">The connection may briefly drop while saving the home WiFi network. Wait a few seconds and reopen 192.168.4.1 if needed.</div>
+      <p>After setup is complete, the normal settings menu opens. To change language or time zone later, open first setup again from the Tools tab.</p>
     </div>
 
     <div class="box">
@@ -280,6 +283,7 @@ li {
         <li>If WiFi is connected, use <strong>NTP</strong> to update the time.</li>
         <li>Open <strong>Appearance</strong> to adjust color and brightness.</li>
       </ol>
+      <p>For first use, set WiFi and time zone before adjusting appearance settings.</p>
     </div>
   </div>
 
@@ -299,20 +303,21 @@ li {
         <tr><td>WiFi</td><td>Connection, time update and network status.</td></tr>
         <tr><td>Tools</td><td>Password, first setup, reset, update and LED test.</td></tr>
       </table>
+      <div class="note">Most settings are stored only after pressing the matching Save button. Live modes such as Scoreboard can change immediately.</div>
     </div>
 
     <div class="box">
       <h2>4. Appearance Settings</h2>
       <h3>Custom color</h3>
-      <p>Selects the normal clock color from the color wheel and stores it with <strong>Save Color</strong>.</p>
+      <p>Selects the normal clock color from the color wheel and stores it with <strong>Save Color</strong>. The selected color is previewed on screen.</p>
       <h3>Color presets</h3>
-      <p>Use one of the 12 preset colors for quick selection.</p>
+      <p>Use one of the 12 preset colors for quick selection, such as red, green, blue, white and other common colors.</p>
       <h3>Brightness</h3>
-      <p>Adjusts LED brightness. Higher brightness uses more power.</p>
+      <p>Adjusts LED brightness. Higher brightness is easier to see during the day; lower brightness is better for bedrooms.</p>
       <h3>Digit and dot colors</h3>
       <p>Each digit and dot LED color can be selected separately.</p>
       <h3>Color profile</h3>
-      <p>Selects effects such as Solid, Rainbow, Aurora, Lava, Prism and Fade. Effect speed is adjustable.</p>
+      <p>Selects effects such as Solid, Rainbow, Aurora, Lava, Prism and Fade. Low speed creates slower transitions; high speed makes animation more active.</p>
     </div>
   </div>
 </section>
@@ -328,10 +333,11 @@ li {
       <h3>Dot LED behavior</h3>
       <p>Dots can blink or stay always on.</p>
       <h3>NTP time update</h3>
-      <p>When connected to home WiFi, internet time is received and stored in the clock.</p>
+      <p>When connected to home WiFi, internet time is received and stored in the clock. If the region is selected correctly, daylight saving follows that time zone.</p>
       <h3>Update Time</h3>
-      <p>Sends phone or computer time to the clock.</p>
+      <p>Sends phone or computer time to the clock. This is useful when internet time is not available.</p>
       <div class="note">If internet is not available, the clock continues using its stored RTC time.</div>
+      <p>The RTC module helps the clock keep time even after power loss. Small drift during long offline use is normal; NTP corrects it again when WiFi is available.</p>
     </div>
 
     <div class="box">
@@ -343,6 +349,8 @@ li {
         <li>Auto display controls how often and how long temperature appears.</li>
         <li>Offset corrects readings if they are slightly high or low.</li>
       </ul>
+      <p>If the model does not include a temperature sensor, temperature may stay hidden while the clock functions continue normally.</p>
+      <div class="note">When automatic temperature display is enabled, the clock briefly shows temperature at the selected interval, then returns to the normal time display.</div>
     </div>
   </div>
 
@@ -357,6 +365,7 @@ li {
         <li><strong>Night brightness:</strong> Lower brightness used during this period.</li>
       </ul>
       <div class="note">Low brightness is recommended for bedrooms and dark rooms.</div>
+      <p>Night Light only lowers brightness during the selected hours; color, hour format and other settings remain unchanged. Normal brightness returns after the end time.</p>
     </div>
 
     <div class="box">
@@ -368,13 +377,15 @@ li {
         <li>Use <strong>Pause</strong> and <strong>Resume</strong> to control it.</li>
         <li>Use <strong>Reset</strong> to return to the saved time.</li>
       </ol>
-      <p>Countdown LED color can be selected separately.</p>
+      <p>Countdown LED color can be selected separately. This mode is useful for events, sports, training and shop displays.</p>
+      <p>While countdown is active, the clock leaves the normal time display. When finished, or when <strong>Show Clock</strong> is used, it returns to normal clock mode.</p>
     </div>
 
     <div class="box">
       <h2>9. Scoreboard and Stopwatch</h2>
-      <p>Scoreboard is used for 3 players or teams. Left, middle and right scores can have different colors.</p>
+      <p>Scoreboard is used for 3 players or teams. Left, middle and right scores can have different colors and change instantly with + / - buttons.</p>
       <p>Stopwatch can run in normal or lap mode. In lap mode, the lap count increases when the selected lap time is reached.</p>
+      <p>Score colors can be saved; score values are used live during operation. Stopwatch color can also be selected so the mode is easy to identify on the LED display.</p>
     </div>
   </div>
 
@@ -390,6 +401,8 @@ li {
         <li><strong>NTP</strong> can update the clock from internet time.</li>
       </ul>
       <div class="note">A brief disconnection may happen while connecting to WiFi. This is normal.</div>
+      <p>When the clock joins the home WiFi network, its local IP address appears in the WiFi tab and can be used from the same network.</p>
+      <p>If the home WiFi is not available, the clock keeps its own <strong>DIGITAL-CLOCK</strong> network active so the user can reconnect and enter new WiFi details.</p>
     </div>
 
     <div class="box">
@@ -401,6 +414,8 @@ li {
         <li>LED test checks all LEDs.</li>
         <li>Red actions ask for a centered confirmation dialog.</li>
       </ul>
+      <p>Factory reset should be used only when setup is wrong or the device WiFi password is forgotten. WiFi details must be entered again after reset.</p>
+      <div class="note">For firmware update, upload only the compiled <strong>.bin</strong> file. Do not disconnect power until the update is complete.</div>
     </div>
 
     <div class="box">
@@ -412,7 +427,8 @@ li {
         <tr><td>Wrong time</td><td>Use NTP while WiFi is connected or press Update Time.</td></tr>
         <tr><td>Password forgotten</td><td>Use factory reset. Default password returns to 12345678.</td></tr>
       </table>
-      <div class="footer">Use and safety: Keep the device in a dry place. Do not power off during firmware update.</div>
+      <p>For connection issues, first check that you are connected to the clock WiFi, then confirm the IP address in the browser. If the home WiFi password changed, save it again from the WiFi tab.</p>
+      <div class="footer">Use and safety: Keep the device in a dry place. Do not power off during firmware update. Loose power cables or weak adapters may cause unstable LEDs or WiFi.</div>
     </div>
   </div>
 </section>
