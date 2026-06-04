@@ -1,0 +1,756 @@
+﻿<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dijital Saat Hızlı Kullanım Kılavuzu</title>
+<style>
+@page {
+  size: A4 landscape;
+  margin: 0;
+}
+
+:root {
+  --ink: #15202b;
+  --muted: #5d6b78;
+  --line: #cdd6df;
+  --soft: #eef3f7;
+  --green: #333333;
+  --red: #111111;
+  --blue: #555555;
+  --orange: #777777;
+  --dark: #ffffff;
+  --panel: #ffffff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: #dfe6ed;
+  color: var(--ink);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+.sheet {
+  width: 297mm;
+  height: 210mm;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  background: #fff;
+  page-break-after: always;
+  break-after: page;
+  page-break-inside: avoid;
+  break-inside: avoid;
+}
+
+.panel {
+  position: relative;
+  padding: 7mm 7mm;
+  border-right: 0.25mm dashed #aeb9c4;
+  overflow: hidden;
+  page-break-inside: avoid;
+  break-inside: avoid;
+}
+
+.panel:last-child {
+  border-right: 0;
+}
+
+.fold {
+  position: absolute;
+  top: 3mm;
+  right: 4mm;
+  color: #9aa6b2;
+  font-size: 7pt;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+h1, h2, h3, p {
+  margin-top: 0;
+}
+
+h1 {
+  margin-bottom: 2.5mm;
+  font-size: 23pt;
+  line-height: 1.05;
+}
+
+h2 {
+  margin-bottom: 2.2mm;
+  font-size: 14.5pt;
+  line-height: 1.12;
+}
+
+h3 {
+  margin: 2mm 0 1mm;
+  font-size: 9pt;
+}
+
+p, li {
+  font-size: 7.5pt;
+  line-height: 1.18;
+}
+
+p {
+  margin-bottom: 1.2mm;
+}
+
+ul, ol {
+  margin: 0 0 2.6mm;
+  padding-left: 5mm;
+}
+
+li {
+  margin-bottom: 1mm;
+}
+
+.muted {
+  color: var(--muted);
+}
+
+.brand {
+  color: var(--red);
+  font-weight: 800;
+}
+
+.cover {
+  background: #fff;
+}
+
+.cover-badge {
+  display: inline-block;
+  margin-bottom: 3.5mm;
+  padding: 2mm 3mm;
+  border-radius: 999px;
+  background: #eeeeee;
+  color: #111111;
+  font-size: 8pt;
+  font-weight: 700;
+}
+
+.clock-hero {
+  margin: 5mm 0 4mm;
+  padding: 5mm 4mm;
+  border: 0.35mm solid var(--line);
+  border-radius: 3mm;
+  background: #ffffff;
+}
+
+.led {
+  color: #111111;
+  font: 800 28pt "Courier New", monospace;
+  text-align: center;
+  letter-spacing: 1px;
+}
+
+.quick-box {
+  padding: 3mm;
+  border: 0.3mm solid var(--line);
+  border-radius: 3mm;
+  background: var(--soft);
+}
+
+.cred {
+  display: grid;
+  grid-template-columns: 23mm 1fr;
+  gap: 2mm;
+  margin-bottom: 1.5mm;
+  font-size: 8.3pt;
+}
+
+.cred strong {
+  color: #24384d;
+}
+
+.step {
+  display: grid;
+  grid-template-columns: 6mm 1fr;
+  gap: 2mm;
+  margin-bottom: 2mm;
+}
+
+.num {
+  display: grid;
+  place-items: center;
+  width: 5mm;
+  height: 5mm;
+  border-radius: 50%;
+  background: var(--green);
+  color: white;
+  font-size: 7.5pt;
+  font-weight: 800;
+}
+
+.screen {
+  margin: 2.5mm 0;
+  padding: 3mm;
+  border-radius: 3mm;
+  background: #ffffff;
+  color: var(--ink);
+  border: 0.3mm solid var(--line);
+}
+
+.screen-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 2mm;
+  color: var(--muted);
+  font-size: 7pt;
+}
+
+.screen-title {
+  color: var(--ink);
+  font-size: 10pt;
+  font-weight: 800;
+}
+
+.preview {
+  margin-bottom: 2mm;
+  padding: 2.5mm;
+  border: 0.25mm solid var(--line);
+  border-radius: 2mm;
+  background: var(--soft);
+  color: #111111;
+  font: 800 13pt "Courier New", monospace;
+  text-align: center;
+}
+
+.tabs {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.2mm;
+}
+
+.tab {
+  padding: 1.4mm 1mm;
+  border-radius: 1.6mm;
+  border: 0.2mm solid var(--line);
+  background: #f7f9fb;
+  color: var(--ink);
+  font-size: 6.8pt;
+  text-align: center;
+}
+
+.tab.active {
+  color: #111111;
+  box-shadow: inset 0 0 0 0.35mm #333333;
+}
+
+.ui-card {
+  margin-top: 2mm;
+  padding: 2.2mm;
+  border: 0.25mm solid var(--line);
+  border-radius: 2mm;
+  background: var(--soft);
+}
+
+.button {
+  display: block;
+  margin-top: 1.8mm;
+  padding: 1.8mm;
+  border-radius: 1.6mm;
+  border: 0.2mm solid #888888;
+  background: #ffffff;
+  color: #111111;
+  font-size: 7pt;
+  text-align: center;
+}
+
+.mini-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.2mm;
+  margin-top: 1.8mm;
+}
+
+.swatch {
+  height: 6mm;
+  border-radius: 1.2mm;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  gap: 2mm;
+  margin-top: 1.4mm;
+  color: var(--ink);
+  font-size: 7.2pt;
+}
+
+.pill {
+  padding: 1mm 2mm;
+  border-radius: 999px;
+  border: 0.2mm solid var(--line);
+  background: #ffffff;
+  color: var(--ink);
+  font-size: 7pt;
+}
+
+.warning {
+  margin-top: 2.5mm;
+  padding: 2.5mm;
+  border-left: 1mm solid var(--orange);
+  border-radius: 2mm;
+  background: #f4f4f4;
+  color: #333333;
+}
+
+.feature {
+  margin-top: 0.9mm;
+  padding-top: 0.7mm;
+  border-top: 0.25mm solid var(--line);
+}
+
+.feature:first-of-type {
+  margin-top: 0;
+  padding-top: 0;
+  border-top: 0;
+}
+
+.feature h3 {
+  display: flex;
+  align-items: center;
+  gap: 1.8mm;
+  margin-top: 0;
+}
+
+.dot {
+  width: 3mm;
+  height: 3mm;
+  border-radius: 50%;
+  background: var(--green);
+  flex: 0 0 auto;
+}
+
+.button-list {
+  display: grid;
+  gap: 0.55mm;
+  margin-top: 0.9mm;
+}
+
+.button-item {
+  display: grid;
+  grid-template-columns: 19mm 1fr;
+  gap: 1mm;
+  font-size: 6.35pt;
+  line-height: 1.08;
+}
+
+.button-item strong {
+  color: #25384a;
+}
+
+.tiny {
+  font-size: 6.55pt;
+  line-height: 1.14;
+}
+
+.support {
+  position: absolute;
+  left: 8mm;
+  right: 8mm;
+  bottom: 8mm;
+  padding-top: 2mm;
+  border-top: 0.25mm solid var(--line);
+  color: var(--muted);
+  font-size: 7.2pt;
+}
+
+.print-note {
+  display: none;
+}
+
+@media screen {
+  .sheet {
+    margin: 10mm auto;
+    box-shadow: 0 8px 28px rgba(20,30,40,0.2);
+  }
+
+  .print-note {
+    display: block;
+    max-width: 297mm;
+    margin: 10mm auto 0;
+    padding: 4mm 6mm;
+    border-radius: 3mm;
+    background: #ffffff;
+    color: #334;
+    font-size: 10pt;
+  }
+}
+
+@media print {
+  html, body {
+    width: 297mm;
+    background: #ffffff;
+  }
+
+  .print-note {
+    display: none;
+  }
+
+  .sheet {
+    margin: 0;
+    page-break-after: always;
+    page-break-inside: avoid;
+    break-after: page;
+    break-inside: avoid;
+  }
+
+  .sheet:last-of-type {
+    page-break-after: auto;
+    break-after: auto;
+  }
+
+  .screen {
+    display: block;
+    margin: 1mm 0;
+    padding: 1.2mm;
+    border-width: 0.2mm;
+  }
+
+  .screen-head {
+    margin-bottom: 0.8mm;
+    font-size: 5.8pt;
+  }
+
+  .screen-title {
+    font-size: 7.5pt;
+  }
+
+  .preview {
+    margin-bottom: 0.8mm;
+    padding: 1mm;
+    font-size: 9pt;
+  }
+
+  .tab {
+    padding: 0.7mm 0.4mm;
+    font-size: 5.2pt;
+  }
+
+  .ui-card {
+    margin-top: 0.8mm;
+    padding: 1mm;
+  }
+
+  .row,
+  .button,
+  .pill {
+    font-size: 5.6pt;
+  }
+
+  .mini-grid,
+  .swatch {
+    display: none;
+  }
+
+  h2 {
+    font-size: 12.8pt;
+    margin-bottom: 1.4mm;
+  }
+
+  h3 {
+    font-size: 7.7pt;
+    margin-bottom: 0.6mm;
+  }
+
+  p {
+    font-size: 6.3pt;
+    line-height: 1.08;
+    margin-bottom: 0.8mm;
+  }
+
+  .feature {
+    margin-top: 0.9mm;
+    padding-top: 0.8mm;
+  }
+
+  .button-list {
+    gap: 0.35mm;
+    margin-top: 0.55mm;
+  }
+
+  .button-item {
+    grid-template-columns: 17mm 1fr;
+    gap: 0.8mm;
+    font-size: 5.45pt;
+    line-height: 1.03;
+  }
+
+  .quick-box {
+    padding: 1.5mm;
+  }
+
+  .cred {
+    font-size: 6.2pt;
+    margin-bottom: 0.7mm;
+  }
+}
+</style>
+</head>
+<body>
+<div class="print-note">
+  Yazdırma ayarı: A4, yatay, çift taraflı, kısa kenardan çevir. Bu kılavuz ekran görüntüsü olmadan siyah-beyaz baskıya uygun hazırlanmıştır.
+</div>
+
+<!-- DIS YUZ: sol = on kapak, orta = ilk acilan bolum, sag = gorunum ayarlari -->
+<section class="sheet">
+  <div class="panel cover">
+    <div class="fold">Ön kapak</div>
+    <h1><span class="brand">Dijital Saat</span><br>Kullanım Kılavuzu</h1>
+    <p class="muted">Renk profilleri, sıcaklık gösterimi, geri sayım, skor ve kronometre modlarına sahip WiFi ayarlı LED saat.</p>
+
+    <div class="clock-hero">
+      <div class="led">12:45:08</div>
+    </div>
+
+    <div class="quick-box">
+      <div class="cred"><strong>Aç</strong><span>Telefon veya PC WiFi ayarları</span></div>
+      <div class="cred"><strong>Bağlan</strong><span>DIGITAL-CLOCK-XXXXXX</span></div>
+      <div class="cred"><strong>Adres</strong><span>http://192.168.4.1</span></div>
+    </div>
+    <p class="tiny muted">Kurulum ayarları: http://192.168.4.1</p>
+  </div>
+
+  <div class="panel">
+    <div class="fold">İlk açılan bölüm</div>
+    <h2>Saate Bağlanma</h2>
+    <div class="step"><div class="num">1</div><p>Saate güç verin. Saatin WiFi adı görünene kadar bekleyin.</p></div>
+    <div class="step"><div class="num">2</div><p>Telefon veya bilgisayarda WiFi ayarlarını açın ve <strong>DIGITAL-CLOCK-XXXXXX</strong> ağını seçin.</p></div>
+    <div class="step"><div class="num">3</div><p>Varsayılan şifreyi girin: <strong>12345678</strong>.</p></div>
+    <div class="step"><div class="num">4</div><p>Tarayıcıyı açıp <strong>192.168.4.1</strong> adresine gidin.</p></div>
+
+    <div class="screen">
+      <div class="screen-head"><span class="screen-title">Dijital Saat</span><span>192.168.4.1</span></div>
+      <div class="preview">12:45:08</div>
+      <div class="tabs">
+        <div class="tab active">Görünüm</div><div class="tab">Zaman</div><div class="tab">Sıcaklık</div>
+        <div class="tab">Geri Sayım</div><div class="tab">Skor</div><div class="tab">WiFi</div>
+      </div>
+    </div>
+
+    <p class="tiny muted">İpucu: Bazı telefonlar “İnternet yok” uyarısı gösterebilir. Ayar bitene kadar saat WiFi ağına bağlı kalın.</p>
+  </div>
+
+  <div class="panel">
+    <div class="fold">Dış sağ</div>
+    <h2>Görünüm Sekmesi</h2>
+    <p>Bu sekmedeki ayarlar ekrandaki sırayla aşağıda açıklanmıştır.</p>
+
+    <div class="screen">
+      <div class="screen-head"><span class="screen-title">Görünüm</span><span>renk ayarı</span></div>
+      <div class="preview">12:45:08</div>
+      <div class="ui-card">
+        <span class="pill">Özel renk</span>
+        <div class="mini-grid">
+          <div class="swatch" style="background:#111"></div>
+          <div class="swatch" style="background:#555"></div>
+          <div class="swatch" style="background:#999"></div>
+          <div class="swatch" style="background:#ddd"></div>
+        </div>
+        <span class="button">Rengi Kaydet</span>
+      </div>
+      <div class="ui-card">
+        <div class="row"><span>Renk profili</span><span>Rainbow</span></div>
+        <span class="button">Renk Profilini Kaydet</span>
+      </div>
+    </div>
+
+    <div class="feature">
+      <h3><span class="dot" style="background:var(--red)"></span>Özel renk</h3>
+      <p class="tiny">Renk çarkından normal saat rengini seçer. <strong>Rengi Kaydet</strong> butonuna basınca kalıcı olur.</p>
+    </div>
+
+    <div class="feature">
+      <h3><span class="dot"></span>Hazır renkler</h3>
+      <p class="tiny">12 hazır renkten birine dokununca saat rengi anında değişir. Renk çarkı için ayrıca kaydetme gerekir.</p>
+    </div>
+
+    <div class="feature">
+      <h3><span class="dot" style="background:#f1c40f"></span>Parlaklık</h3>
+      <p class="tiny">LED parlaklığını 5-255 arasında ayarlar. <strong>Parlaklığı Kaydet</strong> ile yeniden başlatmada korunur.</p>
+    </div>
+
+    <div class="feature">
+      <h3><span class="dot" style="background:var(--blue)"></span>Hane ve nokta renkleri</h3>
+      <p class="tiny">Açılırsa her hane ayrı renk kullanır. 1-6 haneler ve nokta LED rengi ayrı ayrı seçilip kaydedilir.</p>
+    </div>
+
+    <div class="feature">
+      <h3><span class="dot" style="background:#7c5cff"></span>Renk profili</h3>
+      <p class="tiny">Solid, Rainbow, Aurora, Lava, Prism vb. efektleri seçer. <strong>Efekt hızı</strong> animasyon hızını ayarlar; önizleme bağlantısı profilleri gösterir.</p>
+    </div>
+  </div>
+</section>
+
+<!-- IC YUZ: sol = zaman/wifi/sicaklik, orta = ek modlar, sag = arka kapak -->
+<section class="sheet">
+  <div class="panel">
+    <div class="fold">İç sol</div>
+    <h2>Zaman ve Sıcaklık</h2>
+    <p>Zaman ve Sıcaklık sekmelerindeki ayarlar ekrandaki sırayla açıklanmıştır.</p>
+
+    <div class="screen">
+      <div class="screen-head"><span class="screen-title">Zaman</span><span>saat ayarı</span></div>
+      <div class="ui-card">
+        <div class="row"><span>Saat</span><span>12:45:08</span></div>
+        <div class="row"><span>Sistem</span><span>Telefon/PC saati</span></div>
+        <span class="button">Saati Güncelle</span>
+      </div>
+    </div>
+
+    <div class="feature">
+      <h3><span class="dot" style="background:var(--blue)"></span>Zaman sekmesi</h3>
+      <div class="button-list">
+        <div class="button-item"><strong>Saati Göster</strong><span>Aktif moddan çıkarıp normal saat ekranına döndürür.</span></div>
+        <div class="button-item"><strong>Saat formatı</strong><span>12 saat veya 24 saat seçilir; <strong>Saat Formatını Kaydet</strong> ile saklanır.</span></div>
+        <div class="button-item"><strong>Baştaki sıfır</strong><span>08:30 yerine 8:30 gösterimini açar/kapatır.</span></div>
+        <div class="button-item"><strong>Noktalar</strong><span>Nokta LED'leri yanıp söner veya sabit yanar; <strong>Noktaları Kaydet</strong> ile saklanır.</span></div>
+        <div class="button-item"><strong>Saat bilgisi</strong><span>Sayfadaki saat cihazın kayıtlı saat bilgisinden okunur.</span></div>
+        <div class="button-item"><strong>Sistem saati</strong><span>Telefon/PC saatini saate göndermek için kullanılır.</span></div>
+      </div>
+    </div>
+
+    <div class="feature">
+      <h3><span class="dot" style="background:var(--orange)"></span>Sıcaklık sekmesi</h3>
+      <div class="button-list">
+        <div class="button-item"><strong>Sıcaklık durumu</strong><span>Sıcaklık ölçümü destekleyen modelde otomatik algılanır; yoksa sıcaklık ayarı kapalı kalır.</span></div>
+        <div class="button-item"><strong>Sıcaklığı Göster</strong><span>Mevcut sıcaklığı LED ekranda hemen gösterir.</span></div>
+        <div class="button-item"><strong>Otomatik göster</strong><span>Açıksa normal saat modunda sıcaklığı belirli aralıklarla kısa süre gösterir.</span></div>
+        <div class="button-item"><strong>Birim C/F</strong><span>Celsius veya Fahrenheit seçimini yapar.</span></div>
+        <div class="button-item"><strong>Dakikada kaç kez</strong><span>Sıcaklığın bir dakika içinde kaç defa görüneceğini belirler.</span></div>
+        <div class="button-item"><strong>Kaç saniye</strong><span>Sıcaklığın ekranda kaç saniye kalacağını belirler.</span></div>
+        <div class="button-item"><strong>Ofset</strong><span>Ölçüm yüksek/düşükse düzeltme verir; örn. -1.0°C.</span></div>
+        <div class="button-item"><strong>Kaydet</strong><span>Birim, otomatik gösterim, süre ve ofset <strong>Sıcaklık Ayarlarını Kaydet</strong> ile saklanır.</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel">
+    <div class="fold">İç orta</div>
+    <h2>Ek Modlar</h2>
+    <p>Geri sayım, skor ve kronometre normal saat ekranının yerine geçici olarak gösterilir. Normal saate dönmek için aktif sekmedeki <strong>Saati Göster</strong> butonunu kullanın.</p>
+
+    <div class="screen">
+      <div class="screen-head"><span class="screen-title">Geri Sayım</span><span>zamanlayıcı modu</span></div>
+      <div class="ui-card">
+        <div class="row"><span>Saat</span><span>00</span></div>
+        <div class="row"><span>Dakika</span><span>10</span></div>
+        <div class="row"><span>Saniye</span><span>00</span></div>
+        <span class="button">Başlat</span>
+      </div>
+    </div>
+
+    <div class="feature">
+      <h3><span class="dot"></span>Geri Sayım</h3>
+      <p>Saat, dakika ve saniye girin; sonra saatin ne yapacağını seçin.</p>
+      <div class="button-list">
+        <div class="button-item"><strong>Süre alanları</strong><span>Geri sayım için saat, dakika ve saniye girin.</span></div>
+        <div class="button-item"><strong>LED rengi</strong><span>Geri sayım ekran rengini seçin, ardından <strong>Geri Sayımı Kaydet</strong> butonuna basın.</span></div>
+        <div class="button-item"><strong>Girilen Süreyi Göster</strong><span>Girilen süreyi başlatmadan saat üzerinde gösterir. Yarış veya etkinlik öncesi kullanışlıdır.</span></div>
+        <div class="button-item"><strong>Başlat / Duraklat</strong><span>Geri sayımı başlatır veya duraklatır.</span></div>
+        <div class="button-item"><strong>Devam / Sıfırla</strong><span>Duraklatılan yerden devam eder veya kayıtlı süreye döner.</span></div>
+        <div class="button-item"><strong>Saati Göster</strong><span>LED ekranı normal saat moduna döndürür.</span></div>
+      </div>
+    </div>
+
+    <div class="feature">
+      <h3><span class="dot" style="background:var(--blue)"></span>Skor</h3>
+      <p>Üç oyuncu veya takım için kullanılır. Sol, orta ve sağ skorların her biri iki hane kullanır.</p>
+      <div class="button-list">
+        <div class="button-item"><strong>+ / -</strong><span>Her skoru LED ekranda anında değiştirir. Skor değişimi için kaydetmeye gerek yoktur.</span></div>
+        <div class="button-item"><strong>Renkler</strong><span>Sol, orta ve sağ oyuncu/takım renklerini ayrı ayrı ayarlayın.</span></div>
+        <div class="button-item"><strong>Renkleri Kaydet</strong><span>Sadece skor renklerini kaydeder, mevcut skor değerini kaydetmez.</span></div>
+        <div class="button-item"><strong>Skorları Sıfırla</strong><span>Tüm skorları sıfıra döndürür.</span></div>
+        <div class="button-item"><strong>Saati Göster</strong><span>Skor modundan çıkar ve normal saate döner.</span></div>
+      </div>
+    </div>
+
+    <div class="feature">
+      <h3><span class="dot" style="background:var(--orange)"></span>Kronometre</h3>
+      <p>Normal kronometre geçen süreyi sayar. Tur kronometresi geri sayımdan sonra başlar ve kaydedilen tur süresine ulaşıldığında tur sayısını artırır.</p>
+      <div class="button-list">
+        <div class="button-item"><strong>Normal / Tur</strong><span>Normal kronometre veya tur kronometresini seçin. Tur modunda tur sayısı solda gösterilir.</span></div>
+        <div class="button-item"><strong>Tur süresi</strong><span>Tur dakika ve saniyesini ayarlayın. Son 5 saniye kaldığında ekran uyarı verir.</span></div>
+        <div class="button-item"><strong>Renk</strong><span>Kronometre LED rengini seçin ve <strong>Kronometre Rengini Kaydet</strong> butonuna basın.</span></div>
+        <div class="button-item"><strong>Başlat</strong><span>Seçilen kronometre modunu başlatır. Tur modu başlangıç geri sayımından sonra çalışır.</span></div>
+        <div class="button-item"><strong>Durdur / Devam</strong><span>Zamanlayıcıyı duraklatır ve devam ettirir.</span></div>
+        <div class="button-item"><strong>Sıfırla</strong><span>Süreyi ve tur sayısını sıfırlar.</span></div>
+      </div>
+    </div>
+
+    <div class="feature">
+      <h3><span class="dot" style="background:#7c5cff"></span>Gece Işığı</h3>
+      <div class="button-list">
+        <div class="button-item"><strong>Aç/Kapat</strong><span>Gece modunu etkinleştirir veya kapatır.</span></div>
+        <div class="button-item"><strong>Başlangıç</strong><span>Gece modunun başlayacağı saat ve dakikayı ayarlar.</span></div>
+        <div class="button-item"><strong>Bitiş</strong><span>Normal parlaklığa dönülecek saat ve dakikayı ayarlar.</span></div>
+        <div class="button-item"><strong>Gece parlaklığı</strong><span>Bu zaman aralığında kullanılacak düşük parlaklığı seçer.</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel">
+    <div class="fold">Arka kapak</div>
+    <h2>WiFi, NTP ve Araçlar</h2>
+    <p>WiFi sekmesi ağ bağlantısı ve NTP saat güncellemesi için kullanılır. Bakım işlemleri Araçlar sekmesinde toplanmıştır.</p>
+
+    <div class="feature">
+      <h3><span class="dot"></span>WiFi sekmesi</h3>
+      <div class="button-list">
+        <div class="button-item"><strong>Durum bilgisi</strong><span>Bağlı ağ, MAC, çalışma süresi, IP, dBm ve kaliteyi gösterir.</span></div>
+        <div class="button-item"><strong>Ağ tara</strong><span>Ortamdaki WiFi ağlarını listeleyip seçim yapmanızı sağlar.</span></div>
+        <div class="button-item"><strong>Bağlan/Kaydet</strong><span>Ev WiFi adı ve şifresini kaydeder, sonra otomatik bağlanır.</span></div>
+        <div class="button-item"><strong>Kes / Sil</strong><span>Bağlantıyı keser veya kayıtlı WiFi bilgisini tamamen siler.</span></div>
+      </div>
+    </div>
+
+    <div class="feature">
+      <h3><span class="dot" style="background:var(--blue)"></span>UTC ve NTP</h3>
+      <div class="button-list">
+        <div class="button-item"><strong>UTC ayarı</strong><span>İlk kurulumda seçilen bölgeye göre UTC bilgisini gösterir.</span></div>
+        <div class="button-item"><strong>NTP senkron</strong><span>WiFi bağlıysa internet saatini alır ve saatin zaman bilgisini günceller.</span></div>
+      </div>
+    </div>
+
+    <div class="feature">
+      <h3><span class="dot" style="background:#444"></span>Araçlar ve sıfırlama</h3>
+      <div class="button-list">
+        <div class="button-item"><strong>Adres</strong><span><strong>192.168.4.1</strong> normal ayar sayfasıdır.</span></div>
+        <div class="button-item"><strong>Cihaz WiFi</strong><span>DIGITAL-CLOCK ağ şifresini değiştirir; onay ekranı çıkar.</span></div>
+        <div class="button-item"><strong>İlk kurulum</strong><span>Dil veya bölge değiştirmek için ilk kurulum ekranını tekrar açar.</span></div>
+        <div class="button-item"><strong>Yazılım</strong><span><strong>Open Firmware Update</strong> ile web OTA sayfasını açar.</span></div>
+        <div class="button-item"><strong>LED testi</strong><span>RGB testi tüm LED'leri sırayla kırmızı, yeşil, mavi yakar.</span></div>
+        <div class="button-item"><strong>Onay penceresi</strong><span>Kırmızı işlemler için ekranın ortasında güvenli onay alınır.</span></div>
+        <div class="button-item"><strong>Fabrika ayarı</strong><span>Araçlar sekmesinden sıfırlanır. Sıfırlama sonrası cihaz WiFi şifresi 12345678 olur.</span></div>
+      </div>
+    </div>
+
+    <div class="feature">
+      <h3><span class="dot"></span>Varsayılan erişim</h3>
+    </div>
+    <div class="quick-box">
+      <div class="cred"><strong>WiFi adı</strong><span>DIGITAL-CLOCK-XXXXXX</span></div>
+      <div class="cred"><strong>Şifre</strong><span>12345678</span></div>
+      <div class="cred"><strong>Ayar sayfası</strong><span>192.168.4.1</span></div>
+    </div>
+
+    <div class="warning tiny">
+      Cihaz WiFi şifresini unuttuysanız 192.168.4.1 içindeki Araçlar sekmesinden fabrika ayarına döndürün. Sıfırlama sonrası varsayılan şifre 12345678 olur.
+    </div>
+  </div>
+</section>
+</body>
+</html>
+

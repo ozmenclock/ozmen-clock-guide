@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Digital Clock Quick Start Guide</title>
+<style>
+@page {
+  size: A4 landscape;
+  margin: 0;
+}
+
+:root {
+  --ink: #15202b;
+  --muted: #5d6b78;
+  --line: #cdd6df;
+  --soft: #eef3f7;
+  --green: #333333;
+  --red: #111111;
+  --blue: #555555;
+  --orange: #777777;
+  --dark: #ffffff;
+  --panel: #ffffff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: #dfe6ed;
+  color: var(--ink);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+.sheet {
+  width: 297mm;
+  height: 210mm;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  background: #fff;
+  page-break-after: always;
+  break-after: page;
+  page-break-inside: avoid;
+  break-inside: avoid;
+}
+
+.panel {
+  position: relative;
+  padding: 7mm 7mm;
+  border-right: 0.25mm dashed #aeb9c4;
+  overflow: hidden;
+  page-break-inside: avoid;
+  break-inside: avoid;
+}
+
+.panel:last-child {
+  border-right: 0;
+}
+
+.fold {
+  position: absolute;
+  top: 3mm;
+  right: 4mm;
+  color: #9aa6b2;
+  font-size: 7pt;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+h1, h2, h3, p {
+  margin-top: 0;
+}
+
+h1 {
+  margin-bottom: 2.5mm;
+  font-size: 23pt;
+  line-height: 1.05;
+}
+
+h2 {
+  margin-bottom: 2.2mm;
+  font-size: 14.5pt;
+  line-height: 1.12;
+}
+
+h3 {
+  margin: 2mm 0 1mm;
+  font-size: 9pt;
+}
+
+p, li {
+  font-size: 7.5pt;
+  line-height: 1.18;
+}
+
+p {
+  margin-bottom: 1.2mm;
+}
+
+ul, ol {
+  margin: 0 0 2.6mm;
+  padding-left: 5mm;
+}
+
+li {
+  margin-bottom: 1mm;
+}
+
+.muted {
+  color: var(--muted);
+}
+
+.brand {
+  color: var(--red);
+  font-weight: 800;
+}
+
+.cover {
+  background: #fff;
+}
+
+.cover-badge {
+  display: inline-block;
+  margin-bottom: 3.5mm;
+  padding: 2mm 3mm;
+  border-radius: 999px;
+  background: #eeeeee;
+  color: #111111;
+  font-size: 8pt;
+  font-weight: 700;
+}
+
+.clock-hero {
+  margin: 5mm 0 4mm;
+  padding: 5mm 4mm;
+  border: 0.35mm solid var(--line);
+  border-radius: 3mm;
+  background: #ffffff;
+}
+
+.led {
+  color: #111111;
+  font: 800 28pt "Courier New", monospace;
+  text-align: center;
+  letter-spacing: 1px;
+}
+
+.quick-box {
+  padding: 3mm;
+  border: 0.3mm solid var(--line);
+  border-radius: 3mm;
+  background: var(--soft);
+}
+
+.cred {
+  display: grid;
+  grid-template-columns: 23mm 1fr;
+  gap: 2mm;
+  margin-bottom: 1.5mm;
+  font-size: 8.3pt;
+}
+
+.cred strong {
+  color: #24384d;
+}
+
+.step {
+  display: grid;
+  grid-template-columns: 6mm 1fr;
+  gap: 2mm;
+  margin-bottom: 2mm;
+}
+
+.num {
+  display: grid;
+  place-items: center;
+  width: 5mm;
+  height: 5mm;
+  border-radius: 50%;
+  background: var(--green);
+  color: white;
+  font-size: 7.5pt;
+  font-weight: 800;
+}
+
+.screen {
+  margin: 2.5mm 0;
+  padding: 3mm;
+  border-radius: 3mm;
+  background: #ffffff;
+  color: var(--ink);
+  border: 0.3mm solid var(--line);
+}
+
+.screen-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 2mm;
+  color: var(--muted);
+  font-size: 7pt;
+}
+
+.screen-title {
+  color: var(--ink);
+  font-size: 10pt;
+  font-weight: 800;
+}
+
+.preview {
+  margin-bottom: 2mm;
+  padding: 2.5mm;
+  border: 0.25mm solid var(--line);
+  border-radius: 2mm;
+  background: var(--soft);
+  color: #111111;
+  font: 800 13pt "Courier New", monospace;
+  text-align: center;
+}
+
+.tabs {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.2mm;
+}
+
+.tab {
+  padding: 1.4mm 1mm;
+  border-radius: 1.6mm;
+  border: 0.2mm solid var(--line);
+  background: #f7f9fb;
+  color: var(--ink);
+  font-size: 6.8pt;
+  text-align: center;
+}
+
+.tab.active {
+  color: #111111;
+  box-shadow: inset 0 0 0 0.35mm #333333;
+}
+
+.ui-card {
+  margin-top: 2mm;
+  padding: 2.2mm;
+  border: 0.25mm solid var(--line);
+  border-radius: 2mm;
+  background: var(--soft);
+}
+
+.button {
+  display: block;
+  margin-top: 1.8mm;
+  padding: 1.8mm;
+  border-radius: 1.6mm;
+  border: 0.2mm solid #888888;
+  background: #ffffff;
+  color: #111111;
+  font-size: 7pt;
+  text-align: center;
+}
+
+.mini-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.2mm;
+  margin-top: 1.8mm;
+}
+
+.swatch {
+  height: 6mm;
+  border-radius: 1.2mm;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  gap: 2mm;
+  margin-top: 1.4mm;
+  color: var(--ink);
+  font-size: 7.2pt;
+}
+
+.pill {
+  padding: 1mm 2mm;
+  border-radius: 999px;
+  border: 0.2mm solid var(--line);
+  background: #ffffff;
+  color: var(--ink);
+  font-size: 7pt;
+}
+
+.warning {
+  margin-top: 2.5mm;
+  padding: 2.5mm;
+  border-left: 1mm solid var(--orange);
+  border-radius: 2mm;
+  background: #f4f4f4;
+  color: #333333;
+}
+
+.feature {
+  margin-top: 0.9mm;
+  padding-top: 0.7mm;
+  border-top: 0.25mm solid var(--line);
+}
+
+.feature:first-of-type {
+  margin-top: 0;
+  padding-top: 0;
+  border-top: 0;
+}
+
+.feature h3 {
+  display: flex;
+  align-items: center;
+  gap: 1.8mm;
+  margin-top: 0;
+}
+
+.dot {
+  width: 3mm;
+  height: 3mm;
+  border-radius: 50%;
+  background: var(--green);
+  flex: 0 0 auto;
+}
+
+.button-list {
+  display: grid;
+  gap: 0.55mm;
+  margin-top: 0.9mm;
+}
+
+.button-item {
+  display: grid;
+  grid-template-columns: 19mm 1fr;
+  gap: 1mm;
+  font-size: 6.35pt;
+  line-height: 1.08;
+}
+
+.button-item strong {
+  color: #25384a;
+}
+
+.tiny {
+  font-size: 6.55pt;
+  line-height: 1.14;
+}
+
+.support {
+  position: absolute;
+  left: 8mm;
+  right: 8mm;
+  bottom: 8mm;
+  padding-top: 2mm;
+  border-top: 0.25mm solid var(--line);
+  color: var(--muted);
+  font-size: 7.2pt;
+}
+
+.print-note {
+  display: none;
+}
+
+@media screen {
+  .sheet {
+    margin: 10mm auto;
+    box-shadow: 0 8px 28px rgba(20,30,40,0.2);
+  }
+
+  .print-note {
+    display: block;
+    max-width: 297mm;
+    margin: 10mm auto 0;
+    padding: 4mm 6mm;
+    border-radius: 3mm;
+    background: #ffffff;
+    color: #334;
+    font-size: 10pt;
+  }
+}
+
+@media print {
+  html, body {
+    width: 297mm;
+    background: #ffffff;
+  }
+
+  .print-note {
+    display: none;
+  }
+
+  .sheet {
+    margin: 0;
+    page-break-after: always;
+    page-break-inside: avoid;
+    break-after: page;
+    break-inside: avoid;
+  }
+
+  .sheet:last-of-type {
+    page-break-after: auto;
+    break-after: auto;
+  }
+
+  .screen {
+    display: block;
+    margin: 1mm 0;
+    padding: 1.2mm;
+    border-width: 0.2mm;
+  }
+
+  .screen-head {
+    margin-bottom: 0.8mm;
+    font-size: 5.8pt;
+  }
+
+  .screen-title {
+    font-size: 7.5pt;
+  }
+
+  .preview {
+    margin-bottom: 0.8mm;
+    padding: 1mm;
+    font-size: 9pt;
+  }
+
+  .tab {
+    padding: 0.7mm 0.4mm;
+    font-size: 5.2pt;
+  }
+
+  .ui-card {
+    margin-top: 0.8mm;
+    padding: 1mm;
+  }
+
+  .row,
+  .button,
+  .pill {
+    font-size: 5.6pt;
+  }
+
+  .mini-grid,
+  .swatch {
+    display: none;
+  }
+
+  h2 {
+    font-size: 12.8pt;
+    margin-bottom: 1.4mm;
+  }
+
+  h3 {
+    font-size: 7.7pt;
+    margin-bottom: 0.6mm;
+  }
+
+  p {
+    font-size: 6.3pt;
+    line-height: 1.08;
+    margin-bottom: 0.8mm;
+  }
+
+  .feature {
+    margin-top: 0.9mm;
+    padding-top: 0.8mm;
+  }
+
+  .button-list {
+    gap: 0.35mm;
+    margin-top: 0.55mm;
+  }
+
+  .button-item {
+    grid-template-columns: 17mm 1fr;
+    gap: 0.8mm;
+    font-size: 5.45pt;
+    line-height: 1.03;
+  }
+
+  .quick-box {
+    padding: 1.5mm;
+  }
+
+  .cred {
+    font-size: 6.2pt;
+    margin-bottom: 0.7mm;
+  }
+}
+</style>
+</head>
+<body>
+<div class="print-note">
+  Print settings: A4, landscape, double-sided, flip on short edge. This guide is designed for black-and-white printing without screenshots.
+</div>
+
+<!-- OUTSIDE SIDE: left = front cover, middle = first opening flap, right = appearance settings -->
+<section class="sheet">
+  <div class="panel cover">
+    <div class="fold">Front cover</div>
+    <h1><span class="brand">Digital Clock</span><br>User Guide</h1>
+    <p class="muted">WiFi configurable LED clock with color profiles, temperature display, countdown, scoreboard and stopwatch modes.</p>
+
+    <div class="clock-hero">
+      <div class="led">12:45:08</div>
+    </div>
+
+    <div class="quick-box">
+      <div class="cred"><strong>Open</strong><span>WiFi settings on phone or PC</span></div>
+      <div class="cred"><strong>Connect</strong><span>DIGITAL-CLOCK-XXXXXX</span></div>
+      <div class="cred"><strong>Browse</strong><span>http://192.168.4.1</span></div>
+    </div>
+    <p class="tiny muted">Setup page: http://192.168.4.1</p>
+  </div>
+
+  <div class="panel">
+    <div class="fold">Opening flap</div>
+    <h2>Connect to the Clock</h2>
+    <div class="step"><div class="num">1</div><p>Power the clock. Wait until the clock WiFi appears.</p></div>
+    <div class="step"><div class="num">2</div><p>On your phone or computer, open WiFi settings and select <strong>DIGITAL-CLOCK-XXXXXX</strong>.</p></div>
+    <div class="step"><div class="num">3</div><p>Enter the default password: <strong>12345678</strong>.</p></div>
+    <div class="step"><div class="num">4</div><p>Open a browser and go to <strong>192.168.4.1</strong>.</p></div>
+
+    <div class="screen">
+      <div class="screen-head"><span class="screen-title">Digital Clock</span><span>192.168.4.1</span></div>
+      <div class="preview">12:45:08</div>
+      <div class="tabs">
+        <div class="tab active">Appearance</div><div class="tab">Time</div><div class="tab">Temp</div>
+        <div class="tab">Countdown</div><div class="tab">Scoreboard</div><div class="tab">WiFi</div>
+      </div>
+    </div>
+
+    <p class="tiny muted">Tip: Some phones may show “No Internet”. Stay connected to the clock WiFi until setup is complete.</p>
+  </div>
+
+  <div class="panel">
+    <div class="fold">Outside right</div>
+    <h2>Appearance Tab</h2>
+    <p>The settings below follow the same order as the Appearance tab.</p>
+
+    <div class="screen">
+      <div class="screen-head"><span class="screen-title">Appearance</span><span>color setup</span></div>
+      <div class="preview">12:45:08</div>
+      <div class="ui-card">
+        <span class="pill">Custom color</span>
+        <div class="mini-grid">
+          <div class="swatch" style="background:#111"></div>
+          <div class="swatch" style="background:#555"></div>
+          <div class="swatch" style="background:#999"></div>
+          <div class="swatch" style="background:#ddd"></div>
+        </div>
+        <span class="button">Save Color</span>
+      </div>
+      <div class="ui-card">
+        <div class="row"><span>Color profile</span><span>Rainbow</span></div>
+        <span class="button">Save Color Profile</span>
+      </div>
+    </div>
+
+    <div class="feature">
+      <h3><span class="dot" style="background:var(--red)"></span>Custom color</h3>
+      <p class="tiny">Selects the normal clock color from the color wheel. Press <strong>Save Color</strong> to keep it.</p>
+    </div>
+
+    <div class="feature">
+      <h3><span class="dot"></span>Color presets</h3>
+      <p class="tiny">Tapping one of the 12 preset colors previews it immediately. Custom wheel colors use the save button.</p>
+    </div>
+
+    <div class="feature">
+      <h3><span class="dot" style="background:#f1c40f"></span>Brightness</h3>
+      <p class="tiny">Sets LED brightness from 5-255. Press <strong>Save Brightness</strong> to keep it after restart.</p>
+    </div>
+
+    <div class="feature">
+      <h3><span class="dot" style="background:var(--blue)"></span>Digit and dot colors</h3>
+      <p class="tiny">When enabled, each digit uses its own color. Digits 1-6 and dot LEDs are selected and saved separately.</p>
+    </div>
+
+    <div class="feature">
+      <h3><span class="dot" style="background:#7c5cff"></span>Color profile</h3>
+      <p class="tiny">Selects Solid, Rainbow, Aurora, Lava, Prism and other effects. <strong>Effect speed</strong> controls animation speed; preview link shows examples.</p>
+    </div>
+  </div>
+</section>
+
+<!-- INSIDE SIDE: left = time/wifi/temp, middle = extra modes, right = back cover -->
+<section class="sheet">
+  <div class="panel">
+    <div class="fold">Inside left</div>
+    <h2>Time and Temperature</h2>
+    <p>The settings below follow the same order as the Time and Temp tabs.</p>
+
+    <div class="screen">
+      <div class="screen-head"><span class="screen-title">Time</span><span>clock setup</span></div>
+      <div class="ui-card">
+        <div class="row"><span>Clock</span><span>12:45:08</span></div>
+        <div class="row"><span>System</span><span>Phone/PC time</span></div>
+        <span class="button">Update Time</span>
+      </div>
+    </div>
+
+    <div class="feature">
+      <h3><span class="dot" style="background:var(--blue)"></span>Time tab</h3>
+      <div class="button-list">
+        <div class="button-item"><strong>Show Clock</strong><span>Leaves the active mode and returns to the normal clock.</span></div>
+        <div class="button-item"><strong>Hour format</strong><span>Selects 12-hour or 24-hour display; <strong>Save Hour Format</strong> stores it.</span></div>
+        <div class="button-item"><strong>Leading zero</strong><span>Shows 08:30 or hides it as 8:30.</span></div>
+        <div class="button-item"><strong>Dots</strong><span>Sets dot LEDs to blink or stay on; <strong>Save Dots</strong> stores it.</span></div>
+        <div class="button-item"><strong>Clock time</strong><span>The page clock is read from the clock's stored time.</span></div>
+        <div class="button-item"><strong>System time</strong><span>Sends phone/PC time to the clock.</span></div>
+      </div>
+    </div>
+
+    <div class="feature">
+      <h3><span class="dot" style="background:var(--orange)"></span>Temp tab</h3>
+      <div class="button-list">
+        <div class="button-item"><strong>Temperature status</strong><span>Detected automatically on models that support temperature measurement; otherwise temp stays off.</span></div>
+        <div class="button-item"><strong>Show Temp</strong><span>Shows current temperature on the LED display immediately.</span></div>
+        <div class="button-item"><strong>Auto show</strong><span>Shows temperature briefly at intervals during normal clock mode.</span></div>
+        <div class="button-item"><strong>Unit C/F</strong><span>Selects Celsius or Fahrenheit.</span></div>
+        <div class="button-item"><strong>Shows/min</strong><span>Sets how many times per minute temperature appears.</span></div>
+        <div class="button-item"><strong>Show for</strong><span>Sets how many seconds temperature remains visible.</span></div>
+        <div class="button-item"><strong>Offset</strong><span>Corrects readings if high/low, for example -1.0°C.</span></div>
+        <div class="button-item"><strong>Save</strong><span><strong>Save Temperature Settings</strong> keeps unit, auto-show, timing and offset.</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel">
+    <div class="fold">Inside middle</div>
+    <h2>Extra Modes</h2>
+    <p>Countdown, Scoreboard and Stopwatch temporarily replace the normal clock display. Use <strong>Show Clock</strong> inside the active tab to return to the regular time display.</p>
+
+    <div class="screen">
+      <div class="screen-head"><span class="screen-title">Countdown</span><span>timer mode</span></div>
+      <div class="ui-card">
+        <div class="row"><span>Hours</span><span>00</span></div>
+        <div class="row"><span>Minutes</span><span>10</span></div>
+        <div class="row"><span>Seconds</span><span>00</span></div>
+        <span class="button">Start</span>
+      </div>
+    </div>
+
+    <div class="feature">
+      <h3><span class="dot"></span>Countdown</h3>
+      <p>Enter hours, minutes and seconds, then choose what the clock should do.</p>
+      <div class="button-list">
+        <div class="button-item"><strong>Time fields</strong><span>Enter hours, minutes and seconds for the countdown.</span></div>
+        <div class="button-item"><strong>LED color</strong><span>Choose the countdown display color, then press <strong>Save Countdown</strong>.</span></div>
+        <div class="button-item"><strong>Show Entered</strong><span>Shows the entered time on the clock without starting. Useful before a race or event.</span></div>
+        <div class="button-item"><strong>Start / Pause</strong><span>Starts or pauses the countdown.</span></div>
+        <div class="button-item"><strong>Resume / Reset</strong><span>Continues from pause or returns to the saved time.</span></div>
+        <div class="button-item"><strong>Show Clock</strong><span>Returns the LED display to normal time mode.</span></div>
+      </div>
+    </div>
+
+    <div class="feature">
+      <h3><span class="dot" style="background:var(--blue)"></span>Scoreboard</h3>
+      <p>Use it for three players or teams. Left, middle and right scores each use two digits.</p>
+      <div class="button-list">
+        <div class="button-item"><strong>+ / -</strong><span>Changes each score immediately on the LED display. No save is needed for score changes.</span></div>
+        <div class="button-item"><strong>Colors</strong><span>Set left, middle and right player/team colors separately.</span></div>
+        <div class="button-item"><strong>Save Colors</strong><span>Saves only the score colors, not the current score value.</span></div>
+        <div class="button-item"><strong>Reset Scores</strong><span>Returns all scores to zero.</span></div>
+        <div class="button-item"><strong>Show Clock</strong><span>Leaves scoreboard mode and returns to the normal clock.</span></div>
+      </div>
+    </div>
+
+    <div class="feature">
+      <h3><span class="dot" style="background:var(--orange)"></span>Stopwatch</h3>
+      <p>Normal stopwatch counts elapsed time. Lap stopwatch starts after a countdown and increases the lap number when the saved lap time is reached.</p>
+      <div class="button-list">
+        <div class="button-item"><strong>Normal / Lap</strong><span>Select normal stopwatch or lap stopwatch. Lap mode shows lap number on the left.</span></div>
+        <div class="button-item"><strong>Lap time</strong><span>Set lap minutes and seconds. The display warns when 5 seconds remain.</span></div>
+        <div class="button-item"><strong>Color</strong><span>Choose stopwatch LED color and press <strong>Save Stopwatch Color</strong>.</span></div>
+        <div class="button-item"><strong>Start</strong><span>Starts the selected stopwatch mode. Lap mode begins after the start countdown.</span></div>
+        <div class="button-item"><strong>Stop / Resume</strong><span>Pauses and continues the timer.</span></div>
+        <div class="button-item"><strong>Reset</strong><span>Clears the timer and lap count.</span></div>
+      </div>
+    </div>
+
+    <div class="feature">
+      <h3><span class="dot" style="background:#7c5cff"></span>Night Light</h3>
+      <div class="button-list">
+        <div class="button-item"><strong>On/Off</strong><span>Enables or disables Night Light mode.</span></div>
+        <div class="button-item"><strong>Start</strong><span>Sets the hour and minute when dimming begins.</span></div>
+        <div class="button-item"><strong>End</strong><span>Sets the hour and minute when normal brightness returns.</span></div>
+        <div class="button-item"><strong>Brightness</strong><span>Selects the lower brightness used during night hours.</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel">
+    <div class="fold">Back panel</div>
+    <h2>WiFi, NTP and Tools</h2>
+    <p>The WiFi tab is used for network connection and NTP time sync. Maintenance actions are collected in the Tools tab.</p>
+
+    <div class="feature">
+      <h3><span class="dot"></span>WiFi tab</h3>
+      <div class="button-list">
+        <div class="button-item"><strong>Status</strong><span>Shows network, MAC, uptime, IP, dBm and signal quality.</span></div>
+        <div class="button-item"><strong>Scan</strong><span>Lists nearby WiFi networks so one can be selected.</span></div>
+        <div class="button-item"><strong>Connect/Save</strong><span>Saves home WiFi name/password and reconnects automatically.</span></div>
+        <div class="button-item"><strong>Disconnect/Forget</strong><span>Disconnects from WiFi or deletes saved WiFi details.</span></div>
+      </div>
+    </div>
+
+    <div class="feature">
+      <h3><span class="dot" style="background:var(--blue)"></span>UTC and NTP</h3>
+      <div class="button-list">
+        <div class="button-item"><strong>UTC offset</strong><span>Shows the UTC value selected during first setup.</span></div>
+        <div class="button-item"><strong>NTP sync</strong><span>If WiFi is connected, updates the clock time from internet time.</span></div>
+      </div>
+    </div>
+
+    <div class="feature">
+      <h3><span class="dot" style="background:#444"></span>Tools and reset</h3>
+      <div class="button-list">
+        <div class="button-item"><strong>Address</strong><span><strong>192.168.4.1</strong> is the normal setup page.</span></div>
+        <div class="button-item"><strong>Device WiFi</strong><span>Changes the DIGITAL-CLOCK setup WiFi password with confirmation.</span></div>
+        <div class="button-item"><strong>First setup</strong><span>Opens the first setup screen again when region or language should be changed.</span></div>
+        <div class="button-item"><strong>Firmware</strong><span><strong>Open Firmware Update</strong> opens the Web OTA page.</span></div>
+        <div class="button-item"><strong>LED test</strong><span>RGB test lights all LEDs red, green and blue in sequence.</span></div>
+        <div class="button-item"><strong>Confirmation</strong><span>Red actions ask for a centered confirmation before continuing.</span></div>
+        <div class="button-item"><strong>Factory reset</strong><span>Use the reset option in Tools. After reset, the device WiFi password returns to 12345678.</span></div>
+      </div>
+    </div>
+
+    <div class="feature">
+      <h3><span class="dot"></span>Default access</h3>
+    </div>
+    <div class="quick-box">
+      <div class="cred"><strong>WiFi name</strong><span>DIGITAL-CLOCK-XXXXXX</span></div>
+      <div class="cred"><strong>Password</strong><span>12345678</span></div>
+      <div class="cred"><strong>Setup page</strong><span>192.168.4.1</span></div>
+    </div>
+
+    <div class="warning tiny">
+      If the device WiFi password is forgotten, use factory reset from the Tools tab at 192.168.4.1. After reset, the default password is 12345678.
+    </div>
+  </div>
+</section>
+</body>
+</html>

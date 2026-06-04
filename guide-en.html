@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Digital Clock User Guide</title>
+<style>
+:root {
+  --ink: #111;
+  --muted: #4d4d4d;
+  --line: #cfcfcf;
+  --soft: #f2f2f2;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: #e7e7e7;
+  color: var(--ink);
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.24;
+}
+
+.page {
+  width: 297mm;
+  min-height: 210mm;
+  margin: 16px auto;
+  padding: 9mm;
+  background: #fff;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.16);
+  page-break-after: always;
+  overflow: hidden;
+}
+
+.cover {
+  border: 2px solid var(--ink);
+  padding: 10px;
+  margin-bottom: 8px;
+}
+
+h1 {
+  margin: 0 0 5px;
+  font-size: 24px;
+  letter-spacing: 0;
+}
+
+h2 {
+  margin: 9px 0 5px;
+  padding-bottom: 3px;
+  border-bottom: 1px solid var(--line);
+  font-size: 14px;
+}
+
+h3 {
+  margin: 7px 0 3px;
+  font-size: 12px;
+}
+
+p {
+  margin: 3px 0 5px;
+}
+
+ol,
+ul {
+  margin: 3px 0 5px 15px;
+  padding: 0;
+}
+
+li {
+  margin: 2px 0;
+}
+
+.muted {
+  color: var(--muted);
+}
+
+.columns {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  align-items: start;
+}
+
+.box {
+  border: 1px solid var(--line);
+  padding: 7px;
+  background: #fff;
+  break-inside: avoid;
+  margin-bottom: 7px;
+  font-size: 11px;
+}
+
+.note {
+  border-left: 4px solid var(--ink);
+  background: var(--soft);
+  padding: 6px 8px;
+  margin: 5px 0;
+  break-inside: avoid;
+  font-size: 11px;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 4px;
+  font-size: 10.5px;
+}
+
+.table th,
+.table td {
+  border: 1px solid var(--line);
+  padding: 4px;
+  vertical-align: top;
+  text-align: left;
+}
+
+.table th {
+  background: var(--soft);
+}
+
+.steps {
+  counter-reset: step;
+  list-style: none;
+  margin-left: 0;
+}
+
+.steps li {
+  position: relative;
+  padding-left: 24px;
+  margin: 4px 0;
+}
+
+.steps li::before {
+  counter-increment: step;
+  content: counter(step);
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 17px;
+  height: 17px;
+  border: 1px solid var(--ink);
+  border-radius: 50%;
+  text-align: center;
+  line-height: 16px;
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.specs {
+  display: grid;
+  grid-template-columns: 30mm 1fr;
+  gap: 3px 7px;
+  font-size: 10.5px;
+}
+
+.specs b {
+  font-weight: 700;
+}
+
+.footer {
+  margin-top: 8px;
+  padding-top: 5px;
+  border-top: 1px solid var(--line);
+  font-size: 9.5px;
+  color: var(--muted);
+}
+
+@media print {
+  @page {
+    size: A4 landscape;
+    margin: 4mm;
+  }
+
+  body {
+    background: #fff;
+    font-size: 10px;
+    line-height: 1.18;
+  }
+
+  .page {
+    width: auto;
+    min-height: calc(210mm - 8mm);
+    height: calc(210mm - 8mm);
+    margin: 0;
+    padding: 0;
+    box-shadow: none;
+    overflow: visible;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: minmax(0, auto);
+    gap: 5px;
+    align-content: stretch;
+    page-break-after: always;
+  }
+
+  .page:last-of-type {
+    page-break-after: auto;
+  }
+
+  .page:first-of-type {
+    grid-template-rows: auto repeat(3, 1fr);
+  }
+
+  .page:nth-of-type(2) {
+    grid-template-rows: repeat(3, 1fr) auto;
+  }
+
+  .cover {
+    grid-column: 1 / -1;
+    padding: 6px 7px;
+    margin: 0;
+  }
+
+  .columns {
+    display: contents;
+  }
+
+  h1 {
+    margin-bottom: 3px;
+    font-size: 22px;
+  }
+
+  h2 {
+    margin: 0 0 4px;
+    padding-bottom: 2px;
+    font-size: 12.4px;
+  }
+
+  h2 {
+    break-after: avoid;
+  }
+
+  h3 {
+    margin: 4px 0 1px;
+    font-size: 10.4px;
+  }
+
+  p,
+  ol,
+  ul {
+    margin-top: 1px;
+    margin-bottom: 2px;
+  }
+
+  li {
+    margin: 1px 0;
+  }
+
+  .box {
+    padding: 5px;
+    margin: 0;
+    font-size: 9.8px;
+    overflow: hidden;
+  }
+
+  .note {
+    padding: 4px 6px;
+    margin: 3px 0;
+    font-size: 9.2px;
+  }
+
+  .table {
+    font-size: 9px;
+  }
+
+  .table th,
+  .table td {
+    padding: 2px 3px;
+  }
+
+  .steps li {
+    padding-left: 17px;
+    margin: 2px 0;
+  }
+
+  .steps li::before {
+    width: 13px;
+    height: 13px;
+    line-height: 12px;
+    font-size: 7.5px;
+  }
+
+  .specs {
+    grid-template-columns: 22mm 1fr;
+    gap: 2px 4px;
+    font-size: 9px;
+  }
+
+  .footer {
+    grid-column: 1 / -1;
+    margin-top: 2px;
+    padding-top: 3px;
+    font-size: 8.8px;
+  }
+
+  .box,
+  .note,
+  table {
+    break-inside: avoid;
+  }
+}
+</style>
+</head>
+<body>
+<main class="page">
+  <section class="cover">
+    <h1>Digital Clock User Guide</h1>
+    <p><strong>WiFi configurable LED clock</strong> - automatic time keeping, color profiles, temperature display, countdown, scoreboard and stopwatch modes.</p>
+    <p class="muted">This guide explains first setup, daily use, advanced settings and troubleshooting.</p>
+  </section>
+
+  <section class="columns">
+    <div class="box">
+      <h2>1. First Setup</h2>
+      <ol class="steps">
+        <li>Connect the clock to power and wait for the LED display to turn on.</li>
+        <li>Open the WiFi list on your phone or computer.</li>
+        <li>Connect to <strong>DIGITAL-CLOCK-XXXXXX</strong>.</li>
+        <li>Enter the default password: <strong>12345678</strong></li>
+        <li>Open <strong>192.168.4.1</strong> in your browser.</li>
+      </ol>
+      <div class="note">Your phone may show a no internet warning. This is normal; this WiFi network is used to open the clock setup panel. While connecting to WiFi, a brief disconnection may happen; wait a few seconds and reopen 192.168.4.1 if needed.</div>
+      <h3>First setup screen</h3>
+      <p>If the clock has not been set up before, the first setup screen appears after opening 192.168.4.1. On this screen, choose the language, select your country or nearest city for the time zone, optionally change the device WiFi password, and connect the clock to the home WiFi network.</p>
+      <div class="note">The connection may briefly drop while connecting to the home WiFi network. This is normal; wait a few seconds and reopen 192.168.4.1 if needed.</div>
+    </div>
+
+    <div class="box">
+      <h2>2. Quick Start</h2>
+      <ol class="steps">
+        <li>Open the <strong>WiFi</strong> tab and select your home WiFi network.</li>
+        <li>Enter the WiFi password and press <strong>Connect and Save</strong>.</li>
+        <li>Select the correct <strong>UTC</strong> offset for your country.</li>
+        <li>Use <strong>NTP Sync</strong> to update the clock from internet time.</li>
+        <li>Open <strong>Appearance</strong> to adjust color and brightness.</li>
+      </ol>
+    </div>
+
+    <div class="box">
+      <h2>3. Main Tabs</h2>
+      <table class="table">
+        <tr><th>Tab</th><th>Purpose</th></tr>
+        <tr><td>Appearance</td><td>Color, brightness and color profiles.</td></tr>
+        <tr><td>Time</td><td>12/24 hour and dot LED settings.</td></tr>
+        <tr><td>Temp</td><td>Temperature unit, offset and auto display.</td></tr>
+        <tr><td>Countdown</td><td>Enter a time and start countdown.</td></tr>
+        <tr><td>Scoreboard</td><td>Scores for 3 players or teams.</td></tr>
+        <tr><td>Stopwatch</td><td>Normal and lap stopwatch modes.</td></tr>
+        <tr><td>Night Light</td><td>Lower brightness during sleeping hours.</td></tr>
+        <tr><td>WiFi</td><td>Home WiFi connection, UTC view and NTP time update.</td></tr>
+        <tr><td>Tools</td><td>Device WiFi password, first setup, factory reset, firmware update and LED test.</td></tr>
+      </table>
+    </div>
+  </section>
+
+  <section class="columns">
+    <div class="box">
+      <h2>4. Appearance Settings</h2>
+      <h3>Custom color</h3>
+      <p>Choose a color from the color wheel and press <strong>Save Color</strong>.</p>
+      <h3>Color presets</h3>
+      <p>Tap a preset color for quick color selection. Use the save button to keep it.</p>
+      <h3>Brightness</h3>
+      <p>Adjust display brightness. Higher brightness is easier to see but uses more power.</p>
+      <h3>Digit and dot colors</h3>
+      <p>Each digit and dot LEDs can have separate colors. Dot color is independent from digit colors.</p>
+      <h3>Color profile</h3>
+      <p>Select animated profiles such as Rainbow, Aurora, Lava, Prism and Fade. Effect speed is adjustable.</p>
+    </div>
+
+    <div class="box">
+      <h2>5. Time and Dots</h2>
+      <h3>12/24 hour format</h3>
+      <p>The clock can show time in 24-hour or 12-hour format.</p>
+      <h3>Dot LED behavior</h3>
+      <p>Dots can stay on or blink. Blinking dots show the time flow on the display.</p>
+      <h3>Internet time update</h3>
+      <p>When connected to home WiFi, the clock can get internet time and update its stored time.</p>
+      <h3>Update from system time</h3>
+      <p>The phone or computer time is shown in the panel. Press <strong>Update Time</strong> to send this time to the clock.</p>
+      <div class="note">If internet is not available, the clock continues using its stored time information.</div>
+    </div>
+
+    <div class="box">
+      <h2>6. Temperature Display</h2>
+      <p>If the model supports temperature measurement, it can show the room temperature.</p>
+      <ul>
+        <li><strong>Show Temperature:</strong> Briefly shows the measured temperature on the LED display.</li>
+        <li><strong>Unit C/F:</strong> Select Celsius or Fahrenheit.</li>
+        <li><strong>Auto show:</strong> Shows temperature at intervals while in clock mode.</li>
+        <li><strong>Times per minute:</strong> Controls how often temperature is shown.</li>
+        <li><strong>Show for:</strong> Controls how long temperature stays on screen.</li>
+        <li><strong>Offset:</strong> Corrects the value if the reading is slightly high or low.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="columns">
+    <div class="box">
+      <h2>7. Night Light</h2>
+      <p>Automatically lowers display brightness during sleeping hours.</p>
+      <ul>
+        <li><strong>Start:</strong> Hour and minute when night mode begins.</li>
+        <li><strong>End:</strong> Hour and minute when night mode ends.</li>
+        <li><strong>Night brightness:</strong> Brightness level used during this period.</li>
+      </ul>
+      <div class="note">Low brightness is recommended for bedrooms and dark rooms.</div>
+    </div>
+
+    <div class="box">
+      <h2>8. Countdown</h2>
+      <ol class="steps">
+        <li>Enter hours, minutes and seconds.</li>
+        <li>Use <strong>Show Entered Time</strong> to preview the time before starting.</li>
+        <li>Press <strong>Start</strong> to begin countdown.</li>
+        <li>Use <strong>Pause</strong> to stop temporarily and <strong>Resume</strong> to continue.</li>
+        <li>Use <strong>Reset</strong> to return to the entered time.</li>
+      </ol>
+      <p>Countdown color can be selected separately.</p>
+    </div>
+
+    <div class="box">
+      <h2>9. Scoreboard</h2>
+      <p>On the 6-digit model, left, middle and right sections can be used for 3 players or teams.</p>
+      <ul>
+        <li><strong>+ / -:</strong> Instantly increases or decreases the score.</li>
+        <li><strong>Color box:</strong> Selects each team color.</li>
+        <li><strong>Save Colors:</strong> Saves colors only, not the current score.</li>
+        <li><strong>Show Clock:</strong> Returns from scoreboard to normal clock mode.</li>
+      </ul>
+    </div>
+  </section>
+</main>
+
+<main class="page">
+  <section class="columns">
+    <div class="box">
+      <h2>10. Stopwatch</h2>
+      <h3>Normal stopwatch</h3>
+      <p>Starts, pauses, resumes and resets elapsed time.</p>
+      <h3>Lap stopwatch</h3>
+      <p>Increases lap count according to the saved lap duration. A short countdown is shown before start.</p>
+      <ul>
+        <li>During the last 5 seconds, the display flashes quickly as a warning.</li>
+        <li>The left side shows lap count; middle/right sections show elapsed time.</li>
+        <li>Stopwatch color can be saved.</li>
+      </ul>
+    </div>
+
+    <div class="box">
+      <h2>11. WiFi and NTP</h2>
+      <ul>
+        <li><strong>Scan WiFi Networks:</strong> Lists nearby networks.</li>
+        <li><strong>Connect and Save:</strong> Saves home WiFi information.</li>
+        <li><strong>Disconnect WiFi:</strong> Disconnects WiFi but keeps saved network.</li>
+        <li><strong>Forget Saved WiFi:</strong> Deletes saved home WiFi name and password.</li>
+        <li><strong>UTC:</strong> Shows the UTC value selected during first setup. It is changed from the region selection, not from normal WiFi use.</li>
+        <li><strong>NTP Sync:</strong> Gets internet time and updates the clock time.</li>
+      </ul>
+      <div class="note">Note: The connection may briefly drop while saving the home WiFi network. This is normal; wait a few seconds and reopen the page.</div>
+    </div>
+
+    <div class="box">
+      <h2>12. Tools and Safe Confirmations</h2>
+      <p>The Tools tab contains service actions that are not used every day. Red or restart actions open a centered confirmation window.</p>
+      <ul>
+        <li><strong>Device WiFi password:</strong> Enter the current password, then the new password. The typed password can be shown before saving.</li>
+        <li><strong>Open First Setup Again:</strong> Opens the region, language and first connection setup screen again.</li>
+        <li><strong>Forget Saved WiFi:</strong> Deletes the saved home WiFi name and password, but does not change the device WiFi password.</li>
+        <li><strong>Restore factory settings:</strong> Deletes saved WiFi and clock settings, then restarts the clock.</li>
+        <li><strong>Firmware Update:</strong> Opens the web firmware update page.</li>
+        <li><strong>LED Test:</strong> Starts a quick LED test for checking the display.</li>
+        <li><strong>Cancel:</strong> Closes the confirmation window without making changes.</li>
+      </ul>
+      <div class="note">The normal WiFi tab is for connection and time sync. Maintenance actions are now collected in the Tools tab.</div>
+    </div>
+  </section>
+
+  <section class="columns">
+    <div class="box">
+      <h2>13. Factory Reset</h2>
+      <p>If the WiFi password is forgotten or settings are incorrect, restore factory settings from the Tools tab. After reset, the device WiFi password returns to the default password: <strong>12345678</strong>.</p>
+      <ol class="steps">
+        <li>Connect your phone or computer to <strong>DIGITAL-CLOCK-XXXXXX</strong>.</li>
+        <li>Open <strong>192.168.4.1</strong> in your browser.</li>
+        <li>Open the <strong>Tools</strong> tab.</li>
+        <li>Press the <strong>Restore factory settings</strong> button.</li>
+        <li>Confirm the centered confirmation window.</li>
+        <li>The clock resets and restarts.</li>
+        <li>Connect again to <strong>DIGITAL-CLOCK-XXXXXX</strong> and enter the default password: <strong>12345678</strong>.</li>
+      </ol>
+    </div>
+
+    <div class="box">
+      <h2>14. Troubleshooting</h2>
+      <table class="table">
+        <tr><th>Problem</th><th>Check</th></tr>
+        <tr><td>Phone cannot connect to clock WiFi</td><td>Restart the clock, forget the old network on the phone, then reconnect.</td></tr>
+        <tr><td>192.168.4.1 does not open</td><td>Make sure the phone is connected to the DIGITAL-CLOCK network.</td></tr>
+        <tr><td>Clock does not update from internet</td><td>Check home WiFi name/password, 2.4 GHz network and UTC setting.</td></tr>
+        <tr><td>Temperature is not shown</td><td>Temperature may not be included on every model. If your product supports it, restart the clock. If the problem continues, contact the seller.</td></tr>
+        <tr><td>LED colors are wrong</td><td>Check the color, per-digit color and color profile settings in the Appearance tab.</td></tr>
+        <tr><td>Brightness is too high</td><td>Lower brightness from Appearance or use Night Light.</td></tr>
+      </table>
+    </div>
+
+    <div class="box">
+      <h2>15. Technical Info</h2>
+      <div class="specs">
+        <b>Setup WiFi name</b><span>DIGITAL-CLOCK-XXXXXX</span>
+        <b>Default password</b><span>12345678</span>
+        <b>Setup address</b><span>192.168.4.1</span>
+        <b>Time keeping</b><span>Designed to keep time information even when internet is unavailable</span>
+        <b>Temperature</b><span>Automatically detected on supported models</span>
+        <b>WiFi</b><span>2.4 GHz home WiFi is recommended</span>
+        <b>Update</b><span>192.168.4.1/update</span>
+      </div>
+
+      <h2>16. Use and Safety</h2>
+      <ul>
+        <li>Use the clock in a dry indoor environment.</li>
+        <li>Make sure the power supply is suitable for the LED count.</li>
+        <li>Very high brightness uses more power.</li>
+        <li>Do not remove power during firmware update.</li>
+        <li>Before shipping, check clock model, digit count and LED test.</li>
+      </ul>
+    </div>
+  </section>
+
+  <div class="footer">
+    This guide is prepared for the WiFi configurable digital clock. Features may vary by software version and clock model.
+  </div>
+</main>
+</body>
+</html>

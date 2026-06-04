@@ -1,0 +1,296 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dijital Duvar Saati Kullanım Merkezi</title>
+  <style>
+    :root {
+      --bg: #0b0f14;
+      --panel: #151b22;
+      --soft: #1b232c;
+      --line: #27313c;
+      --text: #f3f7fb;
+      --muted: #9aacbb;
+      --accent: #21d07a;
+      --blue: #69b7ff;
+      --warn: #ffd166;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--text);
+      background: linear-gradient(180deg, #101820 0%, #0b0f14 360px), var(--bg);
+    }
+
+    header {
+      border-bottom: 1px solid var(--line);
+      padding: 28px 18px 18px;
+    }
+
+    .wrap {
+      width: min(1040px, 100%);
+      margin: 0 auto;
+    }
+
+    .brand {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      align-items: flex-start;
+      flex-wrap: wrap;
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+      margin-top: 0;
+    }
+
+    h1 {
+      margin-bottom: 8px;
+      font-size: clamp(26px, 4vw, 42px);
+      letter-spacing: 0;
+    }
+
+    h2 {
+      margin-bottom: 10px;
+      font-size: 22px;
+    }
+
+    h3 {
+      margin-bottom: 8px;
+      font-size: 18px;
+    }
+
+    p {
+      color: var(--muted);
+      line-height: 1.55;
+    }
+
+    code {
+      color: #9bd6ff;
+      font-weight: 700;
+    }
+
+    main {
+      padding: 22px 18px 42px;
+    }
+
+    .badge {
+      border: 1px solid rgba(33, 208, 122, .45);
+      background: rgba(33, 208, 122, .11);
+      border-radius: 999px;
+      color: #9affc8;
+      font-weight: 700;
+      padding: 8px 12px;
+      white-space: nowrap;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap: 16px;
+      align-items: stretch;
+    }
+
+    .panel,
+    .card {
+      background: rgba(21, 27, 34, .94);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 18px;
+    }
+
+    .notice {
+      background: rgba(105, 183, 255, .08);
+      border-color: rgba(105, 183, 255, .35);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 16px;
+    }
+
+    .links {
+      display: grid;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    a.button {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      min-height: 48px;
+      padding: 13px 14px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--soft);
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    a.button:hover,
+    a.button:focus {
+      border-color: var(--accent);
+      background: rgba(33, 208, 122, .12);
+      outline: none;
+    }
+
+    a.primary {
+      border-color: rgba(33, 208, 122, .65);
+      background: rgba(33, 208, 122, .14);
+    }
+
+    small {
+      color: var(--muted);
+      font-weight: 400;
+    }
+
+    .steps {
+      display: grid;
+      gap: 8px;
+      margin: 12px 0 0;
+      padding: 0;
+      list-style: none;
+      counter-reset: step;
+    }
+
+    .steps li {
+      position: relative;
+      padding: 10px 12px 10px 40px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #10161d;
+      color: var(--text);
+      line-height: 1.4;
+    }
+
+    .steps li::before {
+      counter-increment: step;
+      content: counter(step);
+      position: absolute;
+      left: 12px;
+      top: 10px;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: rgba(33, 208, 122, .16);
+      border: 1px solid rgba(33, 208, 122, .55);
+      color: #9affc8;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .note {
+      margin-top: 12px;
+      border-left: 4px solid var(--warn);
+      background: rgba(255, 209, 102, .08);
+      padding: 10px 12px;
+      color: var(--text);
+      line-height: 1.45;
+    }
+
+    .footer {
+      margin: 22px 0 0;
+      text-align: center;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    @media (max-width: 760px) {
+      header {
+        padding-top: 20px;
+      }
+
+      .hero,
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .panel,
+      .card {
+        padding: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap brand">
+      <div>
+        <h1>Dijital Duvar Saati Kullanım Merkezi</h1>
+        <p>Kurulum, WiFi bağlantısı, renk ayarları, zaman ayarı ve günlük kullanım kılavuzları.</p>
+      </div>
+      <div class="badge">Ozmen Clock</div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="hero">
+      <div class="panel">
+        <h2>Hızlı Başlangıç</h2>
+        <ol class="steps">
+          <li>Saati elektriğe bağlayın ve ekranda saat görünmesini bekleyin.</li>
+          <li>Telefon veya bilgisayardan <code>DIGITAL-CLOCK-XXXXXX</code> WiFi ağına bağlanın.</li>
+          <li>Varsayılan cihaz WiFi şifresi: <code>12345678</code></li>
+          <li>İnternet tarayıcısını açıp <code>192.168.4.1</code> adresine girin.</li>
+          <li>İlk kurulum ekranından dil, saat bölgesi ve ev WiFi ağını seçin.</li>
+        </ol>
+      </div>
+
+      <div class="panel notice">
+        <h2>Quick Start</h2>
+        <ol class="steps">
+          <li>Power on the clock and wait until the display turns on.</li>
+          <li>Connect to the <code>DIGITAL-CLOCK-XXXXXX</code> WiFi network.</li>
+          <li>Default device WiFi password: <code>12345678</code></li>
+          <li>Open your browser and go to <code>192.168.4.1</code>.</li>
+          <li>Select language, time zone and your home WiFi network.</li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="grid">
+      <div class="card" id="turkce">
+        <h2>Türkçe Kılavuzlar</h2>
+        <p>Müşteriler Türkçe anlatım, video kılavuz ve yazdırılabilir PDF dosyalarına buradan ulaşabilir.</p>
+        <div class="links">
+          <a class="button primary" href="video-tr.html">Video Kılavuzu <span>Aç</span></a>
+          <a class="button" href="guide-tr.html">Detaylı Kullanım Kılavuzu <span>HTML</span></a>
+          <a class="button" href="guide-tr.pdf">PDF Kılavuzu İndir <span>PDF</span></a>
+          <a class="button" href="trifold-tr.html">Katlanır Kılavuz <span>A4</span></a>
+        </div>
+        <div class="note">Not: WiFi bağlantısı sırasında telefon kısa süreliğine internet yok uyarısı gösterebilir. Bu normaldir.</div>
+      </div>
+
+      <div class="card" id="english">
+        <h2>English Guides</h2>
+        <p>Customers can access the English video guide, full user guide and printable PDF files from here.</p>
+        <div class="links">
+          <a class="button primary" href="video-en.html">Video Guide <span>Open</span></a>
+          <a class="button" href="guide-en.html">Full User Guide <span>HTML</span></a>
+          <a class="button" href="guide-en.pdf">Download PDF Guide <span>PDF</span></a>
+          <a class="button" href="trifold-en.html">Foldable Guide <span>A4</span></a>
+        </div>
+        <div class="note">Note: While connecting to the clock WiFi, the phone may show a no internet warning. This is normal.</div>
+      </div>
+    </section>
+
+    <p class="footer">Bu sayfa GitHub Pages üzerinde ücretsiz yayınlanabilir. QR kodu bu sayfanın bağlantısına yönlendirebilirsiniz.</p>
+  </main>
+</body>
+</html>
