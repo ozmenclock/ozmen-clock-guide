@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -191,18 +191,25 @@ li {
 
 .qr-row {
   display: grid;
-  grid-template-columns: 23mm 1fr;
-  gap: 2.2mm;
+  grid-template-columns: 26mm minmax(0, 1fr);
+  gap: 3mm;
   align-items: center;
   margin-top: 2mm;
 }
 
 .qr-row img {
-  width: 29mm;
-  height: 29mm;
+  box-sizing: border-box;
+  width: 26mm;
+  height: 26mm;
   padding: 1.1mm;
   border: 0.25mm solid var(--line);
   background: #fff;
+}
+
+.qr-row p {
+  margin: 0;
+  line-height: 1.22;
+  overflow-wrap: anywhere;
 }
 
 .footer {
@@ -248,12 +255,12 @@ li {
         <b>Guide website</b><span>ozmenclock.github.io/ozmen-clock-guide</span>
       </div>
       <div class="qr-row">
-        <img src="guide-qr.png" alt="Guide website QR code">
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAlgAAAJYAQMAAACEqAqfAAAABlBMVEX///8AAABVwtN+AAAACXBIWXMAAA7EAAAOxAGVKw4bAAACpElEQVR4nO3cQXLjIBCFYaa8mKWP4KPoaMrRfBSOkKUWKZMgmqZp4VSqgjyz+N/GNm4+7xDVEg6BEEIIIaMkly0P3tJH+fZPSndX9Qhh8ZOwsLCwsE6yYmhZspW//bLWbmIMl5TeTJXmioWFhYV1onUp5Q+tupWB92CzW1etKiX7EBYWFhbWy6z8fl/v3/OefI9u07GwsLCw/q2VI4t70r5JzC+r+0UsLCwsrNOtFqnSJkld77Xq2v2iDGFhYWFhnWX1sZbdgPdDLlhYWFhYp1jfxU6MP6jHwsLCwpprmVXbreTSN0llA34z7e57+Kvt7tXcpcTCwsLCmm3F/GKrcj7CIZfkEsv4oQeDhYWFhTXXCnVxT2qt5Z0u7sn3TaL/NSwsLCys+VbrWsuQZN9t2962z2BPjoWFhYU1z5KVPKfdbLTrvfZNUnlsxE0cDGFhYWFhTbJkouzJ73X48Kz1ILGU9s/xYWFhYWHNs8x6X2NW8kG72w6lp9cOLCwsLKwpVjCHX+75o9ZJ32SP9k1qb1vm9n0TLCwsLKyZlmyt1zp/8xvwZw/tDfsmWFhYWFgnWDlut61W6C4B9qh57a5gYWFhYZ1m2d32FlwWN9FWXY7rPRYWFhbWdEuf4+sb2dYK5tRMy3fPBGJhYWFh/d7a0066aEdkcK7cRi8UgzOLWFhYWFgTrEHM4t6GUuUPp2awsLCwsM6yksvWTWzFut7bUzPJ902wsLCwsOZa0Xxa6ga8Vdl2t1j9xOG9TCwsLCysSZa7/2irnl8CZOIbFhYWFtZrLYn9fyZNvUspV4U9WFhYWFivs2JoWeqEdq68z+F5EywsLCysiZad2G/AB9v0h/Da7sbCwsLCOs/qs3WXgDrUTxRrcB4GCwsLC+t/tQghhBDS5xObhvZZ33ndDAAAAABJRU5ErkJggg==" alt="Guide website QR code">
         <p class="muted">Scan the QR code for the video guide, full HTML guide and PDF files.</p>
       </div>
     </div>
 
-    <div class="note">Your phone may show a “no internet” warning. This is normal; the clock WiFi is only used to open the setup panel.</div>
+    <div class="note">Your phone may show a â€œno internetâ€ warning. This is normal; the clock WiFi is only used to open the setup panel.</div>
     <div class="note">The setup page is not an internet website. First connect to the clock WiFi, then open 192.168.4.1 in your browser.</div>
   </div>
 
@@ -434,3 +441,4 @@ li {
 </section>
 </body>
 </html>
+
