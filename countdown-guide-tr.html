@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gerisayım Saati Kullanım Kılavuzu</title>
+<style>
+@page { size: A4 landscape; margin: 8mm; }
+:root { --ink:#111; --muted:#4d4d4d; --line:#cfcfcf; --soft:#f2f2f2; }
+* { box-sizing:border-box; }
+body { margin:0; background:#e7e7e7; color:var(--ink); font-family:Arial,Helvetica,sans-serif; line-height:1.24; }
+.page { width:297mm; min-height:210mm; margin:16px auto; padding:9mm; background:#fff; box-shadow:0 4px 18px rgba(0,0,0,.16); page-break-after:always; overflow:hidden; }
+.cover { border:2px solid var(--ink); padding:10px; margin-bottom:8px; }
+h1 { margin:0 0 5px; font-size:25px; }
+h2 { margin:9px 0 5px; padding-bottom:3px; border-bottom:1px solid var(--line); font-size:14px; }
+h3 { margin:7px 0 3px; font-size:12px; }
+p { margin:3px 0 5px; }
+ol,ul { margin:3px 0 5px 16px; padding:0; }
+li { margin:2px 0; }
+.muted { color:var(--muted); }
+.columns { display:grid; grid-template-columns:repeat(3,1fr); gap:8px; align-items:start; }
+.box { border:1px solid var(--line); padding:7px; background:#fff; break-inside:avoid; margin-bottom:7px; font-size:11px; }
+.note { border-left:4px solid var(--ink); background:var(--soft); padding:6px 8px; margin:5px 0; break-inside:avoid; font-size:11px; }
+.table { width:100%; border-collapse:collapse; margin-top:4px; font-size:10.5px; }
+.table th,.table td { border:1px solid var(--line); padding:4px; text-align:left; vertical-align:top; }
+.table th { background:var(--soft); }
+.steps { counter-reset:step; list-style:none; margin-left:0; }
+.steps li { position:relative; padding-left:23px; min-height:19px; }
+.steps li::before { counter-increment:step; content:counter(step); position:absolute; left:0; top:0; width:16px; height:16px; border:1px solid var(--ink); border-radius:50%; text-align:center; line-height:15px; font-size:10px; font-weight:bold; }
+@media print { body{background:#fff;} .page{margin:0; box-shadow:none;} }
+</style>
+</head>
+<body>
+<main class="page">
+  <section class="cover">
+    <h1>Gerisayım Saati Kullanım Kılavuzu</h1>
+    <p><b>WiFi ayarlı LED gerisayım saati</b> - hedef tarih ve saate kalan süreyi gösterir, renk ayarları, hane renkleri, gece ışığı ve WiFi üzerinden saat güncelleme özellikleri içerir.</p>
+    <p class="muted">Bu kılavuz ilk kurulum, günlük kullanım, ayar sekmeleri ve sorun giderme adımlarını özetler.</p>
+  </section>
+  <section class="columns">
+    <div class="box">
+      <h2>1. İlk Kurulum</h2>
+      <ol class="steps">
+        <li>Cihazı 5V güç kaynağına bağlayın.</li>
+        <li>Telefon veya bilgisayardan <b>COUNTDOWN-XXXXXX</b> WiFi ağına bağlanın.</li>
+        <li>Varsayılan cihaz WiFi şifresi: <b>12345678</b>.</li>
+        <li>Tarayıcıdan <b>192.168.4.1</b> adresini açın.</li>
+        <li>Dil, saat bölgesi ve ev WiFi ağını seçip kaydedin.</li>
+      </ol>
+      <h3>İlk kurulum ekranı</h3>
+      <p>İlk kurulum ekranı cihaz daha önce ayarlanmamışsa otomatik açılır. Bu ekranda önce dili seçebilirsiniz. Ardından bulunduğunuz ülke veya size en yakın saat bölgesi seçilir. Saat bölgesi, internetten alınan saat bilgisinin doğru yerel saate çevrilmesi için kullanılır.</p>
+      <p>Cihaz WiFi şifresi alanı isteğe bağlıdır. Değiştirmek istemiyorsanız boş bırakabilirsiniz; bu durumda cihazın kendi WiFi şifresi <b>12345678</b> olarak kalır. Ev WiFi ağı bölümünde ise cihazın NTP saat güncellemesi için bağlanacağı modem ağı seçilir.</p>
+      <div class="note">Telefon internet yok uyarısı gösterebilir. Bu normaldir; cihaz WiFi ağı ayar sayfasını açmak içindir. Ev WiFi ağına bağlanırken kısa süreli kopma yaşanabilir.</div>
+    </div>
+    <div class="box">
+      <h2>2. Ana Sekmeler</h2>
+      <table class="table">
+        <tr><th>Sekme</th><th>Görev</th></tr>
+        <tr><td>Gerisayım</td><td>Hedef tarih ve süre ayarı.</td></tr>
+        <tr><td>Renk</td><td>Renk, parlaklık, hane renkleri ve efektler.</td></tr>
+        <tr><td>WiFi</td><td>Ev WiFi bağlantısı ve NTP saat güncellemesi.</td></tr>
+        <tr><td>Gece Işığı</td><td>Uyku saatlerinde düşük parlaklık.</td></tr>
+        <tr><td>Araçlar</td><td>İlk kurulum, sıfırlama, güncelleme ve LED testi.</td></tr>
+      </table>
+    </div>
+    <div class="box">
+      <h2>3. Gerisayım Ayarı</h2>
+      <p>Gerisayım sekmesinde hedef tarih ve saat seçilir. Yıl, ay, gün, saat, dakika ve saniye değerleri hedef zamanı oluşturur. Kaydet düğmesine bastıktan sonra cihaz bu hedefe kalan süreyi otomatik hesaplar.</p>
+      <ul>
+        <li>Uzun süreler için gün veya yıl gösterimi kullanılabilir.</li>
+        <li>Süre bittiğinde ekran <b>00:00:00</b> şeklinde kalır.</li>
+        <li>Hedef değişirse kaydet düğmesine tekrar basılmalıdır.</li>
+      </ul>
+      <p>Hedef tarih geçmiş bir zaman seçilirse gerisayım tamamlanmış kabul edilir. Yeni hedef verildiğinde cihaz tekrar normal gerisayım moduna döner.</p>
+    </div>
+    <div class="box">
+      <h2>4. Renk Ayarları</h2>
+      <p>Renk sekmesinde ekranda kullanılan ana renk ve parlaklık ayarlanır. Hazır renklerden biri seçilebilir veya özel renk alanından istenen renk belirlenebilir.</p>
+      <p>Renk profilleri, ekrana hareketli veya yumuşak geçişli renk efektleri verir. Solid sabit renktir; Rainbow, Aurora, Lava, Prism ve Fade gibi profiller renk geçişleri oluşturur. Efekt hızı düşük seçilirse geçiş daha yavaş, yüksek seçilirse daha hareketli görünür.</p>
+      <p>Hane renkleri açılırsa her rakam için ayrı renk seçilebilir. Nokta rengi de ayrıca ayarlanır.</p>
+      <p>Yüksek parlaklık gündüz daha görünür olur, fakat daha fazla güç kullanır. Gece veya kapalı ortamda daha düşük parlaklık daha rahat görünür.</p>
+    </div>
+    <div class="box">
+      <h2>5. WiFi ve Saat</h2>
+      <p>WiFi sekmesi, cihazın ev veya iş yerindeki modem ağına bağlanmasını sağlar. Cihaz internete bağlanınca NTP üzerinden güncel saat bilgisini alabilir. Bu bilgi, seçilen saat bölgesine göre yerel saate çevrilir.</p>
+      <p>WiFi durum bölümünde bağlı ağ adı, alınan IP adresi, sinyal seviyesi ve çalışma süresi görülebilir. Bağlantı yoksa kayıtlı ağ adı görünür, fakat IP ve sinyal alanları boş kalabilir.</p>
+      <div class="note">Bağlantı sonrası sayfa kısa süre cevap vermeyebilir. Birkaç saniye bekleyip gerekirse 192.168.4.1 adresini tekrar açın. Bu durum cihazın modem ağına geçiş yapmasından kaynaklanır.</div>
+    </div>
+    <div class="box">
+      <h2>6. Gece Işığı</h2>
+      <p>Gece ışığı sekmesi, belirlediğiniz saat aralığında ekran parlaklığını otomatik düşürür. Örneğin gece 23:00 ile sabah 07:00 arasında daha düşük parlaklık kullanılabilir.</p>
+      <p>Bu özellik yatak odası, mağaza vitrini veya karanlık ortamlar için faydalıdır. Gece modu bittiğinde ekran normal parlaklığına geri döner.</p>
+    </div>
+    <div class="box">
+      <h2>7. Araçlar</h2>
+      <ul>
+        <li>İlk kurulumu tekrar açabilirsiniz.</li>
+        <li>Fabrika ayarlarına dönebilirsiniz.</li>
+        <li>Firmware ve filesystem güncellemesi yapılabilir.</li>
+        <li>LED testi ile LEDleri kontrol edebilirsiniz.</li>
+      </ul>
+      <p>Araçlar bölümü genellikle bakım ve servis işlemleri için kullanılır. Fabrika ayarlarına dönme işlemi kayıtlı WiFi bilgilerini ve ayarları temizler. Güncelleme sırasında cihazın enerjisi kesilmemelidir.</p>
+    </div>
+  </section>
+</main>
+</body>
+</html>

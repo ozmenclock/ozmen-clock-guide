@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Countdown Clock Foldable Guide</title>
+<style>
+@page { size:A4 landscape; margin:0; }
+:root { --ink:#111; --muted:#4d4d4d; --line:#cfcfcf; --soft:#f2f2f2; }
+* { box-sizing:border-box; }
+html,body { margin:0; padding:0; background:#e7e7e7; color:var(--ink); font-family:Arial,Helvetica,sans-serif; line-height:1.18; }
+body { -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+.sheet { width:297mm; height:210mm; display:grid; grid-template-columns:repeat(3,1fr); background:#fff; page-break-after:always; break-after:page; overflow:hidden; }
+.panel { position:relative; padding:6mm; border-right:.25mm dashed #b7b7b7; overflow:hidden; }
+.panel:last-child { border-right:0; }
+.fold { position:absolute; top:3mm; right:4mm; color:#777; font-size:7pt; letter-spacing:.4px; text-transform:uppercase; }
+.cover { border:.55mm solid var(--ink); padding:4mm; margin-bottom:3mm; }
+h1 { margin:0 0 2mm; font-size:24pt; line-height:1.05; }
+h2 { margin:0 0 1.7mm; padding-bottom:.8mm; border-bottom:.25mm solid var(--line); font-size:15pt; line-height:1.12; }
+p,li { font-size:8.25pt; line-height:1.18; }
+p { margin:0 0 1.1mm; }
+ul,ol { margin:0 0 1.6mm 4.2mm; padding:0; }
+li { margin-bottom:.5mm; }
+.muted { color:var(--muted); }
+.box { border:.25mm solid var(--line); padding:2.35mm; margin-bottom:2.35mm; break-inside:avoid; }
+.note { border-left:.9mm solid var(--ink); background:var(--soft); padding:1.7mm 2mm; margin:1.6mm 0; font-size:8pt; }
+.qr-row { display:grid; grid-template-columns:22mm 1fr; gap:2.5mm; align-items:center; margin-top:1.6mm; }
+.qr-row img { width:22mm; height:22mm; border:.25mm solid var(--line); padding:1mm; }
+.tiny { font-size:7.4pt; color:var(--muted); }
+.flow { display:grid; grid-template-columns:1fr; gap:.9mm; margin-top:1.3mm; }
+.flow span { display:block; border:.25mm solid var(--line); background:var(--soft); padding:1mm 1.4mm; font-size:7.8pt; font-weight:bold; }
+.steps { counter-reset:step; list-style:none; margin-left:0; }
+.steps li { position:relative; padding-left:6.4mm; min-height:5.2mm; }
+.steps li::before { counter-increment:step; content:counter(step); position:absolute; left:0; top:0; width:4.5mm; height:4.5mm; border:.25mm solid var(--ink); border-radius:50%; text-align:center; line-height:4.1mm; font-size:7.4pt; font-weight:bold; }
+.table { width:100%; border-collapse:collapse; font-size:7.7pt; }
+.table th,.table td { border:.25mm solid var(--line); padding:1mm; text-align:left; vertical-align:top; }
+.table th { background:var(--soft); }
+@media print { body{background:#fff;} }
+</style>
+</head>
+<body>
+<section class="sheet">
+  <div class="panel">
+    <span class="fold">Front Cover</span>
+    <div class="cover">
+      <h1>Countdown Clock User Guide</h1>
+      <p><b>WiFi configurable LED countdown clock</b> shows the remaining time to a target date and time.</p>
+      <p class="muted">First setup, target date, color profiles, per-digit colors, WiFi, night light and maintenance steps.</p>
+    </div>
+    <div class="box">
+      <h2>Quick Access</h2>
+      <p><b>Device WiFi:</b> COUNTDOWN-XXXXXX</p>
+      <p><b>Default password:</b> 12345678</p>
+      <p><b>Setup address:</b> 192.168.4.1</p>
+      <p><b>Online guide:</b> ozmenclock.github.io/ozmen-clock-guide</p>
+      <div class="qr-row">
+        <img src="guide-qr.png" alt="Guide QR code">
+        <p class="tiny">Scan the QR code for video guide, detailed guides and PDF files.</p>
+      </div>
+      <p class="tiny">This QR code opens the guide website. It does not connect the phone to the device WiFi automatically.</p>
+      <div class="note">A no internet warning may appear. This is normal; the device WiFi is only used to open the setup page.</div>
+    </div>
+    <div class="box">
+      <h2>Who Is It For?</h2>
+      <p>Useful for events, openings, campaigns, weddings, sports halls, shop windows, New Year displays or any target date.</p>
+      <p>Settings are done from a phone or computer. No separate app is required for normal use.</p>
+      <p class="tiny">Screen names in this guide may vary slightly depending on firmware version.</p>
+    </div>
+  </div>
+  <div class="panel">
+    <span class="fold">First Open</span>
+    <div class="box">
+      <h2>1. First Setup</h2>
+      <ol class="steps">
+        <li>Connect the device to power.</li>
+        <li>Connect to COUNTDOWN-XXXXXX WiFi.</li>
+        <li>Enter password 12345678.</li>
+        <li>Open 192.168.4.1 in your browser.</li>
+        <li>Select language, time zone and home WiFi.</li>
+      </ol>
+      <div class="note">The device WiFi password is optional during first setup. Leave it empty to keep 12345678. Home WiFi is used for NTP time updates.</div>
+      <p>When setup is saved, the device stores the settings. If the page stops responding briefly, check that your phone is still connected to the device WiFi and reopen 192.168.4.1.</p>
+      <p class="tiny">The device WiFi password is not the home router password. It is used only for joining the device network.</p>
+    </div>
+    <div class="box">
+      <h2>Setup Flow</h2>
+      <div class="flow">
+        <span>1. Connect to device WiFi</span>
+        <span>2. Open 192.168.4.1</span>
+        <span>3. Select language and time zone</span>
+        <span>4. Select home WiFi and save</span>
+      </div>
+    </div>
+    <div class="box">
+      <h2>2. Countdown</h2>
+      <p>Select target year, month, day, hour, minute and second. The remaining time is calculated after saving.</p>
+      <p>When finished, the display stays at 00:00:00. Save a new target to start countdown again.</p>
+      <p>For long countdowns, day or year display can be clearer. For short countdowns, hour, minute and second display is easier to read.</p>
+      <p class="tiny">After changing the target date, press save so the new value is applied to the display.</p>
+    </div>
+  </div>
+  <div class="panel">
+    <span class="fold">Outside Right</span>
+    <div class="box">
+      <h2>3. Tabs</h2>
+      <table class="table">
+        <tr><th>Tab</th><th>Purpose</th></tr>
+        <tr><td>Countdown</td><td>Target date and time.</td></tr>
+        <tr><td>Color</td><td>Color, brightness, profiles, digit colors.</td></tr>
+        <tr><td>WiFi</td><td>Home network and NTP.</td></tr>
+        <tr><td>Night Light</td><td>Low night brightness.</td></tr>
+        <tr><td>Tools</td><td>Setup, reset, update, test.</td></tr>
+      </table>
+    </div>
+    <div class="box">
+      <h2>4. Color</h2>
+      <p>Single color, presets, effects and per-digit colors are available. When per-digit colors are enabled, each digit uses its own color. Dot color is adjusted separately.</p>
+      <p>Use higher brightness for daylight and lower brightness at night. Very high brightness uses more power.</p>
+    </div>
+    <div class="box">
+      <h2>5. Color Profiles</h2>
+      <p>Color profiles add movement to the display. Solid is fixed color. Rainbow, Aurora, Lava, Prism and Fade create color transitions.</p>
+      <p>Lower effect speed gives calm transitions. Higher speed makes the colors more active.</p>
+      <p class="tiny">For comfortable viewing, low speed and medium brightness usually look more balanced.</p>
+    </div>
+  </div>
+</section>
+<section class="sheet">
+  <div class="panel">
+    <span class="fold">Inside Left</span>
+    <div class="box">
+      <h2>6. WiFi and NTP</h2>
+      <ul>
+        <li>Select home WiFi and enter the password.</li>
+        <li>NTP updates the clock time automatically.</li>
+        <li>A brief disconnection during connection is normal.</li>
+        <li>After connection, IP and signal information can be seen on the WiFi screen.</li>
+      </ul>
+      <p>If WiFi is not connected, the device can still continue the countdown. The RTC module keeps time. When internet returns, NTP can update time again.</p>
+      <p class="tiny">If the modem is far away or signal is weak, connection may take longer. Constant internet is not required for displaying time.</p>
+    </div>
+    <div class="box">
+      <h2>7. Time Zone</h2>
+      <p>The region is selected during first setup. To change it later, open first setup again from Tools. Region selection keeps local time correct.</p>
+      <p>If the device is shipped to another country, the customer should choose the closest region for their location.</p>
+    </div>
+    <div class="box">
+      <h2>8. Device WiFi Password</h2>
+      <p>This is not the home WiFi password. It is only used to connect to COUNTDOWN-XXXXXX. If changed, keep a note of the new password.</p>
+      <p class="tiny">If the password is forgotten, factory reset may be needed.</p>
+    </div>
+  </div>
+  <div class="panel">
+    <span class="fold">Inside Center</span>
+    <div class="box">
+      <h2>9. Night Light</h2>
+      <p>Reduces brightness during sleeping hours. Start, end and night brightness can be adjusted. The display returns to normal brightness after the night period.</p>
+      <p>For example, choose 23:00 start and 07:00 end to use lower brightness overnight.</p>
+    </div>
+    <div class="box">
+      <h2>10. Digit Colors</h2>
+      <p>Each digit can use a different color. When enabled, every digit uses its selected color. This helps separate time sections on long countdowns.</p>
+      <p>Using different colors for days, hours, minutes and seconds makes the display easier to read from a distance.</p>
+    </div>
+    <div class="box">
+      <h2>11. Finish Effect</h2>
+      <p>When the countdown reaches the target, the selected finish effect can be shown. During the effect, the display keeps 00:00:00.</p>
+      <p>Save a new target to use the countdown again.</p>
+      <p class="tiny">Finish effect behavior may vary depending on settings and firmware version.</p>
+    </div>
+  </div>
+  <div class="panel">
+    <span class="fold">Back Cover</span>
+    <div class="box">
+      <h2>12. Tools</h2>
+      <ul>
+        <li>Open first setup again.</li>
+        <li>Reset factory settings.</li>
+        <li>Update firmware and filesystem.</li>
+        <li>Use LED test to check the LEDs.</li>
+      </ul>
+      <p>Factory reset clears saved WiFi and settings. Use it only if setup is wrong or the device WiFi password is forgotten.</p>
+      <p class="tiny">Before updating, make sure firmware and filesystem files belong to the correct project.</p>
+    </div>
+    <div class="box">
+      <h2>13. Safe Use</h2>
+      <p>Do not disconnect power during updates. If the device WiFi password is forgotten, factory reset may be required. Factory reset clears saved WiFi and settings.</p>
+      <p>Use a 5V power adapter with enough current. More LEDs require more power.</p>
+      <p class="tiny">An insufficient adapter can cause dim LEDs, restarts or unstable operation.</p>
+      <p class="tiny">Keep the device away from water and moisture. Disconnect the adapter before wiring or servicing.</p>
+    </div>
+    <div class="box">
+      <h2>14. Troubleshooting</h2>
+      <p>If the page does not open, make sure your phone is connected to the device WiFi. A brief disconnection while joining home WiFi is normal.</p>
+      <p>If color or target changes are not applied, press the save button again in the related tab.</p>
+    </div>
+    <div class="box">
+      <h2>15. FAQ</h2>
+      <p><b>Is the no internet warning normal?</b> Yes. Device WiFi is only for the setup page.</p>
+      <p><b>What is the default password?</b> 12345678.</p>
+      <p><b>Page does not open?</b> Stay connected to device WiFi and reopen 192.168.4.1.</p>
+    </div>
+  </div>
+</section>
+</body>
+</html>

@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gerisayım Saati 3 Katlanır Kılavuz</title>
+<style>
+@page { size:A4 landscape; margin:0; }
+:root { --ink:#111; --muted:#4d4d4d; --line:#cfcfcf; --soft:#f2f2f2; }
+* { box-sizing:border-box; }
+html,body { margin:0; padding:0; background:#e7e7e7; color:var(--ink); font-family:Arial,Helvetica,sans-serif; line-height:1.18; }
+body { -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+.sheet { width:297mm; height:210mm; display:grid; grid-template-columns:repeat(3,1fr); background:#fff; page-break-after:always; break-after:page; overflow:hidden; }
+.panel { position:relative; padding:6mm; border-right:.25mm dashed #b7b7b7; overflow:hidden; }
+.panel:last-child { border-right:0; }
+.fold { position:absolute; top:3mm; right:4mm; color:#777; font-size:7pt; letter-spacing:.4px; text-transform:uppercase; }
+.cover { border:.55mm solid var(--ink); padding:4mm; margin-bottom:3mm; }
+h1 { margin:0 0 2mm; font-size:24pt; line-height:1.05; }
+h2 { margin:0 0 1.7mm; padding-bottom:.8mm; border-bottom:.25mm solid var(--line); font-size:15pt; line-height:1.12; }
+h3 { margin:1.4mm 0 .7mm; font-size:10.2pt; }
+p,li { font-size:8.25pt; line-height:1.18; }
+p { margin:0 0 1.1mm; }
+ul,ol { margin:0 0 1.6mm 4.2mm; padding:0; }
+li { margin-bottom:.5mm; }
+.muted { color:var(--muted); }
+.box { border:.25mm solid var(--line); padding:2.35mm; margin-bottom:2.35mm; break-inside:avoid; }
+.note { border-left:.9mm solid var(--ink); background:var(--soft); padding:1.7mm 2mm; margin:1.6mm 0; font-size:8pt; }
+.qr-row { display:grid; grid-template-columns:22mm 1fr; gap:2.5mm; align-items:center; margin-top:1.6mm; }
+.qr-row img { width:22mm; height:22mm; border:.25mm solid var(--line); padding:1mm; }
+.tiny { font-size:7.4pt; color:var(--muted); }
+.flow { display:grid; grid-template-columns:1fr; gap:.9mm; margin-top:1.3mm; }
+.flow span { display:block; border:.25mm solid var(--line); background:var(--soft); padding:1mm 1.4mm; font-size:7.8pt; font-weight:bold; }
+.steps { counter-reset:step; list-style:none; margin-left:0; }
+.steps li { position:relative; padding-left:6.4mm; min-height:5.2mm; }
+.steps li::before { counter-increment:step; content:counter(step); position:absolute; left:0; top:0; width:4.5mm; height:4.5mm; border:.25mm solid var(--ink); border-radius:50%; text-align:center; line-height:4.1mm; font-size:7.4pt; font-weight:bold; }
+.table { width:100%; border-collapse:collapse; font-size:7.7pt; }
+.table th,.table td { border:.25mm solid var(--line); padding:1mm; text-align:left; vertical-align:top; }
+.table th { background:var(--soft); }
+@media print { body{background:#fff;} }
+</style>
+</head>
+<body>
+<section class="sheet">
+  <div class="panel">
+    <span class="fold">Ön Kapak</span>
+    <div class="cover">
+      <h1>Gerisayım Saati Kullanım Kılavuzu</h1>
+      <p><b>WiFi ayarlı LED gerisayım saati</b> hedef tarih ve saate kalan süreyi gösterir.</p>
+      <p class="muted">İlk kurulum, hedef tarih, renk profilleri, hane renkleri, WiFi, gece ışığı ve bakım işlemlerini özetler.</p>
+    </div>
+    <div class="box">
+      <h2>Hızlı Erişim</h2>
+      <p><b>Saat WiFi adı:</b> COUNTDOWN-XXXXXX</p>
+      <p><b>Varsayılan şifre:</b> 12345678</p>
+      <p><b>Ayar adresi:</b> 192.168.4.1</p>
+      <p><b>Online kılavuz:</b> ozmenclock.github.io/ozmen-clock-guide</p>
+      <div class="qr-row">
+        <img src="guide-qr.png" alt="Kılavuz QR kodu">
+        <p class="tiny">Video anlatım, detaylı kılavuzlar ve PDF dosyaları için QR kodu okutabilirsiniz.</p>
+      </div>
+      <p class="tiny">Bu QR kod kılavuz sitesini açar. Cihaz WiFi ağına otomatik bağlamaz.</p>
+      <div class="note">Telefon internet yok uyarısı gösterebilir. Bu normaldir; cihaz WiFi ağı ayar sayfasına ulaşmak içindir.</div>
+    </div>
+    <div class="box">
+      <h2>Kimler İçin?</h2>
+      <p>Etkinlik, açılış, kampanya, düğün, spor salonu, mağaza vitrini veya yılbaşı gibi belirli bir tarihe kalan süreyi göstermek için kullanılabilir.</p>
+      <p>Cihaz ayarları telefondan yapılır. Normal kullanımda ek bir uygulama gerekmez.</p>
+      <p class="tiny">Kılavuzdaki ekran isimleri cihaz yazılım sürümüne göre küçük farklılıklar gösterebilir.</p>
+    </div>
+  </div>
+  <div class="panel">
+    <span class="fold">İlk Açılan Bölüm</span>
+    <div class="box">
+      <h2>1. İlk Kurulum</h2>
+      <ol class="steps">
+        <li>Cihazı güç kaynağına bağlayın.</li>
+        <li>COUNTDOWN-XXXXXX WiFi ağına bağlanın.</li>
+        <li>Şifre olarak 12345678 girin.</li>
+        <li>Tarayıcıdan 192.168.4.1 adresini açın.</li>
+        <li>Dil, saat bölgesi ve ev WiFi ağını seçin.</li>
+      </ol>
+      <div class="note">İlk kurulum ekranında cihaz WiFi şifresi isteğe bağlıdır. Boş bırakılırsa varsayılan şifre 12345678 olarak kalır. Ev WiFi ağı ise NTP saat güncellemesi için kullanılır.</div>
+      <p>Kurulum tamamlandığında ayarlar kaydedilir. Sayfa kısa süre cevap vermezse telefon hâlâ cihaz WiFi ağına bağlı mı kontrol edin ve 192.168.4.1 adresini tekrar açın.</p>
+      <p class="tiny">Cihaz WiFi şifresi ev modem şifresi değildir. Müşteri sadece cihazın kendi ağına bağlanırken bu şifreyi kullanır.</p>
+    </div>
+    <div class="box">
+      <h2>Kurulum Akışı</h2>
+      <div class="flow">
+        <span>1. Cihaz WiFi ağına bağlan</span>
+        <span>2. 192.168.4.1 adresini aç</span>
+        <span>3. Dil ve saat bölgesini seç</span>
+        <span>4. Ev WiFi ağını seç ve kaydet</span>
+      </div>
+    </div>
+    <div class="box">
+      <h2>2. Gerisayım</h2>
+      <p>Hedef yıl, ay, gün, saat, dakika ve saniye seçilir. Kaydedilince kalan süre otomatik hesaplanır.</p>
+      <p>Süre dolduğunda ekran 00:00:00 olarak kalır. Yeni hedef kaydedilirse gerisayım tekrar başlar.</p>
+      <p>Uzun süreli kullanımlarda gün/yıl gösterimi tercih edilebilir. Kısa sürelerde saat, dakika ve saniye daha anlaşılır olur.</p>
+      <p class="tiny">Hedef tarihi değiştirdikten sonra yeni değerin ekrana yansıması için kaydet düğmesine basılmalıdır.</p>
+    </div>
+  </div>
+  <div class="panel">
+    <span class="fold">Dış Sağ</span>
+    <div class="box">
+      <h2>3. Sekmeler</h2>
+      <table class="table">
+        <tr><th>Sekme</th><th>Görev</th></tr>
+        <tr><td>Gerisayım</td><td>Hedef tarih ve zaman.</td></tr>
+        <tr><td>Renk</td><td>Renk, parlaklık, profiller, hane renkleri.</td></tr>
+        <tr><td>WiFi</td><td>Ev ağı ve NTP.</td></tr>
+        <tr><td>Gece Işığı</td><td>Düşük gece parlaklığı.</td></tr>
+        <tr><td>Araçlar</td><td>Kurulum, reset, güncelleme, test.</td></tr>
+      </table>
+    </div>
+    <div class="box">
+      <h2>4. Renk</h2>
+      <p>Tek renk, hazır renkler, efektler ve hane renkleri seçilebilir. Hane renkleri açıkken her rakam kendi rengini kullanır. Nokta rengi ayrı ayarlanır.</p>
+      <p>Parlaklık gündüz yüksek, gece düşük seçilebilir. Çok yüksek parlaklık güç tüketimini artırır.</p>
+    </div>
+    <div class="box">
+      <h2>5. Renk Profilleri</h2>
+      <p>Renk profilleri ekrana hareket katar. Solid sabit renktir. Rainbow, Aurora, Lava, Prism ve Fade gibi profiller renk geçişleri oluşturur.</p>
+      <p>Efekt hızı düşük seçilirse geçişler yavaş ve sakin olur. Yüksek hızda renkler daha hareketli görünür.</p>
+      <p class="tiny">Göz yormayan kullanım için düşük hız ve orta parlaklık çoğu ortamda daha dengeli görünür.</p>
+    </div>
+  </div>
+</section>
+<section class="sheet">
+  <div class="panel">
+    <span class="fold">İç Sol</span>
+    <div class="box">
+      <h2>6. WiFi ve NTP</h2>
+      <ul>
+        <li>Ev WiFi ağı seçilir ve şifre girilir.</li>
+        <li>NTP ile saat otomatik güncellenir.</li>
+        <li>Bağlantı sırasında kısa süreli kopma normaldir.</li>
+        <li>Bağlantıdan sonra IP ve sinyal bilgisi WiFi ekranında görülebilir.</li>
+      </ul>
+      <p>WiFi bağlantısı yoksa cihaz yine gerisayım göstermeye devam eder. RTC saat modülü sayesinde saat bilgisi korunur. İnternet geldiğinde NTP ile tekrar güncellenebilir.</p>
+      <p class="tiny">Modem uzaksa veya sinyal zayıfsa bağlantı daha geç kurulabilir. Cihazın saat göstermesi için sürekli internet şart değildir.</p>
+    </div>
+    <div class="box">
+      <h2>7. Saat Bölgesi</h2>
+      <p>İlk kurulumda bölge seçilir. Bölge değiştirilecekse Araçlar bölümünden ilk kurulum tekrar açılır. Bölge seçimi yerel saatin doğru hesaplanmasını sağlar.</p>
+      <p>Farklı ülkeye gönderilen cihazlarda müşteri kendi ülkesine en yakın bölgeyi seçmelidir.</p>
+    </div>
+    <div class="box">
+      <h2>8. Cihaz WiFi Şifresi</h2>
+      <p>Bu şifre ev WiFi şifresi değildir. Sadece COUNTDOWN-XXXXXX ağına bağlanmak için kullanılır. Değiştirildiyse yeni şifre not edilmelidir.</p>
+      <p class="tiny">Şifre unutulursa fabrika ayarına dönmek gerekebilir.</p>
+    </div>
+  </div>
+  <div class="panel">
+    <span class="fold">İç Orta</span>
+    <div class="box">
+      <h2>9. Gece Işığı</h2>
+      <p>Uyku saatlerinde parlaklığı düşürür. Başlangıç, bitiş ve gece parlaklığı ayarlanabilir. Süre bitince ekran normal parlaklığına döner.</p>
+      <p>Örneğin 23:00 başlangıç ve 07:00 bitiş seçilirse gece boyunca daha düşük parlaklık kullanılır.</p>
+    </div>
+    <div class="box">
+      <h2>10. Hane Renkleri</h2>
+      <p>Her hane için farklı renk seçilebilir. Bu özellik açıkken her rakam kendi rengini kullanır. Uzun gerisayım ekranlarında bölümleri ayırmayı kolaylaştırır.</p>
+      <p>Gün, saat, dakika ve saniye bölümleri farklı renk yapılırsa ekran uzaktan daha kolay okunur.</p>
+    </div>
+    <div class="box">
+      <h2>11. Bitiş Efekti</h2>
+      <p>Gerisayım tamamlandığında cihaz seçilen bitiş efektini gösterebilir. Efekt sırasında ekran 00:00:00 değerini korur.</p>
+      <p>Etkinlik başladıktan sonra yeni hedef girilirse gerisayım tekrar kullanılabilir.</p>
+      <p class="tiny">Bitiş efekti gösterimi cihaz ayarlarına ve seçilen yazılım sürümüne göre değişebilir.</p>
+    </div>
+  </div>
+  <div class="panel">
+    <span class="fold">Arka Kapak</span>
+    <div class="box">
+      <h2>12. Araçlar</h2>
+      <ul>
+        <li>İlk kurulumu tekrar açar.</li>
+        <li>Fabrika ayarlarına döndürür.</li>
+        <li>Firmware ve filesystem güncellemesi yapar.</li>
+        <li>LED testi ile LEDleri kontrol edebilirsiniz.</li>
+      </ul>
+      <p>Fabrika ayarlarına dönme işlemi kayıtlı WiFi ve ayarları siler. Sadece kurulum yanlışsa veya şifre unutulduysa kullanılmalıdır.</p>
+      <p class="tiny">Güncelleme yapılacaksa firmware ve filesystem dosyalarının doğru projeye ait olduğundan emin olun.</p>
+    </div>
+    <div class="box">
+      <h2>13. Güvenli Kullanım</h2>
+      <p>Güncelleme sırasında güç kesmeyin. WiFi şifresi unutulursa fabrika ayarlarına dönüş gerekebilir. Fabrika ayarı kayıtlı WiFi ve ayarları temizler.</p>
+      <p>Cihazı 5V ve yeterli akım sağlayan adaptörle kullanın. LED sayısı arttıkça güç ihtiyacı da artar.</p>
+      <p class="tiny">Yetersiz adaptör parlaklık düşmesine, resetlenmeye veya kararsız çalışmaya neden olabilir.</p>
+      <p class="tiny">Cihazı nemden ve sudan koruyun. Bağlantı yapmadan önce adaptör fişini çıkarın.</p>
+    </div>
+    <div class="box">
+      <h2>14. Sorun Giderme</h2>
+      <p>Sayfa açılmıyorsa önce cihaz WiFi ağına bağlı olduğunuzdan emin olun. Ev WiFi bağlantısı sırasında kısa süreli kopma normaldir.</p>
+      <p>Renk veya hedef değişikliği uygulanmadıysa ilgili sekmede kaydet düğmesine tekrar basın.</p>
+    </div>
+    <div class="box">
+      <h2>15. Sık Sorulanlar</h2>
+      <p><b>İnternet yok uyarısı normal mi?</b> Evet. Cihaz WiFi ağı sadece ayar sayfası içindir.</p>
+      <p><b>Varsayılan şifre nedir?</b> 12345678.</p>
+      <p><b>Sayfa açılmazsa?</b> Cihaz WiFi ağına bağlı kalıp 192.168.4.1 adresini tekrar açın.</p>
+    </div>
+  </div>
+</section>
+</body>
+</html>

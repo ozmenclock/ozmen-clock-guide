@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Countdown Clock User Guide</title>
+<style>
+@page { size: A4 landscape; margin: 8mm; }
+:root { --ink:#111; --muted:#4d4d4d; --line:#cfcfcf; --soft:#f2f2f2; }
+* { box-sizing:border-box; }
+body { margin:0; background:#e7e7e7; color:var(--ink); font-family:Arial,Helvetica,sans-serif; line-height:1.24; }
+.page { width:297mm; min-height:210mm; margin:16px auto; padding:9mm; background:#fff; box-shadow:0 4px 18px rgba(0,0,0,.16); page-break-after:always; overflow:hidden; }
+.cover { border:2px solid var(--ink); padding:10px; margin-bottom:8px; }
+h1 { margin:0 0 5px; font-size:25px; }
+h2 { margin:9px 0 5px; padding-bottom:3px; border-bottom:1px solid var(--line); font-size:14px; }
+h3 { margin:7px 0 3px; font-size:12px; }
+p { margin:3px 0 5px; }
+ol,ul { margin:3px 0 5px 16px; padding:0; }
+li { margin:2px 0; }
+.muted { color:var(--muted); }
+.columns { display:grid; grid-template-columns:repeat(3,1fr); gap:8px; align-items:start; }
+.box { border:1px solid var(--line); padding:7px; background:#fff; break-inside:avoid; margin-bottom:7px; font-size:11px; }
+.note { border-left:4px solid var(--ink); background:var(--soft); padding:6px 8px; margin:5px 0; break-inside:avoid; font-size:11px; }
+.table { width:100%; border-collapse:collapse; margin-top:4px; font-size:10.5px; }
+.table th,.table td { border:1px solid var(--line); padding:4px; text-align:left; vertical-align:top; }
+.table th { background:var(--soft); }
+.steps { counter-reset:step; list-style:none; margin-left:0; }
+.steps li { position:relative; padding-left:23px; min-height:19px; }
+.steps li::before { counter-increment:step; content:counter(step); position:absolute; left:0; top:0; width:16px; height:16px; border:1px solid var(--ink); border-radius:50%; text-align:center; line-height:15px; font-size:10px; font-weight:bold; }
+@media print { body{background:#fff;} .page{margin:0; box-shadow:none;} }
+</style>
+</head>
+<body>
+<main class="page">
+  <section class="cover">
+    <h1>Countdown Clock User Guide</h1>
+    <p><b>WiFi configurable LED countdown clock</b> - shows the remaining time to a target date and time, with color settings, per-digit colors, night light and WiFi time sync.</p>
+    <p class="muted">This guide summarizes first setup, daily use, main tabs and troubleshooting steps.</p>
+  </section>
+  <section class="columns">
+    <div class="box">
+      <h2>1. First Setup</h2>
+      <ol class="steps">
+        <li>Connect the device to a 5V power supply.</li>
+        <li>Connect your phone or computer to <b>COUNTDOWN-XXXXXX</b>.</li>
+        <li>Default device WiFi password: <b>12345678</b>.</li>
+        <li>Open <b>192.168.4.1</b> in your browser.</li>
+        <li>Select language, time zone and home WiFi, then save.</li>
+      </ol>
+      <h3>First setup screen</h3>
+      <p>The first setup screen opens automatically if the device has not been configured before. Choose the display language first, then select your country or the nearest time zone region. The selected region is used to convert internet time to the correct local time.</p>
+      <p>The device WiFi password field is optional. Leave it empty if you do not want to change it; the device WiFi password remains <b>12345678</b>. In the home WiFi section, select the modem network used for NTP time updates.</p>
+      <div class="note">Your phone may show a no internet warning. This is normal; the device WiFi is only used for setup. A brief disconnection may happen while joining home WiFi.</div>
+    </div>
+    <div class="box">
+      <h2>2. Main Tabs</h2>
+      <table class="table">
+        <tr><th>Tab</th><th>Purpose</th></tr>
+        <tr><td>Countdown</td><td>Target date and time settings.</td></tr>
+        <tr><td>Color</td><td>Color, brightness, per-digit colors and effects.</td></tr>
+        <tr><td>WiFi</td><td>Home WiFi connection and NTP time sync.</td></tr>
+        <tr><td>Night Light</td><td>Lower brightness during sleeping hours.</td></tr>
+        <tr><td>Tools</td><td>First setup, reset, update and LED test.</td></tr>
+      </table>
+    </div>
+    <div class="box">
+      <h2>3. Countdown Setting</h2>
+      <p>The Countdown tab is used to set the target date and time. Year, month, day, hour, minute and second values create the final target. After pressing save, the device calculates the remaining time automatically.</p>
+      <ul>
+        <li>Day or year display can be used for long countdowns.</li>
+        <li>When the target is reached, the display stays at <b>00:00:00</b>.</li>
+        <li>If the target changes, press save again.</li>
+      </ul>
+      <p>If a past target time is selected, the countdown is treated as completed. Saving a new future target returns the device to normal countdown mode.</p>
+    </div>
+    <div class="box">
+      <h2>4. Color Settings</h2>
+      <p>The Color tab controls the main display color and brightness. You can choose a preset color or use the custom color selector for a specific color.</p>
+      <p>Color profiles add animated or smooth transition effects. Solid is fixed color; Rainbow, Aurora, Lava, Prism and Fade create color transitions. Lower effect speed looks calmer, while higher speed looks more active.</p>
+      <p>Per-digit colors allow each digit to use its own selected color. Dot color is adjusted separately.</p>
+      <p>High brightness is easier to see during the day, but uses more power. Lower brightness is usually more comfortable at night or indoors.</p>
+    </div>
+    <div class="box">
+      <h2>5. WiFi and Time</h2>
+      <p>The WiFi tab connects the device to the home or workplace modem. When internet is available, the device can update time using NTP. The selected time zone region converts internet time to local time.</p>
+      <p>The WiFi status area can show the connected network name, local IP address, signal level and uptime. If the device is not connected, the saved network may still be shown, but IP and signal values can be empty.</p>
+      <div class="note">After connecting, the page may stop responding briefly. Wait a few seconds and reopen 192.168.4.1 if needed. This happens while the device switches to the modem network.</div>
+    </div>
+    <div class="box">
+      <h2>6. Night Light</h2>
+      <p>The Night Light tab lowers brightness automatically during the selected time range. For example, it can use lower brightness between 23:00 and 07:00.</p>
+      <p>This is useful in bedrooms, shops or dark rooms. When the night period ends, the display returns to normal brightness.</p>
+    </div>
+    <div class="box">
+      <h2>7. Tools</h2>
+      <ul>
+        <li>Open first setup again.</li>
+        <li>Reset to factory settings.</li>
+        <li>Update firmware and filesystem.</li>
+        <li>Use LED test to check the LEDs.</li>
+      </ul>
+      <p>The Tools section is mainly for maintenance and service. Factory reset clears saved WiFi and settings. Do not disconnect power during updates.</p>
+    </div>
+  </section>
+</main>
+</body>
+</html>
