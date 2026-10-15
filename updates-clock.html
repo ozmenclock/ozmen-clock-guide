@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dijital Saat Güncellemeleri / Digital Clock Updates</title>
+  <style>
+    :root{color-scheme:dark;--bg:#0b0f14;--panel:#151b22;--line:#27313c;--text:#f3f7fb;--muted:#a5b9c9;--green:#21d07a;--blue:#69b7ff}
+    *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:16px Arial,Helvetica,sans-serif;line-height:1.5;letter-spacing:0}
+    a{color:var(--blue)}.wrap{max-width:1040px;margin:auto;padding:24px 18px 40px}header{border-bottom:1px solid var(--line);padding-bottom:22px}h1{font-size:28px;line-height:1.25;margin:18px 0 8px}h2{font-size:21px;margin:0 0 10px}h3{font-size:18px;margin:0 0 6px}p{margin:0 0 12px;color:var(--muted)}.version{display:flex;flex-wrap:wrap;gap:10px 22px;margin:16px 0 0;color:var(--muted)}.version strong{color:var(--green)}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}.section{margin-top:24px}.download{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:20px;min-width:0}.tag{color:var(--green);font-size:13px;font-weight:bold;margin-bottom:10px}.button{display:flex;justify-content:center;align-items:center;min-height:50px;margin-top:16px;padding:12px;border:1px solid var(--green);background:#123c31;color:#dffff0;border-radius:6px;text-decoration:none;font-weight:bold;text-align:center}.button:hover{background:#1c5241}.button:focus-visible,a:focus-visible{outline:2px solid var(--blue);outline-offset:4px}code{display:block;color:#c4e1f8;overflow-wrap:anywhere;font-size:13px}.language{border-top:3px solid var(--green);padding-top:16px;min-width:0}.language.en{border-color:var(--blue)}.label{color:var(--green);font-weight:bold;font-size:13px;margin-bottom:10px}.en .label{color:var(--blue)}ol,ul{padding-left:22px;margin:10px 0 18px}li+li{margin-top:8px}.notice{border-left:3px solid #ffd166;padding:10px 14px;background:#29251a;color:#ffe4a1;margin:14px 0;line-height:1.5}.small{font-size:14px}.back{text-decoration:none}.filename{margin-top:12px}.footer{border-top:1px solid var(--line);margin-top:30px;padding-top:16px;font-size:14px}
+    @media(max-width:700px){.grid{grid-template-columns:1fr}.wrap{padding:18px 14px 30px}h1{font-size:24px}.download{padding:16px}}
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <header>
+      <a class="back" href="updates.html">← Yazılım Güncellemeleri / Software Updates</a>
+      <h1>Dijital Saat<br><span lang="en">Digital Clock</span></h1>
+      <p>Dijital duvar saati için güncel dosyalar.<br><span lang="en">Current update files for the digital wall clock.</span></p>
+      <div class="version"><span>Sürüm / Version: <strong>V1.5.3</strong></span><span>Yayın / Published: <time datetime="2026-10-15">15.10.2026</time></span></div>
+    </header>
+    <section class="grid section" aria-label="Downloads / İndirmeler">
+      <article class="download">
+        <div class="tag">FIRMWARE · V1.5.3</div>
+        <h2>Saat Yazılımı / Clock Firmware</h2>
+        <p>Saatin çalışma yazılımı.<br><span lang="en">The software that runs the clock.</span></p>
+        <code class="filename">DigitalClock-Firmware-V1.5.3.bin</code>
+        <a class="button" download="DigitalClock-Firmware-V1.5.3.bin" href="downloads/V1.5.3/DigitalClock-Firmware-V1.5.3.bin">Firmware İndir / Download Firmware</a>
+      </article>
+      <article class="download">
+        <div class="tag">FILESYSTEM · V1.5.3</div>
+        <h2>Web Arayüzü / Web Interface</h2>
+        <p>Tarayıcıdan açılan ayar sayfaları.<br><span lang="en">The settings pages you open in your browser.</span></p>
+        <code class="filename">DigitalClock-FileSystem-V1.5.3.bin</code>
+        <a class="button" download="DigitalClock-FileSystem-V1.5.3.bin" href="downloads/V1.5.3/DigitalClock-FileSystem-V1.5.3.bin">Filesystem İndir / Download Filesystem</a>
+      </article>
+    </section>
+    <section class="grid section" aria-label="Instructions / Talimatlar">
+      <div class="language" lang="tr">
+        <div class="label">TÜRKÇE</div>
+        <h2>Uyumluluk</h2>
+        <p>Bu dosyalar, 4 MB flash belleğe ve 1 MB filesystem düzenine sahip ESP8266 dijital duvar saatleri içindir. Gerisayım saati için kullanmayın.</p>
+        <p>Cihaz modelinizden emin değilseniz güncellemeden önce satıcınızla iletişime geçin. Eski güncelleme sistemi kullanan saatlerde ilk geçiş için satıcınızın talimatını izleyin.</p>
+        <h2>Yükleme Sırası</h2>
+        <ol>
+          <li>Yukarıdaki iki dosyayı telefonunuza veya bilgisayarınıza indirin.</li>
+          <li>Saatin <strong>DIGITAL-CLOCK-XXXXXX</strong> WiFi ağına bağlanın.</li>
+          <li>Tarayıcıdan <a href="http://192.168.4.1/update">192.168.4.1/update</a> adresini açın. Araçlar menüsündeki güncelleme bağlantısını da kullanabilirsiniz.</li>
+          <li>Firmware alanından <strong>DigitalClock-Firmware-V1.5.3.bin</strong> dosyasını yükleyin. İşlemin tamamlanmasını ve saatin yeniden başlamasını bekleyin.</li>
+          <li>WiFi bağlantısı koparsa saatin ağına yeniden bağlanıp güncelleme sayfasını tekrar açın.</li>
+          <li>Filesystem alanından <strong>DigitalClock-FileSystem-V1.5.3.bin</strong> dosyasını yükleyin. Saatin yeniden başlamasını bekleyin.</li>
+          <li>Ayar sayfasını yenileyin. Saat normal çalıştığında güncelleme tamamlanmıştır.</li>
+        </ol>
+        <div class="notice">Yükleme sırasında elektriği kesmeyin, dosya aktarımı bitmeden sayfayı kapatmayın. Yeniden başlatma sırasında kısa süreli WiFi kesintisi normaldir.</div>
+        <p><a href="firmware-update-video-tr.html">Güncelleme video kılavuzu</a></p>
+      </div>
+      <div class="language en" lang="en">
+        <div class="label">ENGLISH</div>
+        <h2>Compatibility</h2>
+        <p>These files are for ESP8266 digital wall clocks with 4 MB flash and a 1 MB filesystem layout. Do not use them for the countdown clock.</p>
+        <p>If you are unsure about your device model, contact your seller before updating. For clocks using the older update system, follow your seller's instructions for the initial upgrade.</p>
+        <h2>Upload Order</h2>
+        <ol>
+          <li>Download both files above to your phone or computer.</li>
+          <li>Connect to the clock's <strong>DIGITAL-CLOCK-XXXXXX</strong> WiFi network.</li>
+          <li>Open <a href="http://192.168.4.1/update">192.168.4.1/update</a> in your browser. You can also use the update link in the Tools menu.</li>
+          <li>In the Firmware section, upload <strong>DigitalClock-Firmware-V1.5.3.bin</strong>. Wait for the upload to complete and the clock to restart.</li>
+          <li>If WiFi disconnects, reconnect to the clock's network and reopen the update page.</li>
+          <li>In the Filesystem section, upload <strong>DigitalClock-FileSystem-V1.5.3.bin</strong>. Wait for the clock to restart.</li>
+          <li>Refresh the settings page. The update is complete when the clock works normally.</li>
+        </ol>
+        <div class="notice">Keep the power connected during uploads and leave the page open until the file transfer finishes. A brief WiFi disconnection during restart is normal.</div>
+        <p><a href="firmware-update-video-en.html">Update video guide</a></p>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
