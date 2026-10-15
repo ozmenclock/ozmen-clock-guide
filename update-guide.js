@@ -1,29 +1,159 @@
 const language = document.documentElement.lang === "tr" ? "tr" : "en";
 const content = {
-  tr: {
-    play: "Oynat", pause: "Duraklat", step: "Adım",
-    alt: "Saatin gerçek iki dilli güncelleme ekranı",
-    scenes: [
-      ["İki dosyayı indirin", "Güncelleme dosyaları sayfasından DigitalClock-Firmware-V1.5.3.bin ve DigitalClock-FileSystem-V1.5.3.bin dosyalarını indirin.\n\nÖnce firmware, ardından filesystem yüklenir.", "İndirme için internet bağlantınızı kullanın; dosyaları indirdikten sonra saatin WiFi ağına geçin.", "update-page.jpg"],
-      ["Saatin güncelleme sayfasını açın", "DIGITAL-CLOCK ile başlayan WiFi ağına bağlanın. Şifre değiştirilmediyse 12345678 kullanın.\n\nTarayıcıya 192.168.4.1/update yazın. Resimdeki iki dilli güncelleme sayfası açılır.", "Saat ağına bağlıyken “İnternet yok” uyarısı normaldir. Bağlantıda kalın.", "update-page.jpg"],
-      ["Firmware dosyasını seçin", "Soldaki Firmware bölümünde Dosya Seç düğmesine basın. DigitalClock-Firmware-V1.5.3.bin dosyasını seçin.\n\nSeçtiğiniz dosyanın adı düğmenin yanında görünür.", "Bu görüntü, firmware dosyası gerçek cihaz sayfasında seçildikten sonra alınmıştır.", "firmware-selected.jpg"],
-      ["Firmware'i yükleyin", "Firmware'i Yükle / Upload Firmware düğmesine basın. İlerleme çubuğunu ve tamamlanma mesajını bekleyin.\n\nSaat otomatik olarak yeniden başlar.", "Yalnızca dosya seçmek yüklemeyi başlatmaz; yükleme düğmesine de basmanız gerekir.", "firmware-selected.jpg"],
-      ["WiFi ağına yeniden bağlanın", "Yeniden başlatma sırasında WiFi kısa süreliğine kopabilir. Gerekirse saatin ağına tekrar bağlanın.\n\n192.168.4.1/update sayfasını yeniden açın.", "Firmware yüklemesi bittikten sonra filesystem adımına geçin.", "update-page.jpg"],
-      ["Filesystem dosyasını yükleyin", "Sağdaki Filesystem bölümünde Dosya Seç düğmesine basın. DigitalClock-FileSystem-V1.5.3.bin dosyasını seçin.\n\nFilesystem'i Yükle / Upload Filesystem düğmesine basıp işlemin tamamlanmasını bekleyin.", "Bu görüntü, filesystem dosyası gerçek cihaz sayfasında seçildikten sonra alınmıştır.", "filesystem-selected.jpg"],
-      ["Normal ayar sayfasını açın", "Saat yeniden başladıktan sonra gerekirse WiFi ağına tekrar bağlanın. 192.168.4.1 adresini açıp ayar sayfasını yenileyin.\n\nSaat normal çalıştığında güncelleme tamamlanmıştır.", "Sayfa açılmazsa saat ağına bağlı olduğunuzu kontrol edip tekrar deneyin.", "update-page.jpg"]
+  "tr": {
+    "play": "Oynat",
+    "pause": "Duraklat",
+    "step": "Adım",
+    "alt": "Gerçek saat güncelleme ekranı",
+    "scenes": [
+      [
+        "Güncelleme dosyalarını indirin",
+        "Güncelleme bölümünden saatinize ait iki .bin dosyasını indirin. Birinin adında Firmware, diğerinin adında FileSystem bulunur.",
+        "Örnek dosya adları aşağıda gösterilir. İndirilen güncel dosyaların adlarını değiştirmeyin.",
+        "update-controls.jpg",
+        "files"
+      ],
+      [
+        "Saatin WiFi ağına bağlanın",
+        "WiFi ayarlarından DIGITAL-CLOCK ile başlayan ağa bağlanın. Şifre değiştirilmediyse 12345678 kullanın.",
+        "“İnternet yok” uyarısı normaldir. Saat ağına bağlı kalın.",
+        "update-controls.jpg",
+        "wifi"
+      ],
+      [
+        "Güncelleme sayfasını açın",
+        "Tarayıcıya 192.168.4.1/update yazın. Firmware ve Filesystem bölümleri görünür.",
+        "Araçlar menüsündeki güncelleme bağlantısını da kullanabilirsiniz.",
+        "update-controls.jpg",
+        "overview"
+      ],
+      [
+        "Firmware dosyasını seçin",
+        "Firmware bölümündeki Dosya Seç düğmesine basın. İndirdiğiniz, adında Firmware geçen .bin dosyasını seçin.",
+        "İşaretli alan dosya seçme düğmesidir.",
+        "firmware-focus.jpg",
+        "choose"
+      ],
+      [
+        "Firmware yüklemesini başlatın",
+        "Seçilen dosyanın adı göründükten sonra Firmware'i Yükle / Upload Firmware düğmesine basın.",
+        "Dosya seçmek tek başına yüklemeyi başlatmaz. Şimdi işaretli yükleme düğmesine basın.",
+        "firmware-focus.jpg",
+        "upload"
+      ],
+      [
+        "Firmware yüklemesinin bitmesini bekleyin",
+        "İlerleme çubuğu ve başarılı yükleme mesajını bekleyin. Saat yeniden başlar. Bağlantı koparsa saat WiFi ağına tekrar bağlanın.",
+        "İşlem bitmeden elektriği kesmeyin. Ardından 192.168.4.1/update sayfasını yeniden açın.",
+        "firmware-focus.jpg",
+        "wait"
+      ],
+      [
+        "Filesystem dosyasını seçin",
+        "Yeniden açtığınız sayfada Filesystem bölümünün Dosya Seç düğmesine basın. Adında FileSystem geçen .bin dosyasını seçin.",
+        "Firmware dosyasını bu bölüme seçmeyin.",
+        "filesystem-focus.jpg",
+        "choose"
+      ],
+      [
+        "Filesystem yüklemesini başlatın",
+        "Seçilen dosyanın adı göründükten sonra Filesystem'i Yükle / Upload Filesystem düğmesine basın.",
+        "İşaretli düğme web arayüzü dosyasının yüklenmesini başlatır.",
+        "filesystem-focus.jpg",
+        "upload"
+      ],
+      [
+        "Filesystem yüklemesinin bitmesini bekleyin",
+        "İlerleme çubuğu ve başarılı yükleme mesajını bekleyin. Saat bir kez daha yeniden başlar.",
+        "Yeniden başlatma sırasında kısa süreli WiFi kesintisi normaldir.",
+        "filesystem-focus.jpg",
+        "wait"
+      ],
+      [
+        "Normal ayar sayfasını açın",
+        "Gerekirse saat WiFi ağına yeniden bağlanın ve 192.168.4.1 adresini açın. Ayar sayfasını yenileyin.",
+        "Saat normal çalıştığında güncelleme tamamlanmıştır.",
+        "update-controls.jpg",
+        "overview"
+      ]
     ]
   },
-  en: {
-    play: "Play", pause: "Pause", step: "Step",
-    alt: "The clock's actual bilingual update screen",
-    scenes: [
-      ["Download both files", "Download DigitalClock-Firmware-V1.5.3.bin and DigitalClock-FileSystem-V1.5.3.bin from the update downloads page.\n\nUpload firmware first, then filesystem.", "Use your internet connection to download the files, then switch to the clock's WiFi network.", "update-page.jpg"],
-      ["Open the clock's update page", "Connect to the WiFi network beginning with DIGITAL-CLOCK. Use 12345678 if the password has not been changed.\n\nOpen 192.168.4.1/update in your browser. The bilingual page shown here will appear.", "A “No internet” warning is normal while connected to the clock. Stay connected.", "update-page.jpg"],
-      ["Select the firmware file", "In the Firmware section on the left, press Choose File. Select DigitalClock-Firmware-V1.5.3.bin.\n\nThe selected file name appears next to the file picker.", "This image was captured after selecting the firmware file on the actual device page.", "firmware-selected.jpg"],
-      ["Upload firmware", "Press Firmware'i Yükle / Upload Firmware. Wait for the progress bar and completion message.\n\nThe clock will restart automatically.", "Selecting the file does not start the upload; you also need to press the upload button.", "firmware-selected.jpg"],
-      ["Reconnect to the clock WiFi", "WiFi may disconnect briefly while the clock restarts. Reconnect to the clock's network if needed.\n\nReopen 192.168.4.1/update.", "Continue with filesystem only after the firmware upload has finished.", "update-page.jpg"],
-      ["Upload the filesystem file", "In the Filesystem section on the right, press Choose File. Select DigitalClock-FileSystem-V1.5.3.bin.\n\nPress Filesystem'i Yükle / Upload Filesystem and wait for the upload to finish.", "This image was captured after selecting the filesystem file on the actual device page.", "filesystem-selected.jpg"],
-      ["Open the normal settings page", "After the clock restarts, reconnect to its WiFi network if needed. Open 192.168.4.1 and refresh the settings page.\n\nThe update is complete when the clock works normally.", "If the page does not open, check that you are connected to the clock's network and try again.", "update-page.jpg"]
+  "en": {
+    "play": "Play",
+    "pause": "Pause",
+    "step": "Step",
+    "alt": "Actual clock update screen",
+    "scenes": [
+      [
+        "Download the update files",
+        "Download the two .bin files for your clock from the update section. One file name contains Firmware, the other contains FileSystem.",
+        "Example file names are shown below. Keep the names of the current files you download.",
+        "update-controls.jpg",
+        "files"
+      ],
+      [
+        "Connect to the clock WiFi",
+        "In your WiFi settings, connect to the network beginning with DIGITAL-CLOCK. Use 12345678 if the password has not been changed.",
+        "A “No internet” warning is normal. Stay connected to the clock.",
+        "update-controls.jpg",
+        "wifi"
+      ],
+      [
+        "Open the update page",
+        "Enter 192.168.4.1/update in your browser. The Firmware and Filesystem sections appear.",
+        "You can also open the update link from the Tools menu.",
+        "update-controls.jpg",
+        "overview"
+      ],
+      [
+        "Select the firmware file",
+        "Press Choose File in the Firmware section. Select the downloaded .bin file whose name contains Firmware.",
+        "The highlighted area is the file picker.",
+        "firmware-focus.jpg",
+        "choose"
+      ],
+      [
+        "Start the firmware upload",
+        "When the selected file name appears, press Firmware'i Yükle / Upload Firmware.",
+        "Selecting a file does not start the upload. Now press the highlighted upload button.",
+        "firmware-focus.jpg",
+        "upload"
+      ],
+      [
+        "Wait for firmware to finish",
+        "Wait for the progress bar and successful upload message. The clock restarts. If disconnected, reconnect to the clock WiFi.",
+        "Keep the power connected until completion, then reopen 192.168.4.1/update.",
+        "firmware-focus.jpg",
+        "wait"
+      ],
+      [
+        "Select the filesystem file",
+        "On the reopened page, press Choose File in the Filesystem section. Select the .bin file whose name contains FileSystem.",
+        "Do not select the firmware file in this section.",
+        "filesystem-focus.jpg",
+        "choose"
+      ],
+      [
+        "Start the filesystem upload",
+        "When the selected file name appears, press Filesystem'i Yükle / Upload Filesystem.",
+        "The highlighted button starts uploading the web interface file.",
+        "filesystem-focus.jpg",
+        "upload"
+      ],
+      [
+        "Wait for filesystem to finish",
+        "Wait for the progress bar and successful upload message. The clock restarts again.",
+        "A brief WiFi disconnection during restart is normal.",
+        "filesystem-focus.jpg",
+        "wait"
+      ],
+      [
+        "Open the normal settings page",
+        "Reconnect to the clock WiFi if needed and open 192.168.4.1. Refresh the settings page.",
+        "The update is complete when the clock works normally.",
+        "update-controls.jpg",
+        "overview"
+      ]
     ]
   }
 };
@@ -39,9 +169,17 @@ function render() {
   document.getElementById("copy").textContent = scene[1];
   document.getElementById("note").textContent = scene[2];
   image.src = "images/update/" + scene[3];
+  image.width = scene[4] === "overview" ? 960 : 472;
+  image.height = 413;
+  const frame = document.getElementById("shot");
+  frame.className = "shot " + scene[4];
+  document.getElementById("example").hidden = scene[4] !== "files" && scene[4] !== "wifi";
+  document.getElementById("filesExample").hidden = scene[4] !== "files";
+  document.getElementById("wifiExample").hidden = scene[4] !== "wifi";
   image.alt = locale.alt;
   document.getElementById("imageLink").href = image.src;
   document.getElementById("enlarge").href = image.src;
+  document.getElementById("progress").max = locale.scenes.length;
   document.getElementById("progress").value = index + 1;
   document.querySelectorAll(".step-list button").forEach((button, i) => {
     button.classList.toggle("active", i === index);
