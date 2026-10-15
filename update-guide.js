@@ -70,10 +70,10 @@ const content = {
         "successFilesystem"
       ],
       [
-        "Normal ayar sayfasını açın",
+        "Ana ekranı açın ve sürümleri kontrol edin",
         "Gerekirse saat WiFi ağına yeniden bağlanın ve 192.168.4.1 adresini açın. Ayar sayfasını yenileyin.",
-        "Saat normal çalıştığında güncelleme tamamlanmıştır.",
-        "home-tr.jpg",
+        "Mevcut firmware ve web arayüzü sürümlerini üstteki WiFi bilgisinin yanında görebilirsiniz. Telefon veya dar ekranda sürümler WiFi satırının altında görünür.",
+        "home-current-tr.jpg",
         "home"
       ]
     ]
@@ -148,10 +148,10 @@ const content = {
         "successFilesystem"
       ],
       [
-        "Open the normal settings page",
+        "Open the home page and check the versions",
         "Reconnect to the clock WiFi if needed and open 192.168.4.1. Refresh the settings page.",
-        "The update is complete when the clock works normally.",
-        "home-en.jpg",
+        "Find the installed firmware and web interface versions beside the WiFi information at the top. On a phone or narrow screen, the versions appear below the WiFi line.",
+        "home-current-en.jpg",
         "home"
       ]
     ]
