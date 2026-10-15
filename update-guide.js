@@ -42,11 +42,11 @@ const content = {
         "upload"
       ],
       [
-        "Firmware yüklemesinin bitmesini bekleyin",
-        "İlerleme çubuğu ve başarılı yükleme mesajını bekleyin. Saat yeniden başlar. Bağlantı koparsa saat WiFi ağına tekrar bağlanın.",
+        "Firmware başarıyla yüklendi",
+        "Yükleme tamamlandığında bu başarı ekranı görünür. Saat otomatik olarak yeniden başlar. Bağlantı koparsa saat WiFi ağına tekrar bağlanın.",
         "İşlem bitmeden elektriği kesmeyin. Ardından 192.168.4.1/update sayfasını yeniden açın.",
         "firmware-focus.jpg",
-        "wait"
+        "successFirmware"
       ],
       [
         "Filesystem dosyasını seçin",
@@ -63,11 +63,11 @@ const content = {
         "upload"
       ],
       [
-        "Filesystem yüklemesinin bitmesini bekleyin",
-        "İlerleme çubuğu ve başarılı yükleme mesajını bekleyin. Saat bir kez daha yeniden başlar.",
+        "Filesystem başarıyla yüklendi",
+        "Yükleme tamamlandığında Filesystem başarı mesajı görünür. Saat bir kez daha otomatik olarak yeniden başlar.",
         "Yeniden başlatma sırasında kısa süreli WiFi kesintisi normaldir.",
         "filesystem-focus.jpg",
-        "wait"
+        "successFilesystem"
       ],
       [
         "Normal ayar sayfasını açın",
@@ -120,11 +120,11 @@ const content = {
         "upload"
       ],
       [
-        "Wait for firmware to finish",
-        "Wait for the progress bar and successful upload message. The clock restarts. If disconnected, reconnect to the clock WiFi.",
+        "Firmware uploaded successfully",
+        "This completion screen appears when the upload finishes. The clock restarts automatically. If disconnected, reconnect to the clock WiFi.",
         "Keep the power connected until completion, then reopen 192.168.4.1/update.",
         "firmware-focus.jpg",
-        "wait"
+        "successFirmware"
       ],
       [
         "Select the filesystem file",
@@ -141,11 +141,11 @@ const content = {
         "upload"
       ],
       [
-        "Wait for filesystem to finish",
-        "Wait for the progress bar and successful upload message. The clock restarts again.",
+        "Filesystem uploaded successfully",
+        "The Filesystem completion message appears when the upload finishes. The clock restarts automatically again.",
         "A brief WiFi disconnection during restart is normal.",
         "filesystem-focus.jpg",
-        "wait"
+        "successFilesystem"
       ],
       [
         "Open the normal settings page",
@@ -173,6 +173,12 @@ function render() {
   image.height = 413;
   const frame = document.getElementById("shot");
   frame.className = "shot " + scene[4];
+  const success = scene[4] === "successFirmware" || scene[4] === "successFilesystem";
+  const updateType = scene[4] === "successFilesystem" ? "Filesystem" : "Firmware";
+  document.getElementById("completion").hidden = !success;
+  document.getElementById("completeTr").textContent = updateType + " basariyla yuklendi. Saat yeniden baslatiliyor...";
+  document.getElementById("completeEn").textContent = "The " + updateType + " was uploaded successfully. The clock is restarting...";
+  document.querySelector("figcaption").hidden = success;
   document.getElementById("example").hidden = scene[4] !== "files" && scene[4] !== "wifi";
   document.getElementById("filesExample").hidden = scene[4] !== "files";
   document.getElementById("wifiExample").hidden = scene[4] !== "wifi";
