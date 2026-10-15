@@ -10,6 +10,10 @@
     a{color:var(--blue)}.wrap{max-width:1040px;margin:auto;padding:24px 18px 40px}header{border-bottom:1px solid var(--line);padding-bottom:22px}h1{font-size:28px;line-height:1.25;margin:18px 0 8px}h2{font-size:21px;margin:0 0 10px}h3{font-size:18px;margin:0 0 6px}p{margin:0 0 12px;color:var(--muted)}.version{display:flex;flex-wrap:wrap;gap:10px 22px;margin:16px 0 0;color:var(--muted)}.version strong{color:var(--green)}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}.section{margin-top:24px}.download{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:20px;min-width:0}.tag{color:var(--green);font-size:13px;font-weight:bold;margin-bottom:10px}.button{display:flex;justify-content:center;align-items:center;min-height:50px;margin-top:16px;padding:12px;border:1px solid var(--green);background:#123c31;color:#dffff0;border-radius:6px;text-decoration:none;font-weight:bold;text-align:center}.button:hover{background:#1c5241}.button:focus-visible,a:focus-visible{outline:2px solid var(--blue);outline-offset:4px}code{display:block;color:#c4e1f8;overflow-wrap:anywhere;font-size:13px}.language{border-top:3px solid var(--green);padding-top:16px;min-width:0}.language.en{border-color:var(--blue)}.label{color:var(--green);font-weight:bold;font-size:13px;margin-bottom:10px}.en .label{color:var(--blue)}ol,ul{padding-left:22px;margin:10px 0 18px}li+li{margin-top:8px}.notice{border-left:3px solid #ffd166;padding:10px 14px;background:#29251a;color:#ffe4a1;margin:14px 0;line-height:1.5}.small{font-size:14px}.back{text-decoration:none}.filename{margin-top:12px}.footer{border-top:1px solid var(--line);margin-top:30px;padding-top:16px;font-size:14px}
     @media(max-width:700px){.grid{grid-template-columns:1fr}.wrap{padding:18px 14px 30px}h1{font-size:24px}.download{padding:16px}}
   </style>
+  <style>
+    .release-meta{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 16px;margin:14px 0;color:var(--muted);font-size:13px}.release-meta strong{color:var(--green);font-size:18px}.archive{margin-top:20px;padding-top:14px;border-top:1px solid var(--line)}.archive summary{cursor:pointer;color:var(--muted);font-size:14px;font-weight:bold}.archive summary:focus-visible{outline:2px solid var(--blue);outline-offset:4px}.archive-list{list-style:none;padding:0;margin:12px 0 0}.archive-list li+li{margin-top:8px}.archive-list a{display:block;padding:10px 0;text-decoration:none;border-top:1px solid var(--line)}.archive-list a:hover{text-decoration:underline}.archive-list small{display:block;color:var(--muted);margin-top:3px}.archive-empty{font-size:13px;margin:12px 0 0}.release-filename{display:block;color:#c4e1f8;font-family:monospace;font-size:13px;overflow-wrap:anywhere}
+  </style>
+  <script src="clock-downloads.js?v=1" defer></script>
 </head>
 <body>
   <main class="wrap">
@@ -23,15 +27,19 @@
         <div class="tag">FIRMWARE</div>
         <h2>Saat Yazılımı / Clock Firmware</h2>
         <p>Saatin çalışma yazılımı.<br><span lang="en">The software that runs the clock.</span></p>
-        <code class="filename">DigitalClock-Firmware-VX.X.X.bin</code>
-        <a class="button" download="DigitalClock-Firmware-V1.5.3.bin" href="downloads/V1.5.3/DigitalClock-Firmware-V1.5.3.bin">Firmware İndir / Download Firmware</a>
+        <div class="release-meta">Sürüm / Version: <strong id="firmwareReleaseVersion">V1.5.3</strong><time id="firmwareReleaseDate" datetime="2026-10-15">15.10.2026</time></div>
+        <code id="firmwareReleaseName" class="filename">DigitalClock-Firmware-V1.5.3.bin</code>
+        <a id="firmwareDownload" class="button" download="DigitalClock-Firmware-V1.5.3.bin" href="downloads/V1.5.3/DigitalClock-Firmware-V1.5.3.bin">Firmware İndir / Download Firmware</a>
+        <details class="archive"><summary>Önceki sürümler / Previous versions</summary><ul id="firmwareArchive" class="archive-list"></ul><p id="firmwareArchiveEmpty" class="archive-empty">Önceki sürüm henüz yayımlanmadı.<br><span lang="en">No previous version has been published yet.</span></p></details>
       </article>
       <article class="download">
         <div class="tag">FILESYSTEM</div>
         <h2>Web Arayüzü / Web Interface</h2>
         <p>Tarayıcıdan açılan ayar sayfaları.<br><span lang="en">The settings pages you open in your browser.</span></p>
-        <code class="filename">DigitalClock-FileSystem-VX.X.X.bin</code>
-        <a class="button" download="DigitalClock-FileSystem-V1.5.3.bin" href="downloads/V1.5.3/DigitalClock-FileSystem-V1.5.3.bin">Filesystem İndir / Download Filesystem</a>
+        <div class="release-meta">Sürüm / Version: <strong id="filesystemReleaseVersion">V1.5.3</strong><time id="filesystemReleaseDate" datetime="2026-10-15">15.10.2026</time></div>
+        <code id="filesystemReleaseName" class="filename">DigitalClock-FileSystem-V1.5.3.bin</code>
+        <a id="filesystemDownload" class="button" download="DigitalClock-FileSystem-V1.5.3.bin" href="downloads/V1.5.3/DigitalClock-FileSystem-V1.5.3.bin">Filesystem İndir / Download Filesystem</a>
+        <details class="archive"><summary>Önceki sürümler / Previous versions</summary><ul id="filesystemArchive" class="archive-list"></ul><p id="filesystemArchiveEmpty" class="archive-empty">Önceki sürüm henüz yayımlanmadı.<br><span lang="en">No previous version has been published yet.</span></p></details>
       </article>
     </section>
     <section class="grid section" aria-label="Instructions / Talimatlar">

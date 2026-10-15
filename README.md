@@ -21,7 +21,11 @@ https://kullaniciadiniz.github.io/ozmen-clock-guide/
 
 Bu adresi QR koda dönüştürüp kutuya, etikete veya kullanım kağıdına ekleyebilirsiniz.
 
-## İçerik
+## Güncelleme Dosyaları
+
+`clock-releases.json` indirme kutularındaki güncel sürümü ve önceki sürüm bağlantılarını belirler. Liste en yeni sürüm önce olacak şekilde tutulur. Yeni sürüm dosyalarını kendi `downloads/Vx.x.x/` klasörüne ekleyin ve kaydını listenin başına koyun. Önceki kayıtları ve dosyalarını silmeyin; arşivde yalnızca tıklanınca indirilen bağlantılar olarak gösterilirler. Video kılavuzundaki örnek dosya adları sürümden bağımsız kalır.
+
+## Kılavuz Dosyaları
 
 - `index.html`: Ana sayfa
 - `video-tr.html`: Türkçe video kılavuzu
