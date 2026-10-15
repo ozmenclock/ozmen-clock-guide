@@ -177,8 +177,9 @@ function render() {
   document.getElementById("filesExample").hidden = scene[4] !== "files";
   document.getElementById("wifiExample").hidden = scene[4] !== "wifi";
   image.alt = locale.alt;
-  document.getElementById("imageLink").href = image.src;
-  document.getElementById("enlarge").href = image.src;
+  document.getElementById("imageLink").href = language === "en" ? "#" : image.src;
+  document.getElementById("enlarge").href = language === "en" ? "#" : image.src;
+  document.querySelector("figure").classList.remove("zoomed");
   document.getElementById("progress").max = locale.scenes.length;
   document.getElementById("progress").value = index + 1;
   document.querySelectorAll(".step-list button").forEach((button, i) => {
@@ -207,4 +208,17 @@ locale.scenes.forEach((scene, i) => {
 document.getElementById("previous").addEventListener("click", () => { setPlaying(false); index = Math.max(0, index - 1); render(); });
 document.getElementById("next").addEventListener("click", () => { setPlaying(false); index = Math.min(locale.scenes.length - 1, index + 1); render(); });
 document.getElementById("play").addEventListener("click", () => { if (!playing && index === locale.scenes.length - 1) index = 0; render(); setPlaying(!playing); });
+if (language === "en") {
+  const enlarge = () => {
+    const expanded = document.querySelector("figure").classList.toggle("zoomed");
+    document.getElementById("enlarge").textContent = expanded ? "Close image" : "Enlarge image";
+  };
+  ["imageLink", "enlarge"].forEach(id => document.getElementById(id).addEventListener("click", event => { event.preventDefault(); enlarge(); }));
+  document.addEventListener("keydown", event => {
+    if (event.key === "Escape") {
+      document.querySelector("figure").classList.remove("zoomed");
+      document.getElementById("enlarge").textContent = "Enlarge image";
+    }
+  });
+}
 render();
