@@ -38,7 +38,7 @@ const content = {
         "Firmware yüklemesini başlatın",
         "Seçilen dosyanın adı göründükten sonra Firmware'i Yükle / Upload Firmware düğmesine basın.",
         "Dosya seçmek tek başına yüklemeyi başlatmaz. Şimdi işaretli yükleme düğmesine basın.",
-        "firmware-focus.jpg",
+        "firmware-ready.jpg",
         "upload"
       ],
       [
@@ -59,7 +59,7 @@ const content = {
         "Filesystem yüklemesini başlatın",
         "Seçilen dosyanın adı göründükten sonra Filesystem'i Yükle / Upload Filesystem düğmesine basın.",
         "İşaretli düğme web arayüzü dosyasının yüklenmesini başlatır.",
-        "filesystem-focus.jpg",
+        "filesystem-ready.jpg",
         "upload"
       ],
       [
@@ -73,8 +73,8 @@ const content = {
         "Normal ayar sayfasını açın",
         "Gerekirse saat WiFi ağına yeniden bağlanın ve 192.168.4.1 adresini açın. Ayar sayfasını yenileyin.",
         "Saat normal çalıştığında güncelleme tamamlanmıştır.",
-        "update-controls.jpg",
-        "overview"
+        "home-tr.jpg",
+        "home"
       ]
     ]
   },
@@ -116,7 +116,7 @@ const content = {
         "Start the firmware upload",
         "When the selected file name appears, press Firmware'i Yükle / Upload Firmware.",
         "Selecting a file does not start the upload. Now press the highlighted upload button.",
-        "firmware-focus.jpg",
+        "firmware-ready.jpg",
         "upload"
       ],
       [
@@ -137,7 +137,7 @@ const content = {
         "Start the filesystem upload",
         "When the selected file name appears, press Filesystem'i Yükle / Upload Filesystem.",
         "The highlighted button starts uploading the web interface file.",
-        "filesystem-focus.jpg",
+        "filesystem-ready.jpg",
         "upload"
       ],
       [
@@ -151,8 +151,8 @@ const content = {
         "Open the normal settings page",
         "Reconnect to the clock WiFi if needed and open 192.168.4.1. Refresh the settings page.",
         "The update is complete when the clock works normally.",
-        "update-controls.jpg",
-        "overview"
+        "home-en.jpg",
+        "home"
       ]
     ]
   }
@@ -169,10 +169,14 @@ function render() {
   document.getElementById("copy").textContent = scene[1];
   document.getElementById("note").textContent = scene[2];
   image.src = "images/update/" + scene[3];
-  image.width = scene[4] === "overview" ? 960 : 472;
-  image.height = 413;
+  image.width = scene[4] === "home" ? 1265 : scene[4] === "overview" ? 960 : 472;
+  image.height = scene[4] === "home" ? 991 : 413;
   const frame = document.getElementById("shot");
   frame.className = "shot " + scene[4];
+  const selectedFile = scene[4] === "upload"
+    ? (scene[3].startsWith("firmware") ? "DigitalClock-Firmware-VX.X.X.bin" : "DigitalClock-FileSystem-VX.X.X.bin")
+    : "No file chosen";
+  frame.querySelectorAll(".file-picker-preview > span:last-child").forEach(label => { label.textContent = selectedFile; });
   const success = scene[4] === "successFirmware" || scene[4] === "successFilesystem";
   const updateType = scene[4] === "successFilesystem" ? "Filesystem" : "Firmware";
   document.getElementById("completion").hidden = !success;
