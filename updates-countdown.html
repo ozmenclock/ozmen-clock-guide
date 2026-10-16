@@ -8,6 +8,7 @@
     :root{color-scheme:dark;--bg:#0b0f14;--panel:#151b22;--line:#27313c;--text:#f3f7fb;--muted:#a5b9c9;--green:#21d07a;--blue:#69b7ff}
     *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:16px Arial,Helvetica,sans-serif;line-height:1.5;letter-spacing:0}
     a{color:var(--blue)}.wrap{max-width:1040px;margin:auto;padding:24px 18px 40px}header{border-bottom:1px solid var(--line);padding-bottom:22px}h1{font-size:28px;line-height:1.25;margin:18px 0 8px}h2{font-size:21px;margin:0 0 10px}h3{font-size:18px;margin:0 0 6px}p{margin:0 0 12px;color:var(--muted)}.version{display:flex;flex-wrap:wrap;gap:10px 22px;margin:16px 0 0;color:var(--muted)}.version strong{color:var(--green)}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}.section{margin-top:24px}.download{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:20px;min-width:0}.tag{color:var(--green);font-size:13px;font-weight:bold;margin-bottom:10px}.button{display:flex;justify-content:center;align-items:center;min-height:50px;margin-top:16px;padding:12px;border:1px solid var(--green);background:#123c31;color:#dffff0;border-radius:6px;text-decoration:none;font-weight:bold;text-align:center}.button:hover{background:#1c5241}.button:focus-visible,a:focus-visible{outline:2px solid var(--blue);outline-offset:4px}code{display:block;color:#c4e1f8;overflow-wrap:anywhere;font-size:13px}.language{border-top:3px solid var(--green);padding-top:16px;min-width:0}.language.en{border-color:var(--blue)}.label{color:var(--green);font-weight:bold;font-size:13px;margin-bottom:10px}.en .label{color:var(--blue)}ol,ul{padding-left:22px;margin:10px 0 18px}li+li{margin-top:8px}.notice{border-left:3px solid #ffd166;padding:10px 14px;background:#29251a;color:#ffe4a1;margin:14px 0;line-height:1.5}.small{font-size:14px}.back{text-decoration:none}.filename{margin-top:12px}.footer{border-top:1px solid var(--line);margin-top:30px;padding-top:16px;font-size:14px}
+    .instructions-hint{margin-top:18px;margin-bottom:0}.instructions-hint a{display:block;color:inherit;text-underline-offset:3px}.instructions-hint a+a{margin-top:10px}#instructions-tr,#instructions-en{scroll-margin-top:20px}
     @media(max-width:700px){.grid{grid-template-columns:1fr}.wrap{padding:18px 14px 30px}h1{font-size:24px}.download{padding:16px}}
   </style>
   <style>
@@ -21,6 +22,10 @@
       <a class="back" href="updates.html">← Yazılım Güncellemeleri / Software Updates</a>
       <h1>Dijital Gerisayım<br><span lang="en">Digital Countdown</span></h1>
       <p>Dijital gerisayım saati için güncel dosyalar.<br><span lang="en">Current update files for the digital countdown clock.</span></p>
+      <div class="notice instructions-hint">
+        <a href="#instructions-tr" lang="tr">Türkçe ve İngilizce yükleme talimatları aşağıdadır. Türkçe talimatlara git ↓</a>
+        <a href="#instructions-en" lang="en">Upload instructions are available below in Turkish and English. Go to English instructions ↓</a>
+      </div>
     </header>
     <section class="grid section" aria-label="Downloads / İndirmeler">
       <article class="download">
@@ -43,7 +48,7 @@
       </article>
     </section>
     <section class="grid section" aria-label="Instructions / Talimatlar">
-      <div class="language" lang="tr">
+      <div class="language" lang="tr" id="instructions-tr">
         <div class="label">TÜRKÇE</div>
         <h2>Uyumluluk</h2>
         <p>Bu dosyalar, 4 MB flash belleğe ve 1 MB filesystem düzenine sahip ESP8266 dijital gerisayım saatleri içindir. Dijital duvar saati için kullanmayın.</p>
@@ -63,7 +68,7 @@
         <div class="notice">Yükleme sırasında elektriği kesmeyin, dosya aktarımı bitmeden sayfayı kapatmayın. Yeniden başlatma sırasında kısa süreli WiFi kesintisi normaldir.</div>
         <p><a href="countdown-guide-tr.html">Gerisayım kullanım kılavuzu</a></p>
       </div>
-      <div class="language en" lang="en">
+      <div class="language en" lang="en" id="instructions-en">
         <div class="label">ENGLISH</div>
         <h2>Compatibility</h2>
         <p>These files are for ESP8266 digital countdowns with 4 MB flash and a 1 MB filesystem layout. Do not use them for the digital wall clock.</p>
