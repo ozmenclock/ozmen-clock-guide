@@ -27,6 +27,14 @@ Bu adresi QR koda dönüştürüp kutuya, etikete veya kullanım kağıdına ekl
 
 ## Kılavuz Dosyaları
 
+Geri sayım paketleri `countdown-releases.json` ve `countdown-downloads.js` ile
+`updates-countdown.html` sayfasında listelenir. Dosyalar
+`downloads/countdown/Vx.x.x/` altında saklanır; önceki sürümleri silmeyin.
+Yalnızca imzalı yayın BIN dosyalarını ekleyin. Özel anahtar, ayar yedeği ve
+`settings.txt` gibi cihaz dosyalarını bu repoya koymayın.
+İlk geçiş sırası: firmware, ayar yedeği, filesystem, yedeği geri yükleme.
+
+
 - `index.html`: Ana sayfa
 - `video-tr.html`: Türkçe video kılavuzu
 - `video-en.html`: İngilizce video kılavuzu
