@@ -2,7 +2,7 @@
   "releases": [
     {
       "version": "V1.5.3",
-      "date": "2026-10-15",
+      "date": "2026-10-17",
       "firmware": "downloads/V1.5.3/DigitalClock-Firmware-V1.5.3.bin",
       "filesystem": "downloads/V1.5.3/DigitalClock-FileSystem-V1.5.3.bin"
     }
