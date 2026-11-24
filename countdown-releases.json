@@ -1,6 +1,12 @@
 {
   "releases": [
     {
+      "version": "V1.3.1",
+      "date": "2026-11-24",
+      "firmware": "downloads/countdown/V1.3.1/DigitalCountdown-Firmware-V1.3.1.bin",
+      "filesystem": "downloads/countdown/V1.3.1/DigitalCountdown-FileSystem-V1.3.1.bin"
+    },
+    {
       "version": "V1.3.0",
       "date": "2026-11-14",
       "firmware": "downloads/countdown/V1.3.0/new-key/DigitalCountdown-Firmware-V1.3.0.bin",
